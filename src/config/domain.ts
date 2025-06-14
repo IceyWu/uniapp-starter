@@ -10,14 +10,14 @@ interface EnvMap {
 
 const envMap: EnvMap = {
   dev: {
-    baseServer: 'https://test.wktest.cn:3001/api',
+    baseServer: 'https://xxx',
     otherServer: 'http://x.x.x.x/section',
-    uploadServer: 'https://test.wktest.cn:3001/api/alioss/uploadBase',
+    uploadServer: 'https://xxx/alioss/uploadBase',
   },
   prod: {
-    baseServer: 'https://test.wktest.cn:3001/api',
+    baseServer: 'https://xxx',
     otherServer: 'http://x.x.x.x/section',
-    uploadServer: 'https://test.wktest.cn:3001/api/alioss/uploadBase',
+    uploadServer: 'https://xxx/alioss/uploadBase',
   },
 }
 type ApiEnv = keyof typeof envMap

@@ -187,7 +187,6 @@ uniapp-starter/
 │   │   └── zh.json                # 中文语言包
 │   ├── pages/                     # 页面组件
 │   │   ├── index.vue              # 首页
-│   │   ├── hi.vue                 # 示例页面
 │   │   ├── webview.vue            # WebView 页面
 │   │   ├── home/                  # 首页相关页面
 │   │   │   └── detail.vue         # 详情页
