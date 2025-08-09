@@ -313,6 +313,8 @@ declare module 'vue' {
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useTemplateRef: UnwrapRef<typeof import('vue')['useTemplateRef']>
     readonly useTitle: UnwrapRef<typeof import('../hooks/useTitle')['useTitle']>
+    readonly useUserStore: UnwrapRef<typeof import('../store/user')['useUserStore']>
+    readonly user: UnwrapRef<typeof import('../store/user')['default']>
     readonly userKeyBase: UnwrapRef<typeof import('../utils/http/auth')['userKeyBase']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>

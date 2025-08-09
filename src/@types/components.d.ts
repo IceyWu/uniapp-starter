@@ -7,15 +7,12 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    IceyAvatar: typeof import('./../components/Base/IceyAvatar.vue')['default']
-    LivePhoto: typeof import('./../components/LivePhoto/index.vue')['default']
-    LPImage: typeof import('./../components/LPImage/index.vue')['default']
     NavBar: typeof import('./../components/NavBar/index.vue')['default']
-    PrivacyPopup: typeof import('./../components/PrivacyPopup.vue')['default']
-    PullDownBg: typeof import('./../components/pullDownBg.vue')['default']
     TabBar: typeof import('./../components/TabBar/index.vue')['default']
     TheFooter: typeof import('./../components/TheFooter.vue')['default']
     UpImage: typeof import('uni-ui-plus/components/image/image.vue')['default']
+    UpList: typeof import('uni-ui-plus/components/list/list.vue')['default']
+    UpWaterfall: typeof import('uni-ui-plus/components/waterfall/waterfall.vue')['default']
     WaterfallsList: typeof import('./../components/WaterfallsList.vue')['default']
   }
 }

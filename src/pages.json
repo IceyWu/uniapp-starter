@@ -14,10 +14,6 @@
       "layout": "home"
     },
     {
-      "path": "pages/hi",
-      "type": "page"
-    },
-    {
       "path": "pages/webview",
       "type": "page"
     },
