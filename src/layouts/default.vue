@@ -5,8 +5,8 @@ const objVal = getObjVal(pageInfo, ['$page', 'meta', 'navigationBar'])
 
 <template>
   <view
-
-    class="app" :class="{
+    class="app min-h-screen bg-white text-black dark:bg-neutral-900 dark:text-white"
+    :class="{
       dark: isDark,
     }"
   >

@@ -1,0 +1,87 @@
+@config "../../tailwind.config.js";
+@import "tailwindcss";
+@import "weapp-tailwindcss";
+
+/* 使用 class 方案开启暗色模式 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 迁移自 UnoCSS 的快捷类到 Tailwind v4 的 @utility 写法 */
+@utility center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@utility icon-btn {
+  font-size: 0.9em;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.75;
+  transition-property: all;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+  vertical-align: middle;
+}
+.icon-btn:hover {
+  opacity: 1;
+}
+.icon-btn:hover {
+  color: var(--color-teal-600);
+}
+
+@utility switch-animation {
+  transition-duration: 300ms;
+}
+
+@utility bg-base {
+  background-color: #f0f0f0;
+}
+
+@utility card-base {
+  background-color: #ffffff;
+}
+.dark .card-base {
+  background-color: var(--color-gray-800);
+}
+
+@utility text-base {
+  color: #000;
+}
+.dark .text-base {
+  color: #fff;
+}
+
+@utility text-secondary {
+  color: var(--color-sky-500);
+}
+@utility text-active {
+  color: var(--color-pink-500);
+}
+
+@utility btn {
+  padding-inline: 1rem;
+  padding-block: 0.25rem;
+  border-radius: 0.25rem;
+  display: inline-block;
+  background-color: #5edfd6;
+  color: #fff;
+}
+.btn:hover {
+  background-color: #89e9e0;
+}
+.btn:disabled {
+  cursor: default;
+  opacity: 0.5;
+  background-color: #89e9e0;
+}
+
+/* 自定义主题色（供如 text-primary 等使用） */
+@theme {
+  --color-primary: #eb3477;
+  --color-secondary: #03a9f4;
+  --color-success: #4caf50;
+  --color-info: #2196f3;
+  --color-warning: #ff9800;
+  --color-error: #f44336;
+}
