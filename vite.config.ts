@@ -6,6 +6,7 @@ import Components from '@uni-helper/vite-plugin-uni-components'
 import UniLayouts from '@uni-helper/vite-plugin-uni-layouts'
 import UniManifest from '@uni-helper/vite-plugin-uni-manifest'
 import UniPages from '@uni-helper/vite-plugin-uni-pages'
+import Optimization from '@uni-ku/bundle-optimizer'
 import AutoImportTypes from 'auto-import-types'
 import PiniaAutoRefs from 'pinia-auto-refs'
 import { UpResolver } from 'uni-ui-plus'
@@ -36,7 +37,8 @@ export default defineConfig(async () => {
        * @see https://github.com/uni-helper/vite-plugin-uni-pages
        */
       UniPages({
-        subPackages: ['src/pages-sub'],
+        exclude: ['**/components/**/*.*'],
+        subPackages: ['src/pages-sub', 'src/sub-packages'],
         dts: './src/@types/uni-pages.d.ts',
       }),
 
@@ -111,6 +113,33 @@ export default defineConfig(async () => {
       VueDevTools(),
 
       uni(),
+
+      Optimization({
+        enable: {
+          'optimization': true,
+          'async-import': true,
+          'async-component': true,
+        },
+        dts: {
+          'enable': true,
+          'base': 'src/@types',
+          // 上面是对类型生成的比较全局的一个配置
+          // 下面是对每个类型生成的配置，以下各配置均为可选参数
+          'async-import': {
+            enable: true,
+            base: 'src/@types',
+            name: 'async-import.d.ts',
+            path: 'src/@types/async-import.d.ts',
+          },
+          'async-component': {
+            enable: true,
+            base: 'src/@types',
+            name: 'async-component.d.ts',
+            path: 'src/@types/async-component.d.ts',
+          },
+        },
+        logger: true,
+      }),
     ],
 
     /**

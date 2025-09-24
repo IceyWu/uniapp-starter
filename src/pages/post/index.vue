@@ -1,11 +1,9 @@
-<route lang="json">
-{
-  "layout": "home"
-}
-</route>
-
 <script lang="ts" setup>
-
+definePage(() => {
+  return {
+    layout: 'home',
+  }
+})
 </script>
 
 <template>

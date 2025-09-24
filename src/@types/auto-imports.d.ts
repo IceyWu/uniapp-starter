@@ -35,6 +35,7 @@ declare global {
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
+  const getCurrentWatcher: typeof import('vue')['getCurrentWatcher']
   const getDataList: typeof import('../api/apiTest')['getDataList']
   const getObjVal: typeof import('@iceywu/utils')['getObjVal']
   const getSign: typeof import('../api/ossUpload')['getSign']
@@ -55,6 +56,7 @@ declare global {
   const isReadonly: typeof import('vue')['isReadonly']
   const isRef: typeof import('vue')['isRef']
   const isRequestSuccess: typeof import('../utils/http/tool')['isRequestSuccess']
+  const isShallow: typeof import('vue')['isShallow']
   const isString: typeof import('@iceywu/utils')['isString']
   const list: typeof import('@iceywu/utils')['list']
   const login: typeof import('../api/auth')['login']
@@ -174,7 +176,7 @@ declare global {
 // for type re-export
 declare global {
   // @ts-ignore
-  export type { Component, Slot, Slots, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
+  export type { Component, Slot, Slots, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, ShallowRef, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
   // @ts-ignore
   export type { DataInfo } from '../utils/http/auth'
@@ -210,6 +212,7 @@ declare module 'vue' {
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getCurrentWatcher: UnwrapRef<typeof import('vue')['getCurrentWatcher']>
     readonly getDataList: UnwrapRef<typeof import('../api/apiTest')['getDataList']>
     readonly getObjVal: UnwrapRef<typeof import('@iceywu/utils')['getObjVal']>
     readonly getToken: UnwrapRef<typeof import('../utils/http/auth')['getToken']>
@@ -226,6 +229,7 @@ declare module 'vue' {
     readonly isReadonly: UnwrapRef<typeof import('vue')['isReadonly']>
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
     readonly isRequestSuccess: UnwrapRef<typeof import('../utils/http/tool')['isRequestSuccess']>
+    readonly isShallow: UnwrapRef<typeof import('vue')['isShallow']>
     readonly isString: UnwrapRef<typeof import('@iceywu/utils')['isString']>
     readonly list: UnwrapRef<typeof import('@iceywu/utils')['list']>
     readonly mapActions: UnwrapRef<typeof import('pinia')['mapActions']>

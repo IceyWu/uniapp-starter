@@ -1,11 +1,10 @@
-<route lang="json">
-{
-  "layout": "childPage",
-  "style": { "navigationBarTitleText": "详情" }
-}
-</route>
-
 <script lang="ts" setup>
+definePage(() => {
+  return {
+    layout: 'childPage',
+    style: { navigationBarTitleText: '详情' },
+  }
+})
 onLoad((e: any) => {
 
 })

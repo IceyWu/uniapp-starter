@@ -1,10 +1,10 @@
-<route lang="json">
-{
-  "layout": "home"
-}
-</route>
-
 <script setup lang="ts">
+definePage(() => {
+  return {
+    layout: 'home',
+  }
+})
+
 const scrollH = ref(500)
 
 onShow(() => {})

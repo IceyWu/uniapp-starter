@@ -1,0 +1,13 @@
+<script lang="ts" setup>
+
+</script>
+
+<template>
+  <view class="center">
+    Subpackage
+  </view>
+</template>
+
+<style lang="scss" scoped>
+
+</style>
