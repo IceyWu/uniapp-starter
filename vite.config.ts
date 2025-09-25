@@ -169,7 +169,6 @@ export default defineConfig(() => {
       },
       preprocessorOptions: {
         scss: {
-          silenceDeprecations: ['legacy-js-api', 'color-functions'],
         },
       },
     },

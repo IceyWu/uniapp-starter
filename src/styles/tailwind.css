@@ -1,6 +1,6 @@
-@config "../../tailwind.config.js";
 @import "tailwindcss";
 @import "weapp-tailwindcss";
+@config "../../tailwind.config.js";
 
 /* 使用 class 方案开启暗色模式 */
 @custom-variant dark (&:where(.dark, .dark *));

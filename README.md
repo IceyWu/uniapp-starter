@@ -13,10 +13,10 @@
 <br/>
 
 <p align='center'>
-<a href="https://github.com/vuejs/vue"><img src="https://img.shields.io/badge/Vue-3.5.16-4FC08D?style=flat-square&logo=vue.js&logoColor=white" alt="Vue"></a>
-<a href="https://github.com/microsoft/TypeScript"><img src="https://img.shields.io/badge/TypeScript-5.8.3-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
-<a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-5.2.8-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite"></a>
-<a href="https://unocss.dev/"><img src="https://img.shields.io/badge/UnoCSS-0.64.0-333333?style=flat-square&logo=unocss&logoColor=white" alt="UnoCSS"></a>
+<a href="https://github.com/vuejs/vue"><img src="https://img.shields.io/badge/Vue-3.5.22-4FC08D?style=flat-square&logo=vue.js&logoColor=white" alt="Vue"></a>
+<a href="https://github.com/microsoft/TypeScript"><img src="https://img.shields.io/badge/TypeScript-5.9.2-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
+<a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-7.1.7-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite"></a>
+<a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/TailwindCSS-4.1.13-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="TailwindCSS"></a>
 <a href="https://pinia.vuejs.org/"><img src="https://img.shields.io/badge/Pinia-3.0.3-yellow?style=flat-square&logo=vue.js&logoColor=white" alt="Pinia"></a>
 </p>
 
@@ -40,11 +40,11 @@
 
 ### 🎨 样式与UI
 
-- 🎨 [UnoCSS](https://github.com/unocss/unocss) - 高性能原子化 CSS 引擎，按需生成样式
+- 🎨 [TailwindCSS](https://tailwindcss.com/) - 实用优先的 CSS 框架，快速开发现代界面
 - 😃 [Iconify](https://iconify.design) - 海量图标库支持，包含数十万个图标
 - 🌙 **暗色模式** - 内置主题切换功能，支持跟随系统设置
 - 📱 **响应式设计** - 完美适配各种屏幕尺寸和设备
-- 💎 **现代 UI 组件** - 内置常用组件，支持 uni-ui 组件库
+- 💎 **现代 UI 组件** - 内置常用组件，支持自定义扩展
 - 🎭 **主题定制** - 支持主题色彩配置和深度定制
 
 ### 🛠 工程化
@@ -95,8 +95,7 @@
 
 ### 样式方案
 
-- **UnoCSS** - 原子化 CSS 引擎
-- **@uni-helper/unocss-preset-uni** - UniApp 专用 UnoCSS 预设
+- **TailwindCSS** - 实用优先的 CSS 框架
 - **Sass** - CSS 预处理器
 
 ### 网络请求
@@ -240,7 +239,7 @@ uniapp-starter/
 ├── manifest.config.ts             # UniApp 清单配置
 ├── pages.config.ts                # 页面路由配置
 ├── tsconfig.json                  # TypeScript 配置
-├── uno.config.ts                  # UnoCSS 配置
+├── tailwind.config.js             # TailwindCSS 配置
 ├── vite.config.ts                 # Vite 构建配置
 ├── vitest.config.ts               # Vitest 测试配置
 ├── bun.lockb                      # Bun 锁定文件
@@ -286,6 +285,18 @@ bun install
 # 或使用 pnpm
 pnpm install
 ```
+
+### 🔄 同步主仓库代码
+
+如需同步主仓库最新模板代码，可执行：
+
+```bash
+pnpm syn_rpo
+# 或
+npm run syn_rpo
+```
+
+该命令会自动拉取 <https://github.com/IceyWu/uniapp-starter.git> main 分支的最新内容。
 
 ### 🛠 开发
 
@@ -411,24 +422,28 @@ bun up
 在开始开发前，建议完成以下配置：
 
 1. **更新项目信息**
+
    ```bash
    # 修改 package.json 中的项目名称和描述
    # 更新 manifest.config.ts 中的 appid 和应用信息
    ```
 
 2. **配置开发环境**
+
    ```bash
    # 配置 src/config/domain.ts 中的 API 地址
    # 修改 src/config/app.ts 中的应用配置
    ```
 
 3. **替换资源文件**
+
    ```bash
    # 替换 public/favicon.svg
    # 更新 src/static/ 目录下的图片资源
    ```
 
 4. **设置主题**
+
    ```bash
    # 配置 src/theme.json 中的主题色彩
    # 自定义 src/styles/main.css 中的样式
@@ -630,9 +645,9 @@ async function handleLogin() {
 - **uni-app-schemas** - UniApp 配置文件智能提示
 - **uni-app-snippets** - UniApp 代码片段
 
-#### 样式与 UI
+### 样式与 UI
 
-- **UnoCSS** - UnoCSS 语法高亮和智能提示
+- **Tailwind CSS IntelliSense** - TailwindCSS 智能提示
 - **Iconify IntelliSense** - 图标智能提示和预览
 - **Color Highlight** - 颜色值高亮显示
 
@@ -723,6 +738,7 @@ bun add -g prettier               # Prettier 代码格式化
 ### 🏷️ 项目基本信息
 
 - [ ] **修改项目名称和描述**
+
   ```bash
   # 编辑 package.json
   {
@@ -733,6 +749,7 @@ bun add -g prettier               # Prettier 代码格式化
   ```
 
 - [ ] **更新应用配置**
+
   ```typescript
   // 编辑 manifest.config.ts
   export default defineManifest({
@@ -757,6 +774,7 @@ bun add -g prettier               # Prettier 代码格式化
 ### ⚙️ 配置文件设置
 
 - [ ] **API 配置**
+
   ```typescript
   // 编辑 src/config/domain.ts
   export const API_BASE_URL = {
@@ -766,6 +784,7 @@ bun add -g prettier               # Prettier 代码格式化
   ```
 
 - [ ] **应用配置**
+
   ```typescript
   // 编辑 src/config/app.ts
   export const APP_CONFIG = {
@@ -776,6 +795,7 @@ bun add -g prettier               # Prettier 代码格式化
   ```
 
 - [ ] **主题配置**
+
   ```json
   // 编辑 src/theme.json
   {
@@ -787,6 +807,7 @@ bun add -g prettier               # Prettier 代码格式化
 ### 🌐 国际化设置
 
 - [ ] **配置语言包**
+
   ```json
   // 编辑 src/locale/zh.json
   {
@@ -804,6 +825,7 @@ bun add -g prettier               # Prettier 代码格式化
 ### 🔐 安全配置
 
 - [ ] **环境变量设置**
+
   ```bash
   # 创建 .env.local 文件
   VITE_API_BASE_URL=https://your-api-domain.com
@@ -833,6 +855,7 @@ bun add -g prettier               # Prettier 代码格式化
 ### 🚀 部署配置
 
 - [ ] **CI/CD 流程**
+
   ```yaml
   # .github/workflows/deploy.yml
   name: Deploy
@@ -843,6 +866,7 @@ bun add -g prettier               # Prettier 代码格式化
   ```
 
 - [ ] **构建脚本优化**
+
   ```json
   // package.json scripts
   {
@@ -866,6 +890,7 @@ bun add -g prettier               # Prettier 代码格式化
 ### ✅ 测试验证
 
 - [ ] **功能测试**
+
   ```bash
   # 运行测试套件
   bun test
@@ -878,6 +903,7 @@ bun add -g prettier               # Prettier 代码格式化
   ```
 
 - [ ] **构建测试**
+
   ```bash
   # 测试各平台构建
   bun build:h5
@@ -937,5 +963,5 @@ bun add -g prettier               # Prettier 代码格式化
 - [Vue.js](https://vuejs.org/) - 渐进式 JavaScript 框架
 - [UniApp](https://uniapp.dcloud.io/) - 跨平台应用开发框架
 - [Vite](https://vitejs.dev/) - 下一代前端构建工具
-- [UnoCSS](https://unocss.dev/) - 即时原子化 CSS 引擎
+- [TailwindCSS](https://tailwindcss.com/) - 实用优先的 CSS 框架
 - [Pinia](https://pinia.vuejs.org/) - Vue 状态管理库

@@ -105,8 +105,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       uni-ui-plus:
-        specifier: 0.0.63
-        version: 0.0.63(@uni-helper/uni-app-types@1.0.0-alpha.6(typescript@5.9.2)(vue@3.5.22(typescript@5.9.2)))(rollup@4.46.2)(vue@3.5.22(typescript@5.9.2))
+        specifier: 0.0.65
+        version: 0.0.65(@uni-helper/uni-app-types@1.0.0-alpha.6(typescript@5.9.2)(vue@3.5.22(typescript@5.9.2)))(rollup@4.46.2)(vue@3.5.22(typescript@5.9.2))
       uni-use-router:
         specifier: ^0.0.7
         version: 0.0.7(vue@3.5.22(typescript@5.9.2))
@@ -6522,8 +6522,8 @@ packages:
   undici-types@7.10.0:
     resolution: {integrity: sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag==}
 
-  uni-ui-plus@0.0.63:
-    resolution: {integrity: sha512-N8e8ZASJtPObzBD7jqu5EFXsfseSF7URIo5gopOUnWXAP9JT3emSCeOgQn7UW8swcsmUvdN0ePxMhiIxjNIfew==}
+  uni-ui-plus@0.0.65:
+    resolution: {integrity: sha512-FYjAXGECZHTz4DgDo99R8OeW1kkku/p/wtF/K9ujhWYu7WM3yyatK/PHIRBrYd/GpnMglq4wcy1JvXi+6wh2ww==}
     peerDependencies:
       '@uni-helper/uni-app-types': ^1.0.0-alpha.6
       vue: '>=3.2.0'
@@ -14960,7 +14960,7 @@ snapshots:
 
   undici-types@7.10.0: {}
 
-  uni-ui-plus@0.0.63(@uni-helper/uni-app-types@1.0.0-alpha.6(typescript@5.9.2)(vue@3.5.22(typescript@5.9.2)))(rollup@4.46.2)(vue@3.5.22(typescript@5.9.2)):
+  uni-ui-plus@0.0.65(@uni-helper/uni-app-types@1.0.0-alpha.6(typescript@5.9.2)(vue@3.5.22(typescript@5.9.2)))(rollup@4.46.2)(vue@3.5.22(typescript@5.9.2)):
     dependencies:
       '@uni-helper/uni-app-types': 1.0.0-alpha.6(typescript@5.9.2)(vue@3.5.22(typescript@5.9.2))
       '@uni-helper/vite-plugin-uni-components': 0.2.3(rollup@4.46.2)

@@ -53,7 +53,8 @@
     "release:minor": "node scripts/release.js minor",
     "release:major": "node scripts/release.js major",
     "release:pre": "node scripts/release.js prerelease",
-    "changelog": "npx changelogen"
+    "changelog": "npx changelogen",
+    "syn_rpo": "npx template-syncer --repo https://github.com/IceyWu/uniapp-starter.git --branch main"
   },
   "dependencies": {
     "@dcloudio/uni-app": "3.0.0-4070620250821001",
@@ -88,7 +89,7 @@
     "qs": "^6.14.0",
     "sass-loader": "16.0.5",
     "spark-md5": "^3.0.2",
-    "uni-ui-plus": "0.0.63",
+    "uni-ui-plus": "0.0.65",
     "uni-use-router": "^0.0.7",
     "uqrcodejs": "^4.0.7",
     "vite-plugin-uni-components": "^0.0.2",

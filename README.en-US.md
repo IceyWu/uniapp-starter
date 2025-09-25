@@ -1,20 +1,16 @@
 # UniApp Starter Template
 
 <p align='center'>
-  <img src='./public/favicon.svg' alt='UniApp Starter Template' width='120'/>
+<a href="https://github.com/vuejs/vue"><img src="https://img.shields.io/badge/Vue-3.5.22-4FC08D?style=flat-square&logo=vue.js&logoColor=white" alt="Vue"></a>
+<a href="https://github.com/microsoft/TypeScript"><img src="https://img.shields.io/badge/TypeScript-5.9.2-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
+<a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-7.1.7-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite"></a>
+<a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/TailwindCSS-4.1.13-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="TailwindCSS"></a>
+<a href="https://pinia.vuejs.org/"><img src="https://img.shields.io/badge/Pinia-3.0.3-yellow?style=flat-square&logo=vue.js&logoColor=white" alt="Pinia"></a>
 </p>
-
-<h5 align='center'>
-<b>🚀 Modern UniApp Development Template</b>
-</h5>
-
-<br/>
 
 <p align='center'>
 <a href="./README.md">简体中文</a> | <b>English</b>
 </p>
-
-<br/>
 
 A feature-rich, production-ready UniApp development template with modern toolchain and best practices. Supporting multi-platform deployment with excellent development experience.
 
@@ -31,10 +27,11 @@ A feature-rich, production-ready UniApp development template with modern toolcha
 
 ### 🎨 Styling & UI
 
-- 🎨 [UnoCSS](https://github.com/unocss/unocss) - High-performance atomic CSS engine
+- 🎨 [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework for rapid UI development
 - 😃 [Iconify](https://iconify.design) - Massive icon library support
 - 🌙 Dark mode support - Built-in theme switching
-- � Responsive design - Perfect adaptation to various screen sizes
+- 📱 Responsive design - Perfect adaptation to various screen sizes
+- 💎 Modern UI components - Built-in common components, support for custom extension
 
 ### 🛠 Engineering
 
@@ -81,8 +78,7 @@ A feature-rich, production-ready UniApp development template with modern toolcha
 
 ### Styling Solution
 
-- **UnoCSS** - Atomic CSS engine
-- **@uni-helper/unocss-preset-uni** - UniApp UnoCSS preset
+- **TailwindCSS** - Utility-first CSS framework
 - **Sass** - CSS preprocessor
 
 ### HTTP Client
@@ -153,7 +149,7 @@ uniapp-starter/
 ├── manifest.config.ts       # UniApp configuration
 ├── pages.config.ts          # Page configuration
 ├── tsconfig.json            # TypeScript configuration
-├── uno.config.ts            # UnoCSS configuration
+├── tailwind.config.js       # TailwindCSS configuration
 └── vite.config.ts           # Vite configuration
 ```
 
@@ -179,6 +175,18 @@ bun install
 # or
 pnpm install
 ```
+
+### 🔄 Sync with Upstream Repository
+
+To synchronize the latest template code from the upstream repository, run:
+
+```bash
+pnpm syn_rpo
+# or
+npm run syn_rpo
+```
+
+This command will automatically pull the latest content from <https://github.com/IceyWu/uniapp-starter.git> main branch.
 
 ### Development
 
@@ -340,7 +348,17 @@ const { data } = await getUserInfo()
 
 - Vue Language Features (Volar)
 - TypeScript Vue Plugin (Volar)
-- UnoCSS
+- Tailwind CSS IntelliSense
+
+## 🙏 Acknowledgements
+
+Thanks to the following awesome open source projects:
+
+- [Vue.js](https://vuejs.org/) - Progressive JavaScript framework
+- [UniApp](https://uniapp.dcloud.io/) - Cross-platform application development framework
+- [Vite](https://vitejs.dev/) - Next generation frontend tooling
+- [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [Pinia](https://pinia.vuejs.org/) - State management for Vue
 - ESLint
 - Prettier
 - uni-app-schemas
