@@ -5,6 +5,7 @@ import process from 'node:process'
 import uni from '@dcloudio/vite-plugin-uni'
 import tailwindcss from '@tailwindcss/postcss'
 import Components from '@uni-helper/vite-plugin-uni-components'
+import { WotResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
 import UniLayouts from '@uni-helper/vite-plugin-uni-layouts'
 import UniManifest from '@uni-helper/vite-plugin-uni-manifest'
 import UniPages from '@uni-helper/vite-plugin-uni-pages'
@@ -29,6 +30,9 @@ export default defineConfig(() => {
       alias: {
         '~/': `${resolve(__dirname, 'src')}/`,
       },
+    },
+    optimizeDeps: {
+      exclude: process.env.UNI_PLATFORM === 'h5' && process.env.NODE_ENV === 'development' ? ['wot-design-uni'] : [],
     },
     plugins: [
       AutoImportTypes(),
@@ -99,7 +103,7 @@ export default defineConfig(() => {
        * @see https://github.com/antfu/vite-plugin-components
        */
       Components({
-        resolvers: [UpResolver()],
+        resolvers: [UpResolver(), WotResolver()],
         dts: './src/@types/components.d.ts',
       }),
 
@@ -169,6 +173,5 @@ export default defineConfig(() => {
         },
       },
     },
-    transpileDependencies: ['@dcloudio/uni-ui'],
   }
 })

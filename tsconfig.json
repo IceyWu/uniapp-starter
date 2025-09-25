@@ -15,6 +15,7 @@
       "@dcloudio/types",
       "@uni-helper/uni-types",
       "uni-ui-plus/global.d.ts",
+      "wot-design-uni/global",
       "@uni-helper/vite-plugin-uni-pages"
     ],
     "allowJs": true,

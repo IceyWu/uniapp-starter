@@ -5,9 +5,7 @@ export default defineUniPages({
   easycom: {
     autoscan: true,
     custom: {
-      '^uni-(.*)': '@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue',
-      '^up-(.*)?-(.*)': 'uni-ui-plus/components/$1$2/$1$2.vue',
-      '^up-(.*)': 'uni-ui-plus/components/$1/$1.vue',
+
     },
   },
   pages: [
