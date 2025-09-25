@@ -156,17 +156,12 @@ onMounted(() => {
           }"
         />
 
-        <text
+        <TabIcon
+          :name="selected === index ? item.selectedIconPath : item.iconPath"
+          :size="item.iconWidth || 32"
+          :color="item.color || (selected === index ? selectedColor : color)"
           class="tab_img"
-          :class="
-            selected === index
-              ? [item.selectedIconPath, 'icon-choosed']
-              : [item.iconPath]
-          "
-          :style="{
-            fontSize: `${item.fontSize}rpx`,
-            color: item.color,
-          }"
+          :class="selected === index ? 'icon-choosed' : ''"
         />
         <view
           v-if="item.text"

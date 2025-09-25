@@ -50,7 +50,7 @@ function goBack() {
             title="返回"
             @click="goBack"
           >
-            <div class="i-carbon:chevron-left text-xl" />
+            <Icon name="chevron-left" :size="20" />
           </div>
         </slot>
       </view>

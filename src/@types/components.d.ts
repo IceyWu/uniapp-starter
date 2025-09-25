@@ -7,8 +7,10 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Icon: typeof import('./../components/Icon.vue')['default']
     NavBar: typeof import('./../components/NavBar/index.vue')['default']
     TabBar: typeof import('./../components/TabBar/index.vue')['default']
+    TabIcon: typeof import('./../components/TabBar/TabIcon.vue')['default']
     TheFooter: typeof import('./../components/TheFooter.vue')['default']
     UpImage: typeof import('uni-ui-plus/components/image/image.vue')['default']
     UpList: typeof import('uni-ui-plus/components/list/list.vue')['default']

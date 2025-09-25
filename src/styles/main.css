@@ -1,3 +1,6 @@
+@import "weapp-tailwindcss/css";
+@source not "dist";
+
 page {
   box-sizing: border-box;
 }

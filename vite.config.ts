@@ -103,7 +103,10 @@ export default defineConfig(() => {
        * @see https://github.com/antfu/vite-plugin-components
        */
       Components({
-        resolvers: [UpResolver(), WotResolver()],
+        resolvers: [
+          UpResolver(),
+          WotResolver(),
+        ],
         dts: './src/@types/components.d.ts',
       }),
 

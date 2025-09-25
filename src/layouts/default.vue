@@ -17,10 +17,10 @@ const objVal = getObjVal(pageInfo, ['$page', 'meta', 'navigationBar'])
     >
       <template #left>
         <div
-          icon-btn title="Toggle dark mode"
+          class="icon-btn" title="Toggle dark mode"
           @click="toggleDark()"
         >
-          <div i-carbon-sun dark:i-carbon-moon />
+          <Icon :name="isDark ? 'moon' : 'sun'" :size="20" />
         </div>
       </template>
     </NavBar>
