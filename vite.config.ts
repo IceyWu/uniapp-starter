@@ -1,9 +1,7 @@
 /// <reference types="vitest" />
 
 import { resolve } from 'node:path'
-import process from 'node:process'
 import uni from '@dcloudio/vite-plugin-uni'
-import tailwindcss from '@tailwindcss/postcss'
 import Components from '@uni-helper/vite-plugin-uni-components'
 import { WotResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
 import UniLayouts from '@uni-helper/vite-plugin-uni-layouts'
@@ -16,23 +14,20 @@ import { UpResolver } from 'uni-ui-plus'
 import AutoImport from 'unplugin-auto-import/vite'
 import { defineConfig } from 'vite'
 import VueDevTools from 'vite-plugin-vue-devtools'
-import { UnifiedViteWeappTailwindcssPlugin as uvwt } from 'weapp-tailwindcss/vite'
 
 // https://vitejs.dev/config/
-export default defineConfig(() => {
-  // 仅在 mp-* 平台启用 weapp-tailwindcss，其余平台（含未设置）默认禁用
-  const platform = process.env.UNI_PLATFORM || 'h5'
-  const weappTailwindcssDisabled = !platform.startsWith('mp-')
-  // 保持默认 basedir（项目根目录），避免错误指向包目录
+export default defineConfig(async () => {
+  /**
+   * 为兼容 @dcloudio/vite-plugin-uni 采用 CJS ，而 UnoCSS 只支持 ESM
+   * @see https://github.com/dcloudio/uni-app/issues/4815
+   */
+  const Unocss = await import('unocss/vite').then(i => i.default)
 
   return {
     resolve: {
       alias: {
         '~/': `${resolve(__dirname, 'src')}/`,
       },
-    },
-    optimizeDeps: {
-      exclude: process.env.UNI_PLATFORM === 'h5' && process.env.NODE_ENV === 'development' ? ['wot-design-uni'] : [],
     },
     plugins: [
       AutoImportTypes(),
@@ -54,7 +49,12 @@ export default defineConfig(() => {
        */
       UniLayouts(),
 
-      // 移除 UnoCSS，改用 Tailwind v4（通过 PostCSS）
+      /**
+       * unocss
+       * @see https://github.com/antfu/unocss
+       * see unocss.config.ts for config
+       */
+      Unocss(),
 
       /**
        * unplugin-auto-import 按需 import
@@ -118,16 +118,6 @@ export default defineConfig(() => {
 
       uni(),
 
-      // 仅针对小程序端启用，需放在 uni() 之后以处理产物
-      ...(weappTailwindcssDisabled
-        ? []
-        : [
-            uvwt({
-              rem2rpx: true,
-              appType: 'uni-app-vite',
-            }),
-          ]),
-
       Optimization({
         enable: {
           'optimization': true,
@@ -164,12 +154,6 @@ export default defineConfig(() => {
       environment: 'jsdom',
     },
     css: {
-      // 启用 Tailwind v4 的 PostCSS 插件
-      postcss: {
-        plugins: [
-          tailwindcss(),
-        ],
-      },
       preprocessorOptions: {
         scss: {
         },

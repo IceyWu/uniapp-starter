@@ -1,5 +1,6 @@
 # UniApp Starter Template
 
+<!-- markdownlint-disable MD033 MD040 -->
 <h5 align='center'>
 <b>🚀 现代化的 UniApp 开发模板</b>
 </h5>
@@ -16,7 +17,7 @@
 <a href="https://github.com/vuejs/vue"><img src="https://img.shields.io/badge/Vue-3.5.22-4FC08D?style=flat-square&logo=vue.js&logoColor=white" alt="Vue"></a>
 <a href="https://github.com/microsoft/TypeScript"><img src="https://img.shields.io/badge/TypeScript-5.9.2-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
 <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-7.1.7-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite"></a>
-<a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/TailwindCSS-4.1.13-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="TailwindCSS"></a>
+<a href="https://unocss.dev/"><img src="https://img.shields.io/badge/UnoCSS-0.66.4-1896FF?style=flat-square&logo=unocss&logoColor=white" alt="UnoCSS"></a>
 <a href="https://pinia.vuejs.org/"><img src="https://img.shields.io/badge/Pinia-3.0.3-yellow?style=flat-square&logo=vue.js&logoColor=white" alt="Pinia"></a>
 </p>
 
@@ -40,7 +41,7 @@
 
 ### 🎨 样式与UI
 
-- 🎨 [TailwindCSS](https://tailwindcss.com/) - 实用优先的 CSS 框架，快速开发现代界面
+- 🎨 [UnoCSS](https://unocss.dev/) - 即时原子化 CSS 引擎，灵活构建现代界面
 - 😃 [Iconify](https://iconify.design) - 海量图标库支持，包含数十万个图标
 - 🌙 **暗色模式** - 内置主题切换功能，支持跟随系统设置
 - 📱 **响应式设计** - 完美适配各种屏幕尺寸和设备
@@ -95,7 +96,7 @@
 
 ### 样式方案
 
-- **TailwindCSS** - 实用优先的 CSS 框架
+- **UnoCSS** - 即时原子化 CSS 引擎
 - **Sass** - CSS 预处理器
 
 ### 网络请求
@@ -239,7 +240,7 @@ uniapp-starter/
 ├── manifest.config.ts             # UniApp 清单配置
 ├── pages.config.ts                # 页面路由配置
 ├── tsconfig.json                  # TypeScript 配置
-├── tailwind.config.js             # TailwindCSS 配置
+├── uno.config.ts                  # UnoCSS 配置
 ├── vite.config.ts                 # Vite 构建配置
 ├── vitest.config.ts               # Vitest 测试配置
 ├── bun.lockb                      # Bun 锁定文件
@@ -647,7 +648,7 @@ async function handleLogin() {
 
 ### 样式与 UI
 
-- **Tailwind CSS IntelliSense** - TailwindCSS 智能提示
+- **UnoCSS IntelliSense** - UnoCSS 原子类提示与补全
 - **Iconify IntelliSense** - 图标智能提示和预览
 - **Color Highlight** - 颜色值高亮显示
 
@@ -963,5 +964,5 @@ bun add -g prettier               # Prettier 代码格式化
 - [Vue.js](https://vuejs.org/) - 渐进式 JavaScript 框架
 - [UniApp](https://uniapp.dcloud.io/) - 跨平台应用开发框架
 - [Vite](https://vitejs.dev/) - 下一代前端构建工具
-- [TailwindCSS](https://tailwindcss.com/) - 实用优先的 CSS 框架
+- [UnoCSS](https://unocss.dev/) - 即时原子化 CSS 引擎
 - [Pinia](https://pinia.vuejs.org/) - Vue 状态管理库

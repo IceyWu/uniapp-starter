@@ -1,10 +1,11 @@
 # UniApp Starter Template
 
+<!-- markdownlint-disable MD024 MD033 MD040 -->
 <p align='center'>
 <a href="https://github.com/vuejs/vue"><img src="https://img.shields.io/badge/Vue-3.5.22-4FC08D?style=flat-square&logo=vue.js&logoColor=white" alt="Vue"></a>
 <a href="https://github.com/microsoft/TypeScript"><img src="https://img.shields.io/badge/TypeScript-5.9.2-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
 <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-7.1.7-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite"></a>
-<a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/TailwindCSS-4.1.13-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="TailwindCSS"></a>
+<a href="https://unocss.dev/"><img src="https://img.shields.io/badge/UnoCSS-0.66.4-1896FF?style=flat-square&logo=unocss&logoColor=white" alt="UnoCSS"></a>
 <a href="https://pinia.vuejs.org/"><img src="https://img.shields.io/badge/Pinia-3.0.3-yellow?style=flat-square&logo=vue.js&logoColor=white" alt="Pinia"></a>
 </p>
 
@@ -27,7 +28,7 @@ A feature-rich, production-ready UniApp development template with modern toolcha
 
 ### 🎨 Styling & UI
 
-- 🎨 [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework for rapid UI development
+- 🎨 [UnoCSS](https://unocss.dev/) - Instant atomic CSS engine for highly flexible UI development
 - 😃 [Iconify](https://iconify.design) - Massive icon library support
 - 🌙 Dark mode support - Built-in theme switching
 - 📱 Responsive design - Perfect adaptation to various screen sizes
@@ -78,7 +79,7 @@ A feature-rich, production-ready UniApp development template with modern toolcha
 
 ### Styling Solution
 
-- **TailwindCSS** - Utility-first CSS framework
+- **UnoCSS** - On-demand atomic CSS engine
 - **Sass** - CSS preprocessor
 
 ### HTTP Client
@@ -149,7 +150,7 @@ uniapp-starter/
 ├── manifest.config.ts       # UniApp configuration
 ├── pages.config.ts          # Page configuration
 ├── tsconfig.json            # TypeScript configuration
-├── tailwind.config.js       # TailwindCSS configuration
+├── uno.config.ts            # UnoCSS configuration
 └── vite.config.ts           # Vite configuration
 ```
 
@@ -348,7 +349,7 @@ const { data } = await getUserInfo()
 
 - Vue Language Features (Volar)
 - TypeScript Vue Plugin (Volar)
-- Tailwind CSS IntelliSense
+- UnoCSS IntelliSense
 
 ## 🙏 Acknowledgements
 
@@ -357,7 +358,7 @@ Thanks to the following awesome open source projects:
 - [Vue.js](https://vuejs.org/) - Progressive JavaScript framework
 - [UniApp](https://uniapp.dcloud.io/) - Cross-platform application development framework
 - [Vite](https://vitejs.dev/) - Next generation frontend tooling
-- [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [UnoCSS](https://unocss.dev/) - On-demand atomic CSS engine
 - [Pinia](https://pinia.vuejs.org/) - State management for Vue
 - ESLint
 - Prettier

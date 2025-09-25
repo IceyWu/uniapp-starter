@@ -5,8 +5,8 @@ const objVal = getObjVal(pageInfo, ['$page', 'meta', 'navigationBar'])
 
 <template>
   <view
-    class="app min-h-screen bg-white text-black dark:bg-neutral-900 dark:text-white"
-    :class="{
+
+    class="app" :class="{
       dark: isDark,
     }"
   >
@@ -17,10 +17,10 @@ const objVal = getObjVal(pageInfo, ['$page', 'meta', 'navigationBar'])
     >
       <template #left>
         <div
-          class="icon-btn" title="Toggle dark mode"
+          icon-btn title="Toggle dark mode"
           @click="toggleDark()"
         >
-          <Icon :name="isDark ? 'moon' : 'sun'" :size="20" />
+          <div i-carbon-sun dark:i-carbon-moon />
         </div>
       </template>
     </NavBar>

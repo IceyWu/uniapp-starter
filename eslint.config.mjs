@@ -2,7 +2,7 @@ import uni from '@uni-helper/eslint-config'
 
 export default uni(
   {
-    // 已移除 UnoCSS
+    unocss: true,
   },
   {
     rules: {
