@@ -31,7 +31,9 @@
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "async-import.d.ts",
+    "async-component.d.ts"
   ],
   "exclude": ["dist", "node_modules"],
 

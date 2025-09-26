@@ -2,6 +2,9 @@
 definePage(() => {
   return {
     layout: 'home',
+    style: {
+      navigationBarTitleText: '发布',
+    },
   }
 })
 </script>

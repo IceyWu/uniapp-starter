@@ -52,7 +52,7 @@ const {
     defaultDataKey: 'list',
     defaultPage: 0,
     getTotal: (data) => {
-      const total = getObjVal(data, 'result.meta.totalElements', 0)
+      const total = getObjVal(data, 'result.total', 0)
       return total
     },
   },
@@ -101,28 +101,30 @@ defineExpose({
     @on-refresh="onRefresh"
   >
     <template #default="{ data: { list } }">
-      <up-waterfall
-        :list="list"
-        :column="2"
-        @item-click="handleItemClick"
-      >
-        <template #default="{ item, onLoad, onError }">
-          <UpImage
-            :src="item.cover"
-            mode="widthFix"
-            height="100%"
-            width="100%"
-            @load="onLoad"
-            @error="onError"
-          />
-          <text class="line-clamp-2 px-2 text-left text-base">
-            {{ item?.title }}
-          </text>
-          <text class="line-clamp-3 px-2 pb-2 text-sm text-gray-500">
-            {{ item?.desc }}
-          </text>
-        </template>
-      </up-waterfall>
+      <view class="px-3 pt-2">
+        <up-waterfall
+          :list="list"
+          :column="2"
+          @item-click="handleItemClick"
+        >
+          <template #default="{ item, onLoad, onError }">
+            <UpImage
+              :src="item.cover"
+              mode="widthFix"
+              height="100%"
+              width="100%"
+              @load="onLoad"
+              @error="onError"
+            />
+            <text class="line-clamp-2 px-2 text-left text-base">
+              {{ item?.title }}
+            </text>
+            <text class="line-clamp-3 px-2 pb-2 text-sm text-gray-500">
+              {{ item?.desc }}
+            </text>
+          </template>
+        </up-waterfall>
+      </view>
     </template>
   </up-list>
 </template>

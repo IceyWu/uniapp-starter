@@ -60,6 +60,7 @@ export default defineManifestConfig({
     appid: APP_ID_WECHAT,
     setting: {
       urlCheck: false,
+      minified: true,
     },
     usingComponents: true,
     darkmode: true,

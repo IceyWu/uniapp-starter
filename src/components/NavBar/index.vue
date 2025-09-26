@@ -1,110 +1,118 @@
 <script setup lang="ts">
-import type { UniNavBarProps } from '@uni-helper/uni-ui-types'
-import { ref } from 'vue'
+import { defineProps, withDefaults } from 'vue'
+
+defineOptions({
+  options: {
+    styleIsolation: 'shared',
+  },
+})
+const props = withDefaults(defineProps<Props>(), {
+  class: '',
+  isNeedLeft: false,
+  baseProps: () => ({
+    border: false,
+  }),
+  isGoBack: false,
+  placeholder: true,
+  safeAreaInsetTop: true,
+})
+
+const emit = defineEmits(['click-left'])
+
+interface BaseProps {
+  title?: string
+  backgroundColor?: string
+  fixed?: boolean
+  border?: boolean
+}
 
 interface Props {
   class?: string
-  baseProps?: UniNavBarProps
+  isNeedLeft?: boolean
+  baseProps?: BaseProps
+  isGoBack?: boolean
+  placeholder?: boolean
+  safeAreaInsetTop?: boolean
+  isCustomLeftClick?: boolean
 }
-const { baseProps } = defineProps<Props>()
 
-// const emit = defineEmits<{
-//   goBack: []
-// }>()
-const { safeAreaInsets } = uni.getSystemInfoSync()
-const safeTopVal = ref(safeAreaInsets?.top)
-const statusBarHeight = ref(44)
-onReady(() => {
-  const menuButtonInfo = uni.getMenuButtonBoundingClientRect()
-  if (safeTopVal.value === 0)
-    safeTopVal.value = menuButtonInfo.top
-  statusBarHeight.value = menuButtonInfo.height
-})
-const backgroundColorBase = computed(() => {
-  return isDark.value ? 'rgb(18,18,18)' : 'rgb(255,255,255)'
-})
 function goBack() {
-  uni.navigateBack()
+  if (props?.isCustomLeftClick) {
+    emit('click-left')
+    return
+  }
+  if (!props?.isNeedLeft) {
+    return
+  }
+  if (props?.isGoBack) {
+    uni.navigateBack()
+  }
 }
+const customStyle = computed(() => {
+  return `background-color: ${
+    props.baseProps?.backgroundColor
+  } `
+})
 </script>
 
 <template>
-  <view
-    class="nav-box"
-    :style="{
-      position: baseProps?.fixed ? 'fixed' : 'relative',
-      backgroundColor: baseProps?.backgroundColor || backgroundColorBase,
-      paddingTop: `${safeTopVal}px`,
-    }"
+  <wd-navbar
+    :title="baseProps?.title"
+    :fixed="baseProps?.fixed"
+    :bordered="baseProps?.border"
+    :placeholder="placeholder"
+    :safe-area-inset-top="safeAreaInsetTop"
+    :class="props.class"
+    :custom-style="customStyle"
+    :left-arrow="isNeedLeft"
+    custom-class="my-wd-navbar"
+    @click-left="goBack"
   >
-    <view
-      class="nav-main"
-      :style="{
-        height: `${statusBarHeight}px`,
-      }"
-    >
-      <view class="nav-left">
-        <slot name="left">
-          <div
-            class="icon-btn"
-            title="返回"
-            @click="goBack"
-          >
-            <div class="i-carbon:chevron-left text-xl" />
-          </div>
-        </slot>
-      </view>
-      <view class="nav-title">
+    <template v-if="isNeedLeft" #left>
+      <slot name="left">
+        <wd-icon name="thin-arrow-left" size="18px" color="#000000" />
+      </slot>
+    </template>
+
+    <template #title>
+      <view
+        class="truncate"
+      >
         <slot>
           {{ baseProps?.title }}
         </slot>
       </view>
+    </template>
 
-      <view class="nav-right">
-        <slot name="right" />
-      </view>
-    </view>
-    <view class="nav-placeholder" />
-  </view>
+    <template #right>
+      <slot name="right" />
+    </template>
+  </wd-navbar>
 </template>
 
 <style lang="scss" scoped>
-.nav-box {
-  z-index: 999;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 20rpx;
-  .nav-placeholder{
-    height: 14rpx;
-    width: 100%;
-  }
+.wd-navbar__title {
+  display: flex;
+}
+.nav-left-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // background: red;
+  // height: 100%;
+  // width: 100%;
+  // width: 60rpx;
+  // height: 60rpx;
+  // padding: 10rpx;
+}
+</style>
 
-  .nav-main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // background: red;
-    .nav-title {
-      font-weight: normal;
-      font-stretch: normal;
-      letter-spacing: normal;
+<style lang="scss">
+:deep(.my-wd-navbar) {
+  .wd-navbar__content {
+    .wd-navbar__title {
       display: flex;
       justify-content: center;
-      align-items: center;
-      font-size: 35rpx;
-      text-align: center;
-      flex: 1;
-    }
-    .nav-left{
-      flex: 1;
-      display: flex;
-      justify-content: flex-start;
-    }
-    .nav-right{
-      flex: 1;
-      display: flex;
-      justify-content: flex-end;
     }
   }
 }

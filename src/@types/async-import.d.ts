@@ -4,14 +4,7 @@
 export {}
 
 interface ModuleMap {
-  '@/main-sub/zs/components/home/News.vue': typeof import('@/main-sub/zs/components/home/News.vue')
-  '@/main-sub/zs/components/home/HomeList.vue': typeof import('@/main-sub/zs/components/home/HomeList.vue')
-  '@/main-sub/zs/components/home/CourseList.vue': typeof import('@/main-sub/zs/components/home/CourseList.vue')
-  '@/main-sub/zs/components/home/HomeCourse.vue': typeof import('@/main-sub/zs/components/home/HomeCourse.vue')
-  '@/main-sub/zs/components/home/CarouselCom.vue': typeof import('@/main-sub/zs/components/home/CarouselCom.vue')
-  '@/main-sub/xts/components/home/MessageRolling.vue': typeof import('@/main-sub/xts/components/home/MessageRolling.vue')
   '@/sub-packages/components/SubCom.vue': typeof import('@/sub-packages/components/SubCom.vue')
-  '@/main-sub/utils/filePreview': typeof import('@/main-sub/utils/filePreview')
   '@/sub-packages/utils/subUtils': typeof import('@/sub-packages/utils/subUtils')
   [path: string]: any
 }

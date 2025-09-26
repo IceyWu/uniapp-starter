@@ -136,7 +136,7 @@ onMounted(() => {
 
 <template>
   <view class="tab-bar" :class="{ 'dark-tab-bar': isDark }">
-    <view class="float-part">
+    <view class="float-part card-base">
       <view
         v-for="(item, index) in list"
         :key="index"
@@ -199,7 +199,6 @@ onMounted(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffff;
     border-radius: 50rpx;
     width: 85%;
     height: 100%;
@@ -269,8 +268,5 @@ onMounted(() => {
       background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
     }
   }
-}
-.dark-tab-bar {
-  background-color: rgba(0, 0, 0, 0.6);
 }
 </style>

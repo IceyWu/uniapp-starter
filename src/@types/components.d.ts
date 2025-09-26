@@ -14,5 +14,8 @@ declare module 'vue' {
     UpList: typeof import('uni-ui-plus/components/list/list.vue')['default']
     UpWaterfall: typeof import('uni-ui-plus/components/waterfall/waterfall.vue')['default']
     WaterfallsList: typeof import('./../components/WaterfallsList.vue')['default']
+    WdConfigProvider: typeof import('wot-design-uni/components/wd-config-provider/wd-config-provider.vue')['default']
+    WdIcon: typeof import('wot-design-uni/components/wd-icon/wd-icon.vue')['default']
+    WdNavbar: typeof import('wot-design-uni/components/wd-navbar/wd-navbar.vue')['default']
   }
 }

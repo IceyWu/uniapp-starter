@@ -34,7 +34,7 @@ export default defineConfig({
     UniPages({
       exclude: ['**/components/**/*.*'],
       subPackages: ['src/pages-sub', 'src/sub-packages'],
-      dts: './src/@types/uni-pages.d.ts',
+      dts: 'src/@types/uni-pages.d.ts',
     }),
 
     /**
@@ -78,7 +78,7 @@ export default defineConfig({
           ],
         },
       ],
-      dts: './src/@types/auto-imports.d.ts',
+      dts: 'src/@types/auto-imports.d.ts',
       dirs: ['./src/composables', './src/api', './src/store', './src/utils/http', './src/hooks'],
       vueTemplate: true,
       // packagePresets: ['@iceywu/utils', 'vue-hooks-pure'],
@@ -94,7 +94,7 @@ export default defineConfig({
         WotResolver(),
         UpResolver(),
       ],
-      dts: './src/@types/components.d.ts',
+      dts: 'src/@types/components.d.ts',
     }),
 
     UniPolyfill(),

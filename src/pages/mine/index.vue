@@ -3,7 +3,10 @@ import SubCom from '@/sub-packages/components/SubCom.vue?async'
 
 definePage(() => {
   return {
-    layout: 'home',
+    layout: 'default',
+    style: {
+      navigationBarTitleText: '个人中心',
+    },
   }
 })
 
@@ -35,8 +38,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <view class="login-container">
-    个人中心
+  <view class="mine-container">
     <template v-if="initLoading">
       子包加载中...
     </template>
@@ -47,5 +49,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
+.mine-container{
+  height: 100%;
+}
 </style>
