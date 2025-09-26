@@ -43,8 +43,6 @@ export default defineConfig({
      */
     UniLayouts(),
 
-    UnoCSS(),
-
     /**
      * unplugin-auto-import 按需 import
      * @see https://github.com/antfu/unplugin-auto-import
@@ -128,6 +126,7 @@ export default defineConfig({
       logger: true,
     }),
     Uni(),
+    UnoCSS(),
   ],
 
   /**
