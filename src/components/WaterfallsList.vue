@@ -4,7 +4,7 @@ interface WaterfallsListProps {
 }
 const props = defineProps<WaterfallsListProps>()
 // 模拟api
-async function getTestApi(params) {
+async function getTestApi(params: any) {
   await sleep(500)
   const { page = 0, size = 10, maxPage = 3 } = params
   const baseSize = page * size
@@ -19,6 +19,8 @@ async function getTestApi(params) {
       cover: coverUrl,
       title: `title ${element}`,
       desc: `desc ${element}`,
+      height: coverHeight,
+      width: coverSize,
     }
   })
   return {
@@ -69,16 +71,23 @@ function handleItemClick(data: any) {
   })
 }
 
-function getCoverObj(data: any) {
-  const files = data?.fileList || []
-  return arrayFirst(files, {})
-}
 function init() {
   if (!props.autoLoad) {
     return
   }
 
   onRefresh()
+}
+function getImgInfo(width: number, height: number) {
+  const screenWidth = uni.getSystemInfoSync().screenWidth
+  const rpxWidth = screenWidth / 750 * 690 // 690rpx为图片显示宽度
+  const imgHeight = (height / width) * rpxWidth
+
+  return {
+    // width: rpxWidth,
+    width: '100%',
+    height: imgHeight / 2,
+  }
 }
 onMounted(() => {
   init()
@@ -94,7 +103,7 @@ defineExpose({
     ref="scrollListRef"
     v-model:list-obj="result"
     :scroll-view-props="{
-      refresherEnabled: false,
+      refresherEnabled: true,
       scrollY: true,
     }"
     @on-load="onLoadMore"
@@ -108,20 +117,34 @@ defineExpose({
           @item-click="handleItemClick"
         >
           <template #default="{ item, onLoad, onError }">
-            <UpImage
-              :src="item.cover"
-              mode="widthFix"
-              height="100%"
-              width="100%"
-              @load="onLoad"
-              @error="onError"
-            />
-            <text class="line-clamp-2 px-2 text-left text-base">
-              {{ item?.title }}
-            </text>
-            <text class="line-clamp-3 px-2 pb-2 text-sm text-gray-500">
-              {{ item?.desc }}
-            </text>
+            <div class="card-base">
+              <UpImage
+                :src="item.cover"
+                mode="widthFix"
+
+                :height="getImgInfo(item.width, item.height).height"
+                :width="getImgInfo(item.width, item.height)?.width"
+                @load="onLoad"
+                @error="onError"
+              >
+                <template #error>
+                  <view class="h-full w-full fcc flex items-center justify-center card-base">
+                    <text class="text-gray-400">
+                      图片加载失败
+                    </text>
+                  </view>
+                </template>
+                <template #loading>
+                  <view class="h-full w-full fcc card-base" />
+                </template>
+              </UpImage>
+              <text class="line-clamp-2 px-2 text-left text-base">
+                {{ item?.title }}
+              </text>
+              <text class="line-clamp-3 px-2 pb-2 text-sm text-gray-500">
+                {{ item?.desc }}
+              </text>
+            </div>
           </template>
         </up-waterfall>
       </view>

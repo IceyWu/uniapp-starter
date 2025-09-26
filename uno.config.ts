@@ -23,9 +23,6 @@ export default defineConfig({
      */
     presetUni({
       remRpx: false,
-      uno: {
-        dark: 'class',
-      },
       attributify: {
         prefixedOnly: true,
       },
@@ -36,30 +33,19 @@ export default defineConfig({
    * @see https://github.com/unocss/unocss#shortcuts
    */
   shortcuts: [
-    ['center', 'flex justify-center items-center'],
-
+    ['fcc', 'flex justify-center items-center'],
     [
       'icon-btn',
       'text-[0.9em] inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600 !outline-non',
     ],
-    // [/^bg-(.*)$/, ([, c], { theme }) => {
-    //   if (Object.keys(theme.colors).includes(c))
-    //     return `bg-${c}`
-    // }],
-    // 配置bg-btn-
-    // [/^bg-btn-(.*)$/, ({ theme }) => {
-    //   return Object.keys(theme.colors.btn).map(c => `bg-btn-${c}`)
-    // }],
     [
       'btn',
       'px-4 py-1 rounded inline-block bg-btn-primary text-white cursor-pointer hover:bg-btn-primaryOne disabled:cursor-default disabled:bg-btn-primaryTwo disabled:opacity-50',
     ],
     ['switch-animation', 'transition duration-300'],
-    ['bg-base', 'bg-[#f0f0f0]  switch-animation'],
-    ['card-base', 'bg-[#ffffff] dark:bg-gray-800 switch-animation'],
+    ['bg-base', 'bg-[#EFF0F4] dark:bg-[#050505]  switch-animation'],
+    ['card-base', 'bg-[#ffffff] dark:bg-[#17181C] switch-animation'],
     ['text-base', 'text-[#000]  dark:text-[#fff]'],
-    ['text-secondary', 'text-secondary  switch-animation'],
-    ['text-active', 'text-primary  switch-animation'],
 
   ],
   theme: {
