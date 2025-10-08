@@ -9,3 +9,7 @@ declare module '@/sub-packages/components/SubCom.vue?async' {
   const component: typeof import('@/sub-packages/components/SubCom.vue')
   export = component
 }
+declare module '~/sub-packages/components/SubCom.vue?async' {
+  const component: typeof import('~/sub-packages/components/SubCom.vue')
+  export = component
+}

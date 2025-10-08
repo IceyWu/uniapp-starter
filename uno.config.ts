@@ -23,9 +23,9 @@ export default defineConfig({
      */
     presetUni({
       remRpx: false,
-      attributify: {
-        prefixedOnly: true,
-      },
+      // attributify: {
+      //   prefixedOnly: true,
+      // },
     }),
   ],
   /**

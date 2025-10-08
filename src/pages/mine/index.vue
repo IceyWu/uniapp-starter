@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import SubCom from '@/sub-packages/components/SubCom.vue?async'
+import SubCom from '~/sub-packages/components/SubCom.vue?async'
 
 definePage(() => {
   return {
