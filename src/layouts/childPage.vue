@@ -6,33 +6,35 @@ const objVal = getObjVal(pageInfo, ['$page', 'meta', 'navigationBar'])
 </script>
 
 <template>
-  <view
-    class="app-box" :class="{
-      dark: isDark,
-    }"
-  >
-    <view class="title">
-      <slot name="navbar">
-        <NavBar
-          is-need-left
-          :base-props="{
-            title: objVal?.titleText,
-          }"
-        />
-      </slot>
+  <wd-config-provider :theme="isDark ? 'dark' : 'light'">
+    <view
+      class="app-box" :class="{
+        dark: isDark,
+      }"
+    >
+      <view class="title">
+        <slot name="navbar">
+          <NavBar
+            is-need-left
+            :base-props="{
+              title: objVal?.titleText,
+            }"
+          />
+        </slot>
+      </view>
+      <view class="page-content">
+        <scroll-view
+          :enhanced="true"
+          :bounces="false"
+          :scroll-y="true"
+          :show-scrollbar="false"
+          class="app-container"
+        >
+          <slot />
+        </scroll-view>
+      </view>
     </view>
-    <view class="page-content">
-      <scroll-view
-        :enhanced="true"
-        :bounces="false"
-        :scroll-y="true"
-        :show-scrollbar="false"
-        class="app-container"
-      >
-        <slot />
-      </scroll-view>
-    </view>
-  </view>
+  </wd-config-provider>
 </template>
 
 <style lang="scss" scoped>

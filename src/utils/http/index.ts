@@ -1,9 +1,11 @@
+import { isEmpty } from '@iceywu/utils'
 import apiServer from '@/config/domain'
 import { formatToken, getToken, removeToken } from '@/utils/http/auth'
+import { encrypt } from '@/utils/http/sign'
 import { hideLoading, showLoading } from '~/utils/tools/serviceLoading'
 
 const CONTENT_TYPE_JSON = 'application/json'
-const CONTENT_TYPE_FORM = 'application/x-www-form-urlencoded'
+// const CONTENT_TYPE_FORM = 'application/x-www-form-urlencoded'
 const CONTENT_TYPE_JSON_UTF8 = 'application/json; charset=utf-8'
 
 interface RequestConfig extends UniApp.RequestOptions {
@@ -11,23 +13,23 @@ interface RequestConfig extends UniApp.RequestOptions {
   isShowLoading?: boolean | string
   tokenRoleName?: string
   serverName?: string
-}
-
-interface ResponseData {
-  code?: number
-  message?: string
-  data?: any
+  isNeedEncrypt?: boolean
+  headers?: Record<string, any>
+  params?: Record<string, any>
 }
 
 class PureHttp {
   static requests: Array<(token: string) => void> = []
   static isRefreshing = false
   static isNeedToken = true
+  static isNeedEncrypt = false
   static tokenRoleName = ''
   static serverName = 'baseServer'
   static isApiError = false
   static errorCodes = [401]
   static isShowLoading: boolean | string = false
+  // 这些方法的参数应当放在 URL params 中
+  static paramTypeList = ['get', 'delete', 'head', 'options']
 
   static httpInterceptorsRequest(
     config: RequestConfig,
@@ -35,6 +37,8 @@ class PureHttp {
     const {
       isNeedToken = PureHttp.isNeedToken,
       isShowLoading = PureHttp.isShowLoading,
+      isNeedEncrypt = PureHttp.isNeedEncrypt,
+      headers = {},
       tokenRoleName = PureHttp.tokenRoleName,
       serverName = PureHttp.serverName,
     } = config
@@ -48,6 +52,29 @@ class PureHttp {
     config.url = (apiServer as unknown as Record<string, string | number>)[serverName || PureHttp.serverName] + config.url
 
     config.header = config.header || {}
+    if (!isEmpty(headers)) {
+      for (const key in headers) {
+        config.header[key] = headers[key]
+      }
+    }
+
+    if (isNeedEncrypt) {
+      const { data, method, params } = config
+      const safeMethod = (method || '').toLowerCase()
+      const { tempData, nonce, timestamp, sign } = encrypt(
+        PureHttp.paramTypeList.includes(safeMethod) ? params : data,
+      )
+      config.header.timestamp = timestamp
+      config.header.nonce = nonce
+      config.header.sign = sign
+
+      if (PureHttp.paramTypeList.includes(safeMethod)) {
+        config.params = tempData
+      }
+      else {
+        config.data = tempData
+      }
+    }
 
     if (PureHttp.isNeedToken) {
       const token = tokenRoleName ? getToken(tokenRoleName) : getToken()
@@ -134,7 +161,7 @@ class PureHttp {
       ...param,
       ...axiosConfig,
       header: {
-        ...(axiosConfig.header || {}),
+        ...axiosConfig.header,
         'content-type': CONTENT_TYPE_JSON,
       },
     }
@@ -144,7 +171,7 @@ class PureHttp {
 
     // 处理 content-type
     config.header['content-type']
-      = method === 'GET' ? CONTENT_TYPE_JSON_UTF8 : CONTENT_TYPE_FORM
+    = method.toUpperCase() === 'GET' ? CONTENT_TYPE_JSON_UTF8 : CONTENT_TYPE_JSON
 
     // 处理拦截器（支持异步）
     const interceptorResult = PureHttp.httpInterceptorsRequest(config)

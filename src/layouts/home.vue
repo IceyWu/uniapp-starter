@@ -1,24 +1,26 @@
 <script lang="ts" setup></script>
 
 <template>
-  <view
-    class="app-box" :class="{
-      dark: isDark,
-    }"
-  >
-    <view class="page-content">
-      <scroll-view
-        :enhanced="true"
-        :bounces="false"
-        :scroll-y="true"
-        :show-scrollbar="false"
-        class="app-container"
-      >
-        <slot />
-      </scroll-view>
+  <wd-config-provider :theme="isDark ? 'dark' : 'light'">
+    <view
+      class="app-box" :class="{
+        dark: isDark,
+      }"
+    >
+      <view class="page-content">
+        <scroll-view
+          :enhanced="true"
+          :bounces="false"
+          :scroll-y="true"
+          :show-scrollbar="false"
+          class="app-container"
+        >
+          <slot />
+        </scroll-view>
+      </view>
+      <TabBar />
     </view>
-    <TabBar />
-  </view>
+  </wd-config-provider>
 </template>
 
 <style lang="scss" scoped>

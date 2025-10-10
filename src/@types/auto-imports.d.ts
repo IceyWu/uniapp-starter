@@ -26,10 +26,12 @@ declare global {
   const customDestr: typeof import('@iceywu/utils')['customDestr']
   const customRef: typeof import('vue')['customRef']
   const deepClone: typeof import('@iceywu/utils')['deepClone']
+  const defaultThemeVars: typeof import('../composables/useTheme')['defaultThemeVars']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const defineStore: typeof import('pinia')['defineStore']
   const effectScope: typeof import('vue')['effectScope']
+  const encrypt: typeof import('../utils/http/sign')['encrypt']
   const fileUpdate: typeof import('../api/ossUpload')['fileUpdate']
   const formatToken: typeof import('../utils/http/auth')['formatToken']
   const getActivePinia: typeof import('pinia')['getActivePinia']
@@ -162,6 +164,7 @@ declare global {
   const useRequest: typeof import('vue-hooks-pure')['useRequest']
   const useSlots: typeof import('vue')['useSlots']
   const useTemplateRef: typeof import('vue')['useTemplateRef']
+  const useTheme: typeof import('../composables/useTheme')['useTheme']
   const useTitle: typeof import('../hooks/useTitle')['useTitle']
   const useUserStore: typeof import('../store/user')['useUserStore']
   const useWxStore: typeof import('../store/wx')['useWxStore']
@@ -204,10 +207,12 @@ declare module 'vue' {
     readonly customDestr: UnwrapRef<typeof import('@iceywu/utils')['customDestr']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly deepClone: UnwrapRef<typeof import('@iceywu/utils')['deepClone']>
+    readonly defaultThemeVars: UnwrapRef<typeof import('../composables/useTheme')['defaultThemeVars']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
+    readonly encrypt: UnwrapRef<typeof import('../utils/http/sign')['encrypt']>
     readonly formatToken: UnwrapRef<typeof import('../utils/http/auth')['formatToken']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
@@ -316,6 +321,7 @@ declare module 'vue' {
     readonly useRequest: UnwrapRef<typeof import('vue-hooks-pure')['useRequest']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useTemplateRef: UnwrapRef<typeof import('vue')['useTemplateRef']>
+    readonly useTheme: UnwrapRef<typeof import('../composables/useTheme')['useTheme']>
     readonly useTitle: UnwrapRef<typeof import('../hooks/useTitle')['useTitle']>
     readonly useUserStore: UnwrapRef<typeof import('../store/user')['useUserStore']>
     readonly user: UnwrapRef<typeof import('../store/user')['default']>
