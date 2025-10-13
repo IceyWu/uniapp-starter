@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { defineProps, withDefaults } from 'vue'
-
 defineOptions({
   options: {
     styleIsolation: 'shared',
