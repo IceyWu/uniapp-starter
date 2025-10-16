@@ -96,6 +96,19 @@ onMounted(() => {
 defineExpose({
   onLoadMore,
 })
+
+// 处理滚动事件，传递给 TabBar
+let scrollTimer: any = null
+function handleScroll(e: any) {
+  console.log('🎁-----e-----', e)
+  if (scrollTimer)
+    return
+
+  scrollTimer = setTimeout(() => {
+    uni.$emit('pageScroll', e.detail.scrollTop)
+    scrollTimer = null
+  }, 16) // 约 60fps
+}
 </script>
 
 <template>
@@ -108,6 +121,7 @@ defineExpose({
     }"
     @on-load="onLoadMore"
     @on-refresh="onRefresh"
+    @on-scroll="handleScroll"
   >
     <template #default="{ data: { list } }">
       <view class="px-3 pt-2">

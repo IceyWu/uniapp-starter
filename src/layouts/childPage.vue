@@ -3,10 +3,11 @@ import { arrayLast, getObjVal } from '@iceywu/utils'
 
 const pageInfo = arrayLast(getCurrentPages())
 const objVal = getObjVal(pageInfo, ['$page', 'meta', 'navigationBar'])
+const { themeVars } = useTheme()
 </script>
 
 <template>
-  <wd-config-provider :theme="isDark ? 'dark' : 'light'">
+  <wd-config-provider :theme="isDark ? 'dark' : 'light'" :theme-vars="themeVars">
     <view
       class="app-box" :class="{
         dark: isDark,

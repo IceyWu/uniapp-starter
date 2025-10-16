@@ -1,5 +1,10 @@
 <script setup lang="ts">
-/* At least one <template> or <script> is required in a single file component. */
+import { onLaunch } from '@dcloudio/uni-app'
+
+onLaunch(() => {
+  // 初始化主题色
+  initThemeColors()
+})
 </script>
 
 <style lang="scss">

@@ -46,6 +46,7 @@ declare global {
   const getUserInfo: typeof import('../api/auth')['getUserInfo']
   const h: typeof import('vue')['h']
   const http: typeof import('../utils/http/index')['default']
+  const initThemeColors: typeof import('../composables/useTheme')['initThemeColors']
   const inject: typeof import('vue')['inject']
   const ipGet: typeof import('../api/ip')['ipGet']
   const isArray: typeof import('@iceywu/utils')['isArray']
@@ -207,7 +208,6 @@ declare module 'vue' {
     readonly customDestr: UnwrapRef<typeof import('@iceywu/utils')['customDestr']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly deepClone: UnwrapRef<typeof import('@iceywu/utils')['deepClone']>
-    readonly defaultThemeVars: UnwrapRef<typeof import('../composables/useTheme')['defaultThemeVars']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
@@ -223,6 +223,7 @@ declare module 'vue' {
     readonly getToken: UnwrapRef<typeof import('../utils/http/auth')['getToken']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly http: UnwrapRef<typeof import('../utils/http/index')['default']>
+    readonly initThemeColors: UnwrapRef<typeof import('../composables/useTheme')['initThemeColors']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isArray: UnwrapRef<typeof import('@iceywu/utils')['isArray']>
     readonly isDark: UnwrapRef<typeof import('../composables/useDark')['isDark']>
