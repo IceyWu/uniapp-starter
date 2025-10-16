@@ -13,6 +13,14 @@
 <a href="./README.md">简体中文</a> | <b>English</b>
 </p>
 
+<br/>
+
+<p align='center'>
+<a href="https://uniapp-starter.netlify.app">📱 Live Preview</a>
+</p>
+
+<br/>
+
 A feature-rich, production-ready UniApp development template with modern toolchain and best practices. Supporting multi-platform deployment with excellent development experience.
 
 ## ✨ Features
