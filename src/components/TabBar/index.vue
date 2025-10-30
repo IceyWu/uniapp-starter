@@ -162,7 +162,7 @@ onUnmounted(() => {
         >
           <text
             class="tab_img"
-            :class="selected === index ? [item.selectedIconPath, 'icon-choosed'] : [item.iconPath]"
+            :class="selected === index ? `${item.selectedIconPath} icon-choosed` : item.iconPath"
           />
           <view
             v-if="item.text && isExpanded"

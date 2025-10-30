@@ -28,6 +28,15 @@ export default defineConfig({
       // },
     }),
   ],
+  safelist: [
+    'i-carbon-home',
+    'i-carbon-user',
+    'i-carbon-sun',
+    'i-carbon-moon',
+    'i-carbon-campsite',
+    'i-carbon-sub-volume',
+    'i-carbon-logo-github',
+  ],
   /**
    * 自定义快捷语句
    * @see https://github.com/unocss/unocss#shortcuts
@@ -36,7 +45,7 @@ export default defineConfig({
     ['fcc', 'flex justify-center items-center'],
     [
       'icon-btn',
-      'text-[0.9em] inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600 !outline-non',
+      'text-[0.9em] inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600 !outline-none',
     ],
     [
       'btn',

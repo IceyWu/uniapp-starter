@@ -28,7 +28,7 @@ const { themeVars } = useTheme()
                 title="Toggle dark mode"
                 @click="toggleDark()"
               >
-                <div class="i-carbon-sun dark:i-carbon-moon" />
+                <div :class="isDark ? 'i-carbon-moon' : 'i-carbon-sun'" />
               </div>
             </template>
           </NavBar>

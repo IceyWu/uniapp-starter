@@ -100,7 +100,6 @@ defineExpose({
 // 处理滚动事件，传递给 TabBar
 let scrollTimer: any = null
 function handleScroll(e: any) {
-  console.log('🎁-----e-----', e)
   if (scrollTimer)
     return
 

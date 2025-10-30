@@ -123,7 +123,7 @@ export default defineConfig({
           path: 'src/@types/async-component.d.ts',
         },
       },
-      logger: true,
+      logger: false,
     }),
     Uni(),
     UnoCSS(),

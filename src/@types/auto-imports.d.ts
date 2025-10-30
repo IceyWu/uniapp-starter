@@ -16,6 +16,7 @@ declare global {
   const app: typeof import('../store/app')['default']
   const arrayFirst: typeof import('@iceywu/utils')['arrayFirst']
   const arrayLast: typeof import('@iceywu/utils')['arrayLast']
+  const clearNonceCache: typeof import('../utils/http/sign')['clearNonceCache']
   const commentFindAll: typeof import('../api/comment')['commentFindAll']
   const commentSend: typeof import('../api/comment')['commentSend']
   const completeMul: typeof import('../api/ossUpload')['completeMul']
@@ -201,6 +202,7 @@ declare module 'vue' {
     readonly apiTest: UnwrapRef<typeof import('../api/apiTest')['default']>
     readonly arrayFirst: UnwrapRef<typeof import('@iceywu/utils')['arrayFirst']>
     readonly arrayLast: UnwrapRef<typeof import('@iceywu/utils')['arrayLast']>
+    readonly clearNonceCache: UnwrapRef<typeof import('../utils/http/sign')['clearNonceCache']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly consolePlus: UnwrapRef<typeof import('@iceywu/utils')['consolePlus']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>

@@ -1,21 +1,28 @@
 import { isEmpty } from '@iceywu/utils'
 import apiServer from '@/config/domain'
+import { useUserStore } from '@/store/user'
 import { formatToken, getToken, removeToken } from '@/utils/http/auth'
-import { encrypt } from '@/utils/http/sign'
+import { clearNonceCache, encrypt } from '@/utils/http/sign'
 import { hideLoading, showLoading } from '~/utils/tools/serviceLoading'
 
 const CONTENT_TYPE_JSON = 'application/json'
 // const CONTENT_TYPE_FORM = 'application/x-www-form-urlencoded'
 const CONTENT_TYPE_JSON_UTF8 = 'application/json; charset=utf-8'
 
-interface RequestConfig extends UniApp.RequestOptions {
+interface RequestConfig {
+  url?: string
+  data?: any
+  method?: string
+  header?: Record<string, any>
   isNeedToken?: boolean
   isShowLoading?: boolean | string
   tokenRoleName?: string
   serverName?: string
   isNeedEncrypt?: boolean
+  allowDuplicateNonce?: boolean // 是否允许nonce复用，默认true（同一接口同一参数使用相同nonce）
   headers?: Record<string, any>
   params?: Record<string, any>
+  [key: string]: any
 }
 
 class PureHttp {
@@ -38,6 +45,7 @@ class PureHttp {
       isNeedToken = PureHttp.isNeedToken,
       isShowLoading = PureHttp.isShowLoading,
       isNeedEncrypt = PureHttp.isNeedEncrypt,
+      allowDuplicateNonce = false,
       headers = {},
       tokenRoleName = PureHttp.tokenRoleName,
       serverName = PureHttp.serverName,
@@ -49,7 +57,7 @@ class PureHttp {
     if (PureHttp.isShowLoading && !PureHttp.isApiError)
       showLoading(Boolean(PureHttp.isShowLoading))
 
-    config.url = (apiServer as unknown as Record<string, string | number>)[serverName || PureHttp.serverName] + config.url
+    config.url = (apiServer as unknown as Record<string, string | number>)[serverName || PureHttp.serverName] + (config.url || '')
 
     config.header = config.header || {}
     if (!isEmpty(headers)) {
@@ -59,14 +67,21 @@ class PureHttp {
     }
 
     if (isNeedEncrypt) {
-      const { data, method, params } = config
+      const { data, method, params, url } = config
       const safeMethod = (method || '').toLowerCase()
-      const { tempData, nonce, timestamp, sign } = encrypt(
+      const { tempData, nonce, timestamp, sign, cacheKey } = encrypt(
         PureHttp.paramTypeList.includes(safeMethod) ? params : data,
+        url || '',
+        allowDuplicateNonce,
       )
+
+      // 确保header存在
+      config.header = config.header || {}
       config.header.timestamp = timestamp
       config.header.nonce = nonce
       config.header.sign = sign
+      // 保存cacheKey用于响应后清理
+      config._cacheKey = cacheKey
 
       if (PureHttp.paramTypeList.includes(safeMethod)) {
         config.params = tempData
@@ -106,12 +121,16 @@ class PureHttp {
 
           return new Promise((resolve) => {
             PureHttp.requests.push((token) => {
+              // 确保header存在
+              config.header = config.header || {}
               config.header.Authorization = formatToken(token, 'Bearer')
               resolve(config)
             })
           })
         }
         else {
+          // 确保header存在
+          config.header = config.header || {}
           config.header.Authorization = formatToken(accessToken, 'Bearer')
         }
       }
@@ -170,6 +189,7 @@ class PureHttp {
     const requestData = param.data ?? param.params ?? {}
 
     // 处理 content-type
+    config.header = config.header || {}
     config.header['content-type']
     = method.toUpperCase() === 'GET' ? CONTENT_TYPE_JSON_UTF8 : CONTENT_TYPE_JSON
 
@@ -182,10 +202,17 @@ class PureHttp {
 
     return interceptorPromise.then((finalConfig) => {
       return new Promise((resolve, reject) => {
-        uni.request({
-          ...finalConfig,
+        const uniRequestConfig: UniApp.RequestOptions = {
+          url: finalConfig.url || '',
+          method: finalConfig.method as any,
           data: requestData,
+          header: finalConfig.header,
           success: (res) => {
+            // 清理nonce缓存
+            if (finalConfig._cacheKey && finalConfig.allowDuplicateNonce !== false) {
+              clearNonceCache(finalConfig._cacheKey)
+            }
+
             const response = PureHttp.httpInterceptorsResponse(res)
             if (response instanceof Promise) {
               response.then(resolve).catch(reject)
@@ -197,8 +224,16 @@ class PureHttp {
               reject(res)
             }
           },
-          fail: reject,
-        })
+          fail: (err) => {
+            // 清理nonce缓存
+            if (finalConfig._cacheKey && finalConfig.allowDuplicateNonce !== false) {
+              clearNonceCache(finalConfig._cacheKey)
+            }
+            reject(err)
+          },
+        }
+
+        uni.request(uniRequestConfig)
       })
     })
   }
