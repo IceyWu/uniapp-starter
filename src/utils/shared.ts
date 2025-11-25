@@ -3,8 +3,7 @@ let lastClickTime = 0
 
 export function isFastClick(num = 1000) {
   const time = new Date().getTime()
-  if (time - lastClickTime > num)
-    return false
+  if (time - lastClickTime > num) return false
   lastClickTime = time
   return true
 }
@@ -16,8 +15,8 @@ export function parseUrl(fullPath: string) {
   const query = {}
   queryStr
     ?.split('&')
-    .map(i => i.split('='))
-    .forEach(i => (query[i[0]] = i[1]))
+    .map((i) => i.split('='))
+    .forEach((i) => (query[i[0]] = i[1]))
   return {
     name,
     path,

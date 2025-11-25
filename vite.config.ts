@@ -73,13 +73,17 @@ export default defineConfig({
           ],
         },
         {
-          'vue-hooks-pure': [
-            'useRequest',
-          ],
+          'vue-hooks-pure': ['useRequest'],
         },
       ],
       dts: 'src/@types/auto-imports.d.ts',
-      dirs: ['./src/composables', './src/api', './src/store', './src/utils/http', './src/hooks'],
+      dirs: [
+        './src/composables',
+        './src/api',
+        './src/store',
+        './src/utils/http',
+        './src/hooks',
+      ],
       vueTemplate: true,
       // packagePresets: ['@iceywu/utils', 'vue-hooks-pure'],
     }),
@@ -90,10 +94,7 @@ export default defineConfig({
      * @see https://github.com/antfu/vite-plugin-components
      */
     Components({
-      resolvers: [
-        WotResolver(),
-        UpResolver(),
-      ],
+      resolvers: [WotResolver(), UpResolver()],
       dts: 'src/@types/components.d.ts',
     }),
 
@@ -101,13 +102,13 @@ export default defineConfig({
 
     Optimization({
       enable: {
-        'optimization': true,
+        optimization: true,
         'async-import': true,
         'async-component': true,
       },
       dts: {
-        'enable': true,
-        'base': 'src/@types',
+        enable: true,
+        base: 'src/@types',
         // 上面是对类型生成的比较全局的一个配置
         // 下面是对每个类型生成的配置，以下各配置均为可选参数
         'async-import': {
@@ -136,5 +137,4 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
   },
-
 })

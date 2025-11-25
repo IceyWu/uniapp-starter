@@ -53,7 +53,5 @@
   "explorer.fileNesting.patterns": {
     "vite.config.*": "pages.config.*, manifest.config.*, uno.config.*, volar.config.*, *.env, .env.*"
   },
-  "i18n-ally.localesPaths": [
-    "src/locale"
-  ]
+  "i18n-ally.localesPaths": ["src/locale"]
 }

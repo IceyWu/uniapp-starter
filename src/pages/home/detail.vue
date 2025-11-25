@@ -1,21 +1,14 @@
 <script lang="ts" setup>
-definePage(() => {
-  return {
+  definePage(() => ({
     layout: 'childPage',
     style: { navigationBarTitleText: '详情' },
-  }
-})
-onLoad((e: any) => {
-
-})
+  }))
+  onLoad((e: any) => {})
 </script>
 
 <template>
-  <view class="min-h-screen from-gray-50 to-white bg-gradient-to-b">
-    详情
-  </view>
+  <view class="min-h-screen from-gray-50 to-white bg-gradient-to-b">详情</view>
 </template>
 
 <style>
-
 </style>

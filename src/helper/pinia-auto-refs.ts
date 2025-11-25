@@ -2,12 +2,11 @@
 /* eslint-disable */
 /* prettier-ignore */
 // @ts-nocheck
-import type { ToRef, UnwrapRef } from 'vue'
+
 import { storeToRefs } from 'pinia'
-
-import userStore from '@/store/user'
-
+import type { ToRef, UnwrapRef } from 'vue'
 import store from '@/store'
+import userStore from '@/store/user'
 
 type StoreToRefs<T extends StoreDefinition> = {
   [K in keyof ReturnType<T>]: ReturnType<T>[K] extends Function
@@ -22,5 +21,7 @@ const storeExports = {
 export function useStore<T extends keyof typeof storeExports>(storeName: T) {
   const targetStore = storeExports[storeName](store)
   const storeRefs = storeToRefs(targetStore)
-  return { ...targetStore, ...storeRefs } as StoreToRefs<(typeof storeExports)[T]>
+  return { ...targetStore, ...storeRefs } as StoreToRefs<
+    (typeof storeExports)[T]
+  >
 }

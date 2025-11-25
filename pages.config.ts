@@ -4,26 +4,23 @@ import { APP_NAME } from './src/config/app'
 export default defineUniPages({
   easycom: {
     autoscan: true,
-    custom: {
-
-    },
+    custom: {},
   },
-  pages: [
-  ],
+  pages: [],
   globalStyle: {
-    'navigationBarTitleText': APP_NAME,
-    'navigationBarBackgroundColor': '@navBgColor',
-    'navigationBarTextStyle': '@navTxtStyle',
-    'backgroundColor': '@bgColor',
-    'backgroundTextStyle': '@bgTxtStyle',
-    'backgroundColorTop': '@bgColorTop',
-    'backgroundColorBottom': '@bgColorBottom',
+    navigationBarTitleText: APP_NAME,
+    navigationBarBackgroundColor: '@navBgColor',
+    navigationBarTextStyle: '@navTxtStyle',
+    backgroundColor: '@bgColor',
+    backgroundTextStyle: '@bgTxtStyle',
+    backgroundColorTop: '@bgColorTop',
+    backgroundColorBottom: '@bgColorBottom',
     'app-plus': {
       titleNView: false, // 移除 H5、APP 顶部导航
       bounce: 'none',
     },
-    'navigationStyle': 'custom',
-    'enablePullDownRefresh': false,
-    'disableScroll': true,
+    navigationStyle: 'custom',
+    enablePullDownRefresh: false,
+    disableScroll: true,
   },
 })

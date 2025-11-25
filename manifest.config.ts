@@ -1,14 +1,20 @@
 import { defineManifestConfig } from '@uni-helper/vite-plugin-uni-manifest'
-import { APP_DESCRIPTION, APP_ID, APP_ID_WECHAT, APP_NAME, APP_VERSION } from './src/config/app'
+import {
+  APP_DESCRIPTION,
+  APP_ID,
+  APP_ID_WECHAT,
+  APP_NAME,
+  APP_VERSION,
+} from './src/config/app'
 
 export default defineManifestConfig({
-  'name': APP_NAME,
-  'appid': APP_ID,
-  'description': APP_DESCRIPTION,
-  'versionName': APP_VERSION,
-  'versionCode': '100',
-  'transformPx': false,
-  'uniStatistics': {
+  name: APP_NAME,
+  appid: APP_ID,
+  description: APP_DESCRIPTION,
+  versionName: APP_VERSION,
+  versionCode: '100',
+  transformPx: false,
+  uniStatistics: {
     enable: false,
   },
   /* 5+App特有相关 */
@@ -54,7 +60,7 @@ export default defineManifestConfig({
     },
   },
   /* 快应用特有相关 */
-  'quickapp': {},
+  quickapp: {},
   /* 小程序特有相关 */
   'mp-weixin': {
     appid: APP_ID_WECHAT,
@@ -79,7 +85,7 @@ export default defineManifestConfig({
   'mp-toutiao': {
     usingComponents: true,
   },
-  'h5': {
+  h5: {
     darkmode: true,
     themeLocation: 'theme.json',
     router: {
@@ -87,5 +93,5 @@ export default defineManifestConfig({
       mode: 'hash',
     },
   },
-  'vueVersion': '3',
+  vueVersion: '3',
 })

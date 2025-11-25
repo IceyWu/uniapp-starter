@@ -1,0 +1,116 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": [
+    "./node_modules/ultracite/config/core/biome.jsonc",
+    "./node_modules/ultracite/config/vue/biome.jsonc"
+  ],
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "includes": [
+      "**",
+      "!!dist/**/*",
+      "!!node_modules/**/*",
+      "!!.nuxt/**/*",
+      "!!.output/**/*",
+      "!!uni_modules/**/*",
+      "!!unpackage/**/*",
+      "!!pnpm-lock.yaml"
+    ]
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "style": {
+        "noNonNullAssertion": "off",
+        "useBlockStatements": "off",
+        "noParameterAssign": "off",
+        "useFilenamingConvention": "off",
+        "noNamespace": "off",
+        "noEnum": "off",
+        "useAtIndex": "off",
+        "useConsistentArrayType": "off",
+        "useShorthandAssign": "off",
+        "useConsistentTypeDefinitions": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noConsole": "off",
+        "noAsyncPromiseExecutor": "off",
+        "useGuardForIn": "off",
+        "noAssignInExpressions": "off",
+        "noEmptyBlockStatements": "off",
+        "noEvolvingTypes": "off",
+        "useAwait": "off",
+        "noBitwiseOperators": "off",
+        "useIterableCallbackReturn": "off"
+      },
+      "complexity": {
+        "noForEach": "off",
+        "useDateNow": "off",
+        "noBannedTypes": "off",
+        "noExcessiveCognitiveComplexity": "off"
+      },
+      "correctness": {
+        "noUnusedVariables": "off",
+        "noUnusedImports": "off",
+        "noUndeclaredVariables": "off",
+        "noUnusedFunctionParameters": "off",
+        "noUnknownTypeSelector": "off",
+        "useParseIntRadix": "off"
+      },
+      "performance": {
+        "noDelete": "off",
+        "noNamespaceImport": "off"
+      },
+      "nursery": {
+        "noShadow": "off",
+        "noEmptySource": "off",
+        "noIncrementDecrement": "off",
+        "noUnusedExpressions": "off",
+        "useVueHyphenatedAttributes": "off",
+        "useVueMultiWordComponentNames": "off"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "asNeeded"
+    },
+    "globals": ["uni", "UniApp", "getCurrentPages", "getApp"]
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.vue"],
+      "formatter": {
+        "enabled": false
+      },
+      "linter": {
+        "rules": {
+          "nursery": {
+            "useVueHyphenatedAttributes": "off",
+            "useVueMultiWordComponentNames": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/pages.json", "**/manifest.json"],
+      "json": {
+        "parser": {
+          "allowComments": true
+        }
+      }
+    }
+  ]
+}

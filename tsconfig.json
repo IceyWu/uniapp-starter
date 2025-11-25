@@ -36,8 +36,6 @@
     "async-component.d.ts"
   ],
   "exclude": ["dist", "node_modules"],
-
-  // uni-app Component type prompt
   "vueCompilerOptions": {
     "plugins": ["@uni-helper/uni-app-types/volar-plugin"]
   }

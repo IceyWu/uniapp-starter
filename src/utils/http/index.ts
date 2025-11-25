@@ -39,7 +39,7 @@ class PureHttp {
   static paramTypeList = ['get', 'delete', 'head', 'options']
 
   static httpInterceptorsRequest(
-    config: RequestConfig,
+    config: RequestConfig
   ): RequestConfig | Promise<RequestConfig> {
     const {
       isNeedToken = PureHttp.isNeedToken,
@@ -57,7 +57,10 @@ class PureHttp {
     if (PureHttp.isShowLoading && !PureHttp.isApiError)
       showLoading(Boolean(PureHttp.isShowLoading))
 
-    config.url = (apiServer as unknown as Record<string, string | number>)[serverName || PureHttp.serverName] + (config.url || '')
+    config.url =
+      (apiServer as unknown as Record<string, string | number>)[
+        serverName || PureHttp.serverName
+      ] + (config.url || '')
 
     config.header = config.header || {}
     if (!isEmpty(headers)) {
@@ -72,7 +75,7 @@ class PureHttp {
       const { tempData, nonce, timestamp, sign, cacheKey } = encrypt(
         PureHttp.paramTypeList.includes(safeMethod) ? params : data,
         url || '',
-        allowDuplicateNonce,
+        allowDuplicateNonce
       )
 
       // 确保header存在
@@ -85,8 +88,7 @@ class PureHttp {
 
       if (PureHttp.paramTypeList.includes(safeMethod)) {
         config.params = tempData
-      }
-      else {
+      } else {
         config.data = tempData
       }
     }
@@ -103,8 +105,7 @@ class PureHttp {
             title: '登录过期，请重新登录',
             icon: 'none',
           })
-          if (!PureHttp.isRefreshing)
-            PureHttp.isRefreshing = true
+          if (!PureHttp.isRefreshing) PureHttp.isRefreshing = true
           // token过期刷新
           // useUserStore()
           //   .handRefreshToken({ refreshToken: refresh_token })
@@ -128,19 +129,17 @@ class PureHttp {
             })
           })
         }
-        else {
-          // 确保header存在
-          config.header = config.header || {}
-          config.header.Authorization = formatToken(accessToken, 'Bearer')
-        }
+
+        // 确保header存在
+        config.header = config.header || {}
+        config.header.Authorization = formatToken(accessToken, 'Bearer')
       }
     }
     return config
   }
 
   static httpInterceptorsResponse(response: any): any {
-    if (PureHttp.isShowLoading && !PureHttp.isApiError)
-      hideLoading()
+    if (PureHttp.isShowLoading && !PureHttp.isApiError) hideLoading()
 
     const { code } = response?.data || {}
     if (PureHttp.errorCodes.includes(code)) {
@@ -172,7 +171,7 @@ class PureHttp {
     method: string,
     url: string,
     param: Record<string, any> = {},
-    axiosConfig: Record<string, any> = {},
+    axiosConfig: Record<string, any> = {}
   ): Promise<T> {
     const config: RequestConfig = {
       method: method as any,
@@ -190,13 +189,15 @@ class PureHttp {
 
     // 处理 content-type
     config.header = config.header || {}
-    config.header['content-type']
-    = method.toUpperCase() === 'GET' ? CONTENT_TYPE_JSON_UTF8 : CONTENT_TYPE_JSON
+    config.header['content-type'] =
+      method.toUpperCase() === 'GET'
+        ? CONTENT_TYPE_JSON_UTF8
+        : CONTENT_TYPE_JSON
 
     // 处理拦截器（支持异步）
     const interceptorResult = PureHttp.httpInterceptorsRequest(config)
-    const interceptorPromise
-      = interceptorResult instanceof Promise
+    const interceptorPromise =
+      interceptorResult instanceof Promise
         ? interceptorResult
         : Promise.resolve(interceptorResult)
 
@@ -209,24 +210,28 @@ class PureHttp {
           header: finalConfig.header,
           success: (res) => {
             // 清理nonce缓存
-            if (finalConfig._cacheKey && finalConfig.allowDuplicateNonce !== false) {
+            if (
+              finalConfig._cacheKey &&
+              finalConfig.allowDuplicateNonce !== false
+            ) {
               clearNonceCache(finalConfig._cacheKey)
             }
 
             const response = PureHttp.httpInterceptorsResponse(res)
             if (response instanceof Promise) {
               response.then(resolve).catch(reject)
-            }
-            else if (response) {
+            } else if (response) {
               resolve(response)
-            }
-            else {
+            } else {
               reject(res)
             }
           },
           fail: (err) => {
             // 清理nonce缓存
-            if (finalConfig._cacheKey && finalConfig.allowDuplicateNonce !== false) {
+            if (
+              finalConfig._cacheKey &&
+              finalConfig.allowDuplicateNonce !== false
+            ) {
               clearNonceCache(finalConfig._cacheKey)
             }
             reject(err)
@@ -242,7 +247,7 @@ class PureHttp {
   get<T = any>(
     url: string,
     params?: Record<string, any>,
-    config?: Partial<RequestConfig>,
+    config?: Partial<RequestConfig>
   ): Promise<T> {
     return this.request('GET', url, params, config)
   }
@@ -251,7 +256,7 @@ class PureHttp {
   post<T = any>(
     url: string,
     data?: Record<string, any>,
-    config?: Partial<RequestConfig>,
+    config?: Partial<RequestConfig>
   ): Promise<T> {
     return this.request('POST', url, data, config)
   }
@@ -260,7 +265,7 @@ class PureHttp {
   put<T = any>(
     url: string,
     data?: Record<string, any>,
-    config?: Partial<RequestConfig>,
+    config?: Partial<RequestConfig>
   ): Promise<T> {
     return this.request('PUT', url, data, config)
   }
@@ -269,7 +274,7 @@ class PureHttp {
   delete<T = any>(
     url: string,
     params?: Record<string, any>,
-    config?: Partial<RequestConfig>,
+    config?: Partial<RequestConfig>
   ): Promise<T> {
     return this.request('DELETE', url, params, config)
   }

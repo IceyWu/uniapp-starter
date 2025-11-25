@@ -24,7 +24,7 @@ const apiTest = {
 // }
 
 export function getDataList(
-  params: PaginationParams,
+  params: PaginationParams
 ): Promise<ApiResponse<PaginationResponse<any>>> {
   return http.get('/postclass', params)
 }

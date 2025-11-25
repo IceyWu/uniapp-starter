@@ -4,7 +4,8 @@ import qs from 'qs'
 import { secretKey } from '@/config/sign'
 
 // js-md5 的导出在不同环境下可能是 default 或直接函数，为了避免 "类型没有调用签名" 的 TS 错误，做一层兼容适配
-const md5: (msg: string) => string = (md5Module as any).default ?? (md5Module as any)
+const md5: (msg: string) => string =
+  (md5Module as any).default ?? (md5Module as any)
 
 // nonce缓存管理
 interface NonceCache {
@@ -47,7 +48,10 @@ function generateCacheKey(url: string, data: Record<string, any>): string {
  * @param allowDuplicateNonce - 是否允许nonce复用
  * @returns nonce值
  */
-function getOrCreateNonce(cacheKey: string, allowDuplicateNonce: boolean): string {
+function getOrCreateNonce(
+  cacheKey: string,
+  allowDuplicateNonce: boolean
+): string {
   if (!allowDuplicateNonce) {
     return wxuuid()
   }

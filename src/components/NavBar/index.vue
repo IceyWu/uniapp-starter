@@ -46,11 +46,9 @@ function goBack() {
     uni.navigateBack()
   }
 }
-const customStyle = computed(() => {
-  return `background-color: ${
+const customStyle = computed(() => `background-color: ${
     props.baseProps?.backgroundColor
-  } `
-})
+  } `)
 </script>
 
 <template>

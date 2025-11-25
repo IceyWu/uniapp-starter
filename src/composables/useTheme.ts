@@ -15,8 +15,7 @@ function getStoredThemeColors(): ThemeColors | null {
   try {
     const stored = uni.getStorageSync(THEME_STORAGE_KEY)
     return stored ? JSON.parse(stored) : null
-  }
-  catch (error) {
+  } catch (error) {
     console.error('读取主题色失败:', error)
     return null
   }
@@ -26,14 +25,15 @@ function getStoredThemeColors(): ThemeColors | null {
 function saveThemeColors(colors: ThemeColors) {
   try {
     uni.setStorageSync(THEME_STORAGE_KEY, JSON.stringify(colors))
-  }
-  catch (error) {
+  } catch (error) {
     console.error('保存主题色失败:', error)
   }
 }
 
 // 主题色 - 优先使用本地存储的值
-const themeColors = ref<ThemeColors>(getStoredThemeColors() || defaultThemeColors)
+const themeColors = ref<ThemeColors>(
+  getStoredThemeColors() || defaultThemeColors
+)
 
 // 主题变量
 const themeVars = computed<ConfigProviderThemeVars>(() => ({
@@ -62,8 +62,7 @@ const themeVarsExtended = computed(() => {
       r = Number.parseInt(cleanHex[0] + cleanHex[0], 16)
       g = Number.parseInt(cleanHex[1] + cleanHex[1], 16)
       b = Number.parseInt(cleanHex[2] + cleanHex[2], 16)
-    }
-    else {
+    } else {
       r = Number.parseInt(cleanHex.substring(0, 2), 16)
       g = Number.parseInt(cleanHex.substring(2, 4), 16)
       b = Number.parseInt(cleanHex.substring(4, 6), 16)

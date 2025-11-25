@@ -54,7 +54,7 @@ export function setToken(data: DataInfo<number>, roleName?: string) {
 
   expires > 0
     ? Cookies.set(TokenKey, cookieString, {
-        expires: (expires - Date.now()) / 86400000,
+        expires: (expires - Date.now()) / 86_400_000,
       })
     : Cookies.set(TokenKey, cookieString)
 
@@ -71,10 +71,11 @@ export function setToken(data: DataInfo<number>, roleName?: string) {
   if (data.username && data.roles) {
     const { username, roles } = data
     setUserKey(username, roles)
-  }
-  else {
-    const username = storageSession().getItem<DataInfo<number>>(userKey)?.username ?? ''
-    const roles = storageSession().getItem<DataInfo<number>>(userKey)?.roles ?? []
+  } else {
+    const username =
+      storageSession().getItem<DataInfo<number>>(userKey)?.username ?? ''
+    const roles =
+      storageSession().getItem<DataInfo<number>>(userKey)?.roles ?? []
     setUserKey(username, roles)
   }
 }

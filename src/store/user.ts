@@ -1,7 +1,6 @@
 import type { DataInfo } from '~/utils/http/auth'
 import {
   AccessTokenKey,
-
   ExpiresKey,
   RefreshTokenKey,
   removeToken,
@@ -17,17 +16,13 @@ export const useUserStore = defineStore(
       return !!id
       // return (token && id);
     })
-    const token = computed(() => {
-      return userInfo.value.token
-    })
-    const userId = computed(() => {
-      return userInfo.value.id
-    })
+    const token = computed(() => userInfo.value.token)
+    const userId = computed(() => userInfo.value.id)
     const setUserInfo = (data: User.UserInfo) => {
       userInfo.value = data
     }
-    const loginFunc = (dataT: any) => {
-      return new Promise<any>((resolve, reject) => {
+    const loginFunc = (dataT: any) =>
+      new Promise<any>((resolve, reject) => {
         login(dataT)
           .then((res: any) => {
             const { code, result } = res
@@ -45,8 +40,7 @@ export const useUserStore = defineStore(
 
               setToken(TokenInfo)
               resolve(res)
-            }
-            else {
+            } else {
               reject(res)
             }
           })
@@ -54,9 +48,8 @@ export const useUserStore = defineStore(
             reject(error)
           })
       })
-    }
-    const loginFuncByEmail = (dataT: any) => {
-      return new Promise<any>((resolve, reject) => {
+    const loginFuncByEmail = (dataT: any) =>
+      new Promise<any>((resolve, reject) => {
         loginByEmail(dataT)
           .then((res: any) => {
             const { code, result } = res
@@ -74,8 +67,7 @@ export const useUserStore = defineStore(
 
               setToken(TokenInfo)
               resolve(res)
-            }
-            else {
+            } else {
               reject(res)
             }
           })
@@ -83,7 +75,6 @@ export const useUserStore = defineStore(
             reject(error)
           })
       })
-    }
     const logOut = () => {
       userInfo.value = {} as User.UserInfo
       removeToken()
@@ -108,7 +99,7 @@ export const useUserStore = defineStore(
         setItem: uni.setStorageSync,
       },
     },
-  },
+  }
 )
 
 export default useUserStore

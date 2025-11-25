@@ -28,7 +28,7 @@ type EnvConfig<T extends ApiEnv> = {
 } & (typeof envMap)[T]
 
 function createEnv<T extends ApiEnv>(env: T): EnvConfig<T> {
-  return Object.assign({ env }, envMap[env])
+  return { env, ...envMap[env] }
 }
 
 // 读取环境变量，默认 'dev'

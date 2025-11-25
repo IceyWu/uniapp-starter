@@ -1,20 +1,15 @@
 <script lang="ts" setup>
-definePage(() => {
-  return {
+  definePage(() => ({
     layout: 'home',
     style: {
       navigationBarTitleText: '发布',
     },
-  }
-})
+  }))
 </script>
 
 <template>
-  <view class="post-container">
-    发布
-  </view>
+  <view class="post-container">发布</view>
 </template>
 
 <style>
-
 </style>

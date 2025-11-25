@@ -72,7 +72,7 @@ export function getDataUrlFromArr(arr, w, h, options = {}) {
               reject(err)
             },
           },
-          true,
+          true
         )
       })
   })
@@ -80,7 +80,12 @@ export function getDataUrlFromArr(arr, w, h, options = {}) {
 
 // ... existing code ...
 
-export function generateBlurhashFromFile(file: any, maxWidth = 200, quality = 0.7, options = {}) {
+export function generateBlurhashFromFile(
+  file: any,
+  maxWidth = 200,
+  quality = 0.7,
+  options = {}
+) {
   return new Promise((resolve, reject) => {
     const { instance } = options
     console.log('🌈-----instance-----', instance)
@@ -150,29 +155,37 @@ export function generateBlurhashFromFile(file: any, maxWidth = 200, quality = 0.
               console.log('🦄onload------------------------------>')
               ctx.drawImage(img, 0, 0, width, height)
               // 获取 canvas 图片数据
-              uni.canvasGetImageData({
-                canvas,
-                canvasId: 'blurhashCanvas',
-                x: 0,
-                y: 0,
-                width,
-                height,
-                success: (imageDataRes) => {
-                  console.log('🌈-----imageDataRes-----', imageDataRes)
-                  try {
-                    // 生成模糊哈希值
-                    const blurhash = encode(imageDataRes.data, width, height, 4, 3)
-                    resolve(blurhash)
-                  }
-                  catch (error) {
-                    reject(error)
-                  }
+              uni.canvasGetImageData(
+                {
+                  canvas,
+                  canvasId: 'blurhashCanvas',
+                  x: 0,
+                  y: 0,
+                  width,
+                  height,
+                  success: (imageDataRes) => {
+                    console.log('🌈-----imageDataRes-----', imageDataRes)
+                    try {
+                      // 生成模糊哈希值
+                      const blurhash = encode(
+                        imageDataRes.data,
+                        width,
+                        height,
+                        4,
+                        3
+                      )
+                      resolve(blurhash)
+                    } catch (error) {
+                      reject(error)
+                    }
+                  },
+                  fail: (err) => {
+                    console.log('🍭-----err-----', err)
+                    reject(err)
+                  },
                 },
-                fail: (err) => {
-                  console.log('🍭-----err-----', err)
-                  reject(err)
-                },
-              }, instance)
+                instance
+              )
             }
             img.onerror = () => {
               reject(new Error('图片加载失败'))
@@ -193,7 +206,10 @@ export function generateBlurhashFromFile(file: any, maxWidth = 200, quality = 0.
 // 格式化 wxuuid 函数
 export function wxuuid() {
   const hexDigits = '0123456789abcdef'
-  const s = Array.from({ length: 36 }, () => hexDigits[Math.floor(Math.random() * 16)])
+  const s = Array.from(
+    { length: 36 },
+    () => hexDigits[Math.floor(Math.random() * 16)]
+  )
   s[14] = '4'
   s[19] = hexDigits[(Number.parseInt(s[19], 16) & 0x3) | 0x8]
   s[8] = s[13] = s[18] = s[23] = '-'
@@ -219,18 +235,15 @@ export const uniAsync = new Proxy({} as any, {
 })
 
 export function getStyleVal(target: number | string) {
-  if (isString(target))
-    return target
+  if (isString(target)) return target
 
   return `${target}rpx`
 }
 
 // 时间格式化
 export function formatTime(time: any, format = 'YYYY-MM-DD HH:mm:ss') {
-  if (!time)
-    return ''
-  if (time?.toString()?.length < 13)
-    time = time * 1000
+  if (!time) return ''
+  if (time?.toString()?.length < 13) time = time * 1000
 
   return dayjs(time).format(format)
 }

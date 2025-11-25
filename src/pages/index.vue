@@ -1,9 +1,7 @@
 <script setup lang="ts">
-definePage(() => {
-  return {
+definePage(() => ({
     layout: 'home',
-  }
-})
+  }))
 
 const scrollH = ref(500)
 

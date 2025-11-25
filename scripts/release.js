@@ -20,11 +20,12 @@ const colors = {
 
 // 日志函数
 const log = {
-  info: msg => console.log(`${colors.blue}ℹ${colors.reset} ${msg}`),
-  success: msg => console.log(`${colors.green}✓${colors.reset} ${msg}`),
-  warn: msg => console.log(`${colors.yellow}⚠${colors.reset} ${msg}`),
-  error: msg => console.log(`${colors.red}✗${colors.reset} ${msg}`),
-  title: msg => console.log(`${colors.bright}${colors.cyan}${msg}${colors.reset}`),
+  info: (msg) => console.log(`${colors.blue}ℹ${colors.reset} ${msg}`),
+  success: (msg) => console.log(`${colors.green}✓${colors.reset} ${msg}`),
+  warn: (msg) => console.log(`${colors.yellow}⚠${colors.reset} ${msg}`),
+  error: (msg) => console.log(`${colors.red}✗${colors.reset} ${msg}`),
+  title: (msg) =>
+    console.log(`${colors.bright}${colors.cyan}${msg}${colors.reset}`),
 }
 
 // 执行命令函数
@@ -36,8 +37,7 @@ function exec(command, options = {}) {
       ...options,
     })
     return result?.trim()
-  }
-  catch (error) {
+  } catch (error) {
     log.error(`执行命令失败: ${command}`)
     log.error(error.message)
     process.exit(1)
@@ -49,8 +49,7 @@ function checkGitRepo() {
   try {
     exec('git rev-parse --git-dir', { silent: true })
     return true
-  }
-  catch {
+  } catch {
     return false
   }
 }
@@ -75,7 +74,15 @@ function getCurrentVersion() {
 
 // 更新版本号
 function updateVersion(releaseType) {
-  const validTypes = ['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease']
+  const validTypes = [
+    'major',
+    'minor',
+    'patch',
+    'premajor',
+    'preminor',
+    'prepatch',
+    'prerelease',
+  ]
 
   if (!validTypes.includes(releaseType)) {
     log.error(`无效的版本类型: ${releaseType}`)
@@ -86,13 +93,18 @@ function updateVersion(releaseType) {
   log.info(`更新版本类型: ${releaseType}`)
 
   // 使用 npm version 更新版本
-  const versionOutput = exec(`npm version ${releaseType} --no-git-tag-version`, { silent: true })
+  const versionOutput = exec(
+    `npm version ${releaseType} --no-git-tag-version`,
+    { silent: true }
+  )
   const newVersion = versionOutput.replace('v', '').trim()
 
   // 验证版本更新是否成功
   const updatedVersion = getCurrentVersion()
   if (updatedVersion !== newVersion) {
-    log.warn(`版本更新验证：npm version 返回 ${newVersion}，package.json 中为 ${updatedVersion}`)
+    log.warn(
+      `版本更新验证：npm version 返回 ${newVersion}，package.json 中为 ${updatedVersion}`
+    )
     return updatedVersion
   }
 
@@ -107,8 +119,7 @@ function generateChangelog(version) {
     // 使用 --output 确保输出到 CHANGELOG.md，不使用 --release 避免自动版本管理
     exec('npx changelogen --output CHANGELOG.md')
     log.success('Changelog 生成完成')
-  }
-  catch (error) {
+  } catch (error) {
     log.warn('Changelog 生成失败，继续执行...')
   }
 }
@@ -211,7 +222,7 @@ async function main() {
   if (confirm.toLowerCase() !== 'y' && confirm.toLowerCase() !== 'yes') {
     log.warn('发布已取消')
     // 回滚版本更改
-    exec(`git checkout -- package.json`)
+    exec('git checkout -- package.json')
     process.exit(0)
   }
 

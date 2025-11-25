@@ -14,10 +14,10 @@ const uni = {
   getStorageSync: vi.fn(() => ''),
   setStorageSync: vi.fn(),
   removeStorageSync: vi.fn(),
-};
+}
 
 // 设置全局 uni 对象
-(globalThis as any).uni = uni
+;(globalThis as any).uni = uni
 
 // Mock console methods
 if (typeof globalThis !== 'undefined') {

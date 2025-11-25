@@ -32,7 +32,5 @@ declare namespace PostTest {
 }
 
 declare namespace GetParams {
-  interface params {
-
-  }
+  type params = {}
 }

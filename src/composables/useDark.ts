@@ -13,10 +13,8 @@ function useDark() {
   const savedDarkMode = uni.getStorageSync('darkMode')
   const systemInfo = uni.getSystemInfoSync()
 
-  if (savedDarkMode !== null)
-    darkMode.value = savedDarkMode
-  else
-    darkMode.value = systemInfo?.theme === 'dark'
+  if (savedDarkMode !== null) darkMode.value = savedDarkMode
+  else darkMode.value = systemInfo?.theme === 'dark'
 
   // #ifdef H5 || MP-WEIXIN
   uni.onThemeChange((res) => {

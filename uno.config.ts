@@ -13,7 +13,7 @@ export default defineConfig({
       scale: 1.2,
       warn: true,
       extraProperties: {
-        'display': 'inline-block',
+        display: 'inline-block',
         'vertical-align': 'middle',
       },
     }),
@@ -55,7 +55,6 @@ export default defineConfig({
     ['bg-base', 'bg-[#EFF0F4] dark:bg-[#050505]  switch-animation'],
     ['card-base', 'bg-[#ffffff] dark:bg-[#17181C] switch-animation'],
     ['text-base', 'text-[#000]  dark:text-[#fff]'],
-
   ],
   theme: {
     colors: {

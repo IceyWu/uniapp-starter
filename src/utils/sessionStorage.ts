@@ -7,19 +7,17 @@ interface ProxyStorage {
   clear: () => void
 }
 
-export const storageSession: () => ProxyStorage = () => {
-  return {
-    setItem<T>(k: string, v: T): void {
-      uni.setStorageSync(k, v)
-    },
-    getItem<T>(k: string): T {
-      return uni.getStorageSync(k)
-    },
-    removeItem(k: string): void {
-      uni.removeStorageSync(k)
-    },
-    clear(): void {
-      uni.clearStorageSync()
-    },
-  }
-}
+export const storageSession: () => ProxyStorage = () => ({
+  setItem<T>(k: string, v: T): void {
+    uni.setStorageSync(k, v)
+  },
+  getItem<T>(k: string): T {
+    return uni.getStorageSync(k)
+  },
+  removeItem(k: string): void {
+    uni.removeStorageSync(k)
+  },
+  clear(): void {
+    uni.clearStorageSync()
+  },
+})

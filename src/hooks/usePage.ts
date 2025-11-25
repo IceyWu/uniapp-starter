@@ -1,12 +1,8 @@
 import { parseUrl } from '@/utils/shared'
 
 export function usePage() {
-  onShow(() => {
-
-  })
-  onHide(() => {
-
-  })
+  onShow(() => {})
+  onHide(() => {})
   const pages = getCurrentPages()
   const page = pages[pages.length - 1]
   // @ts-expect-error

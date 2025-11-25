@@ -1,14 +1,12 @@
 <script lang="ts" setup>
 import SubCom from '~/sub-packages/components/SubCom.vue?async'
 
-definePage(() => {
-  return {
+definePage(() => ({
     layout: 'default',
     style: {
       navigationBarTitleText: '个人中心',
     },
-  }
-})
+  }))
 
 const initLoading = ref(true)
 const subUtils = ref<any>(null)
