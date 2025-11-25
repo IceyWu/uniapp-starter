@@ -47,7 +47,6 @@
     "test": "vitest --run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
-    "postinstall": "npx simple-git-hooks",
     "clean": "rimraf dist node_modules/.vite",
     "release": "node scripts/release.js",
     "release:patch": "node scripts/release.js patch",
@@ -55,7 +54,8 @@
     "release:major": "node scripts/release.js major",
     "release:pre": "node scripts/release.js prerelease",
     "changelog": "npx changelogen",
-    "syn_rpo": "npx template-syncer --repo https://github.com/IceyWu/uniapp-starter.git --branch main"
+    "syn_rpo": "npx template-syncer --repo https://github.com/IceyWu/uniapp-starter.git --branch main",
+    "prepare": "lefthook install"
   },
   "dependencies": {
     "@dcloudio/uni-app": "3.0.0-4080520251106001",
@@ -93,9 +93,6 @@
     "spark-md5": "^3.0.2",
     "uni-ui-plus": "0.0.69",
     "uni-use-router": "^0.0.7",
-    "unocss-applet": "0.11.0",
-    "vite-plugin-uni-components": "^0.0.2",
-    "vite-plugin-uni-polyfill": "^0.1.0",
     "vue": "^3.4.21",
     "vue-hooks-pure": "^0.0.33",
     "vue-i18n": "^9.14.5",
@@ -103,6 +100,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.7",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@dcloudio/types": "^3.4.8",
     "@dcloudio/uni-automator": "3.0.0-4080520251106001",
     "@dcloudio/uni-cli-shared": "3.0.0-4080520251106001",
@@ -127,25 +126,19 @@
     "auto-import-types": "0.0.6",
     "changelogen": "^0.6.2",
     "jsdom": "^27.2.0",
-    "lint-staged": "latest",
+    "lefthook": "^2.0.4",
     "rimraf": "^6.1.2",
-    "sass": "^1.77.8",
-    "simple-git-hooks": "^2.13.1",
+    "sass": "1.77.8",
     "typescript": "^5.9.3",
     "ultracite": "6.3.6",
     "unocss": "^0.64.0",
+    "unocss-applet": "^0.12.2",
     "unplugin-auto-import": "^20.2.0",
     "unplugin-vue-components": "^30.0.0",
     "vite": "^5.2.8",
+    "vite-plugin-uni-components": "^0.0.2",
+    "vite-plugin-uni-polyfill": "^0.1.0",
     "vitest": "^4.0.13",
     "vue-tsc": "^3.1.5"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,jsonc,vue,css,scss,md,mdx}": [
-      "ultracite fix"
-    ]
   }
 }
