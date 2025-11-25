@@ -129,7 +129,7 @@
     "jsdom": "^27.2.0",
     "lint-staged": "latest",
     "rimraf": "^6.1.2",
-    "sass": "^1.78.0",
+    "sass": "^1.77.8",
     "simple-git-hooks": "^2.13.1",
     "typescript": "^5.9.3",
     "ultracite": "6.3.6",
