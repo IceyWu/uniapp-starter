@@ -16,7 +16,8 @@
       "@uni-helper/uni-types",
       "uni-ui-plus/global.d.ts",
       "wot-design-uni/global",
-      "@uni-helper/vite-plugin-uni-pages"
+      "@uni-helper/vite-plugin-uni-pages",
+      "@uni-ku/bundle-optimizer/client"
     ],
     "allowJs": true,
     "strict": true,
@@ -27,14 +28,7 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "async-import.d.ts",
-    "async-component.d.ts"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["dist", "node_modules"],
   "vueCompilerOptions": {
     "plugins": ["@uni-helper/uni-app-types/volar-plugin"]

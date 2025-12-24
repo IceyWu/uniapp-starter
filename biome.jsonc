@@ -12,7 +12,6 @@
   "files": {
     "ignoreUnknown": true,
     "includes": [
-      "**",
       "!!dist/**/*",
       "!!node_modules/**/*",
       "!!.nuxt/**/*",

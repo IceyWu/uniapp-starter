@@ -6,176 +6,176 @@
 // biome-ignore lint: disable
 export {}
 declare global {
-  const AccessTokenKey: typeof import('../utils/http/auth')['AccessTokenKey']
-  const EffectScope: typeof import('vue')['EffectScope']
-  const ExpiresKey: typeof import('../utils/http/auth')['ExpiresKey']
-  const RefreshTokenKey: typeof import('../utils/http/auth')['RefreshTokenKey']
-  const TokenKeyBase: typeof import('../utils/http/auth')['TokenKeyBase']
-  const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
-  const apiTest: typeof import('../api/apiTest')['default']
+  const AccessTokenKey: typeof import('../utils/http/auth').AccessTokenKey
+  const EffectScope: typeof import('vue').EffectScope
+  const ExpiresKey: typeof import('../utils/http/auth').ExpiresKey
+  const RefreshTokenKey: typeof import('../utils/http/auth').RefreshTokenKey
+  const TokenKeyBase: typeof import('../utils/http/auth').TokenKeyBase
+  const acceptHMRUpdate: typeof import('pinia').acceptHMRUpdate
+  const apiTest: typeof import('../api/apiTest').default
   const app: typeof import('../store/app')['default']
-  const arrayFirst: typeof import('@iceywu/utils')['arrayFirst']
-  const arrayLast: typeof import('@iceywu/utils')['arrayLast']
-  const clearNonceCache: typeof import('../utils/http/sign')['clearNonceCache']
+  const arrayFirst: typeof import('@iceywu/utils').arrayFirst
+  const arrayLast: typeof import('@iceywu/utils').arrayLast
+  const clearNonceCache: typeof import('../utils/http/sign').clearNonceCache
   const commentFindAll: typeof import('../api/comment')['commentFindAll']
   const commentSend: typeof import('../api/comment')['commentSend']
   const completeMul: typeof import('../api/ossUpload')['completeMul']
-  const computed: typeof import('vue')['computed']
-  const consolePlus: typeof import('@iceywu/utils')['consolePlus']
-  const createApp: typeof import('vue')['createApp']
-  const createPinia: typeof import('pinia')['createPinia']
-  const customDestr: typeof import('@iceywu/utils')['customDestr']
-  const customRef: typeof import('vue')['customRef']
-  const deepClone: typeof import('@iceywu/utils')['deepClone']
+  const computed: typeof import('vue').computed
+  const consolePlus: typeof import('@iceywu/utils').consolePlus
+  const createApp: typeof import('vue').createApp
+  const createPinia: typeof import('pinia').createPinia
+  const customDestr: typeof import('@iceywu/utils').customDestr
+  const customRef: typeof import('vue').customRef
+  const deepClone: typeof import('@iceywu/utils').deepClone
   const defaultThemeVars: typeof import('../composables/useTheme')['defaultThemeVars']
-  const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
-  const defineComponent: typeof import('vue')['defineComponent']
-  const defineStore: typeof import('pinia')['defineStore']
-  const effectScope: typeof import('vue')['effectScope']
-  const encrypt: typeof import('../utils/http/sign')['encrypt']
+  const defineAsyncComponent: typeof import('vue').defineAsyncComponent
+  const defineComponent: typeof import('vue').defineComponent
+  const defineStore: typeof import('pinia').defineStore
+  const effectScope: typeof import('vue').effectScope
+  const encrypt: typeof import('../utils/http/sign').encrypt
   const fileUpdate: typeof import('../api/ossUpload')['fileUpdate']
-  const formatToken: typeof import('../utils/http/auth')['formatToken']
-  const getActivePinia: typeof import('pinia')['getActivePinia']
-  const getCurrentInstance: typeof import('vue')['getCurrentInstance']
-  const getCurrentScope: typeof import('vue')['getCurrentScope']
-  const getCurrentWatcher: typeof import('vue')['getCurrentWatcher']
-  const getDataList: typeof import('../api/apiTest')['getDataList']
-  const getObjVal: typeof import('@iceywu/utils')['getObjVal']
+  const formatToken: typeof import('../utils/http/auth').formatToken
+  const getActivePinia: typeof import('pinia').getActivePinia
+  const getCurrentInstance: typeof import('vue').getCurrentInstance
+  const getCurrentScope: typeof import('vue').getCurrentScope
+  const getCurrentWatcher: typeof import('vue').getCurrentWatcher
+  const getDataList: typeof import('../api/apiTest').getDataList
+  const getObjVal: typeof import('@iceywu/utils').getObjVal
   const getSign: typeof import('../api/ossUpload')['getSign']
-  const getToken: typeof import('../utils/http/auth')['getToken']
+  const getToken: typeof import('../utils/http/auth').getToken
   const getUploadId: typeof import('../api/ossUpload')['getUploadId']
   const getUserInfo: typeof import('../api/auth')['getUserInfo']
-  const h: typeof import('vue')['h']
-  const http: typeof import('../utils/http/index')['default']
-  const initThemeColors: typeof import('../composables/useTheme')['initThemeColors']
-  const inject: typeof import('vue')['inject']
+  const h: typeof import('vue').h
+  const http: typeof import('../utils/http/index').default
+  const initThemeColors: typeof import('../composables/useTheme').initThemeColors
+  const inject: typeof import('vue').inject
   const ipGet: typeof import('../api/ip')['ipGet']
-  const isArray: typeof import('@iceywu/utils')['isArray']
-  const isDark: typeof import('../composables/useDark')['isDark']
-  const isEmpty: typeof import('@iceywu/utils')['isEmpty']
-  const isNumber: typeof import('@iceywu/utils')['isNumber']
-  const isObject: typeof import('@iceywu/utils')['isObject']
-  const isProxy: typeof import('vue')['isProxy']
-  const isReactive: typeof import('vue')['isReactive']
-  const isReadonly: typeof import('vue')['isReadonly']
-  const isRef: typeof import('vue')['isRef']
-  const isRequestSuccess: typeof import('../utils/http/tool')['isRequestSuccess']
-  const isShallow: typeof import('vue')['isShallow']
-  const isString: typeof import('@iceywu/utils')['isString']
-  const list: typeof import('@iceywu/utils')['list']
+  const isArray: typeof import('@iceywu/utils').isArray
+  const isDark: typeof import('../composables/useDark').isDark
+  const isEmpty: typeof import('@iceywu/utils').isEmpty
+  const isNumber: typeof import('@iceywu/utils').isNumber
+  const isObject: typeof import('@iceywu/utils').isObject
+  const isProxy: typeof import('vue').isProxy
+  const isReactive: typeof import('vue').isReactive
+  const isReadonly: typeof import('vue').isReadonly
+  const isRef: typeof import('vue').isRef
+  const isRequestSuccess: typeof import('../utils/http/tool').isRequestSuccess
+  const isShallow: typeof import('vue').isShallow
+  const isString: typeof import('@iceywu/utils').isString
+  const list: typeof import('@iceywu/utils').list
   const login: typeof import('../api/auth')['login']
   const loginByEmail: typeof import('../api/auth')['loginByEmail']
   const loginWx: typeof import('../api/auth')['loginWx']
-  const mapActions: typeof import('pinia')['mapActions']
-  const mapGetters: typeof import('pinia')['mapGetters']
-  const mapState: typeof import('pinia')['mapState']
-  const mapStores: typeof import('pinia')['mapStores']
-  const mapWritableState: typeof import('pinia')['mapWritableState']
-  const markRaw: typeof import('vue')['markRaw']
-  const multipleTabsKey: typeof import('../utils/http/auth')['multipleTabsKey']
-  const nextTick: typeof import('vue')['nextTick']
-  const onActivated: typeof import('vue')['onActivated']
-  const onAddToFavorites: typeof import('@dcloudio/uni-app')['onAddToFavorites']
-  const onBackPress: typeof import('@dcloudio/uni-app')['onBackPress']
-  const onBeforeMount: typeof import('vue')['onBeforeMount']
-  const onBeforeUnmount: typeof import('vue')['onBeforeUnmount']
-  const onBeforeUpdate: typeof import('vue')['onBeforeUpdate']
-  const onDeactivated: typeof import('vue')['onDeactivated']
-  const onError: typeof import('@dcloudio/uni-app')['onError']
-  const onErrorCaptured: typeof import('vue')['onErrorCaptured']
-  const onHide: typeof import('@dcloudio/uni-app')['onHide']
-  const onLaunch: typeof import('@dcloudio/uni-app')['onLaunch']
-  const onLoad: typeof import('@dcloudio/uni-app')['onLoad']
-  const onMounted: typeof import('vue')['onMounted']
-  const onNavigationBarButtonTap: typeof import('@dcloudio/uni-app')['onNavigationBarButtonTap']
-  const onNavigationBarSearchInputChanged: typeof import('@dcloudio/uni-app')['onNavigationBarSearchInputChanged']
-  const onNavigationBarSearchInputClicked: typeof import('@dcloudio/uni-app')['onNavigationBarSearchInputClicked']
-  const onNavigationBarSearchInputConfirmed: typeof import('@dcloudio/uni-app')['onNavigationBarSearchInputConfirmed']
-  const onNavigationBarSearchInputFocusChanged: typeof import('@dcloudio/uni-app')['onNavigationBarSearchInputFocusChanged']
-  const onPageNotFound: typeof import('@dcloudio/uni-app')['onPageNotFound']
-  const onPageScroll: typeof import('@dcloudio/uni-app')['onPageScroll']
-  const onPullDownRefresh: typeof import('@dcloudio/uni-app')['onPullDownRefresh']
-  const onReachBottom: typeof import('@dcloudio/uni-app')['onReachBottom']
-  const onReady: typeof import('@dcloudio/uni-app')['onReady']
-  const onRenderTracked: typeof import('vue')['onRenderTracked']
-  const onRenderTriggered: typeof import('vue')['onRenderTriggered']
-  const onResize: typeof import('@dcloudio/uni-app')['onResize']
-  const onScopeDispose: typeof import('vue')['onScopeDispose']
-  const onServerPrefetch: typeof import('vue')['onServerPrefetch']
-  const onShareAppMessage: typeof import('@dcloudio/uni-app')['onShareAppMessage']
-  const onShareTimeline: typeof import('@dcloudio/uni-app')['onShareTimeline']
-  const onShow: typeof import('@dcloudio/uni-app')['onShow']
-  const onTabItemTap: typeof import('@dcloudio/uni-app')['onTabItemTap']
-  const onThemeChange: typeof import('@dcloudio/uni-app')['onThemeChange']
-  const onUnhandledRejection: typeof import('@dcloudio/uni-app')['onUnhandledRejection']
-  const onUnload: typeof import('@dcloudio/uni-app')['onUnload']
-  const onUnmounted: typeof import('vue')['onUnmounted']
-  const onUpdated: typeof import('vue')['onUpdated']
-  const onWatcherCleanup: typeof import('vue')['onWatcherCleanup']
-  const provide: typeof import('vue')['provide']
+  const mapActions: typeof import('pinia').mapActions
+  const mapGetters: typeof import('pinia').mapGetters
+  const mapState: typeof import('pinia').mapState
+  const mapStores: typeof import('pinia').mapStores
+  const mapWritableState: typeof import('pinia').mapWritableState
+  const markRaw: typeof import('vue').markRaw
+  const multipleTabsKey: typeof import('../utils/http/auth').multipleTabsKey
+  const nextTick: typeof import('vue').nextTick
+  const onActivated: typeof import('vue').onActivated
+  const onAddToFavorites: typeof import('@dcloudio/uni-app').onAddToFavorites
+  const onBackPress: typeof import('@dcloudio/uni-app').onBackPress
+  const onBeforeMount: typeof import('vue').onBeforeMount
+  const onBeforeUnmount: typeof import('vue').onBeforeUnmount
+  const onBeforeUpdate: typeof import('vue').onBeforeUpdate
+  const onDeactivated: typeof import('vue').onDeactivated
+  const onError: typeof import('@dcloudio/uni-app').onError
+  const onErrorCaptured: typeof import('vue').onErrorCaptured
+  const onHide: typeof import('@dcloudio/uni-app').onHide
+  const onLaunch: typeof import('@dcloudio/uni-app').onLaunch
+  const onLoad: typeof import('@dcloudio/uni-app').onLoad
+  const onMounted: typeof import('vue').onMounted
+  const onNavigationBarButtonTap: typeof import('@dcloudio/uni-app').onNavigationBarButtonTap
+  const onNavigationBarSearchInputChanged: typeof import('@dcloudio/uni-app').onNavigationBarSearchInputChanged
+  const onNavigationBarSearchInputClicked: typeof import('@dcloudio/uni-app').onNavigationBarSearchInputClicked
+  const onNavigationBarSearchInputConfirmed: typeof import('@dcloudio/uni-app').onNavigationBarSearchInputConfirmed
+  const onNavigationBarSearchInputFocusChanged: typeof import('@dcloudio/uni-app').onNavigationBarSearchInputFocusChanged
+  const onPageNotFound: typeof import('@dcloudio/uni-app').onPageNotFound
+  const onPageScroll: typeof import('@dcloudio/uni-app').onPageScroll
+  const onPullDownRefresh: typeof import('@dcloudio/uni-app').onPullDownRefresh
+  const onReachBottom: typeof import('@dcloudio/uni-app').onReachBottom
+  const onReady: typeof import('@dcloudio/uni-app').onReady
+  const onRenderTracked: typeof import('vue').onRenderTracked
+  const onRenderTriggered: typeof import('vue').onRenderTriggered
+  const onResize: typeof import('@dcloudio/uni-app').onResize
+  const onScopeDispose: typeof import('vue').onScopeDispose
+  const onServerPrefetch: typeof import('vue').onServerPrefetch
+  const onShareAppMessage: typeof import('@dcloudio/uni-app').onShareAppMessage
+  const onShareTimeline: typeof import('@dcloudio/uni-app').onShareTimeline
+  const onShow: typeof import('@dcloudio/uni-app').onShow
+  const onTabItemTap: typeof import('@dcloudio/uni-app').onTabItemTap
+  const onThemeChange: typeof import('@dcloudio/uni-app').onThemeChange
+  const onUnhandledRejection: typeof import('@dcloudio/uni-app').onUnhandledRejection
+  const onUnload: typeof import('@dcloudio/uni-app').onUnload
+  const onUnmounted: typeof import('vue').onUnmounted
+  const onUpdated: typeof import('vue').onUpdated
+  const onWatcherCleanup: typeof import('vue').onWatcherCleanup
+  const provide: typeof import('vue').provide
   const qrChangeSate: typeof import('../api/qrAuth')['qrChangeSate']
   const qrLogin: typeof import('../api/qrAuth')['qrLogin']
-  const reactive: typeof import('vue')['reactive']
-  const readonly: typeof import('vue')['readonly']
-  const ref: typeof import('vue')['ref']
+  const reactive: typeof import('vue').reactive
+  const readonly: typeof import('vue').readonly
+  const ref: typeof import('vue').ref
   const register: typeof import('../api/auth')['register']
-  const removeToken: typeof import('../utils/http/auth')['removeToken']
-  const requestTo: typeof import('../utils/http/tool')['requestTo']
-  const requestValOptions: typeof import('../utils/http/tool')['requestValOptions']
-  const resolveComponent: typeof import('vue')['resolveComponent']
-  const router: typeof import('../composables/useRouter')['router']
+  const removeToken: typeof import('../utils/http/auth').removeToken
+  const requestTo: typeof import('../utils/http/tool').requestTo
+  const requestValOptions: typeof import('../utils/http/tool').requestValOptions
+  const resolveComponent: typeof import('vue').resolveComponent
+  const router: typeof import('../composables/useRouter').router
   const saveFile: typeof import('../api/ossUpload')['saveFile']
   const sendCode: typeof import('../api/auth')['sendCode']
-  const setActivePinia: typeof import('pinia')['setActivePinia']
-  const setMapStoreSuffix: typeof import('pinia')['setMapStoreSuffix']
-  const setToken: typeof import('../utils/http/auth')['setToken']
+  const setActivePinia: typeof import('pinia').setActivePinia
+  const setMapStoreSuffix: typeof import('pinia').setMapStoreSuffix
+  const setToken: typeof import('../utils/http/auth').setToken
   const setup: typeof import('../store/setup')['default']
-  const shallowReactive: typeof import('vue')['shallowReactive']
-  const shallowReadonly: typeof import('vue')['shallowReadonly']
-  const shallowRef: typeof import('vue')['shallowRef']
-  const sleep: typeof import('@iceywu/utils')['sleep']
-  const store: typeof import('../store/index')['default']
-  const storeToRefs: typeof import('pinia')['storeToRefs']
+  const shallowReactive: typeof import('vue').shallowReactive
+  const shallowReadonly: typeof import('vue').shallowReadonly
+  const shallowRef: typeof import('vue').shallowRef
+  const sleep: typeof import('@iceywu/utils').sleep
+  const store: typeof import('../store/index').default
+  const storeToRefs: typeof import('pinia').storeToRefs
   const tagFindAll: typeof import('../api/tag')['tagFindAll']
   const test: typeof import('../store/test')['default']
-  const to: typeof import('@iceywu/utils')['to']
-  const toPro: typeof import('@iceywu/utils')['toPro']
-  const toRaw: typeof import('vue')['toRaw']
-  const toRef: typeof import('vue')['toRef']
-  const toRefs: typeof import('vue')['toRefs']
-  const toValue: typeof import('vue')['toValue']
-  const toggleDark: typeof import('../composables/useDark')['toggleDark']
+  const to: typeof import('@iceywu/utils').to
+  const toPro: typeof import('@iceywu/utils').toPro
+  const toRaw: typeof import('vue').toRaw
+  const toRef: typeof import('vue').toRef
+  const toRefs: typeof import('vue').toRefs
+  const toValue: typeof import('vue').toValue
+  const toggleDark: typeof import('../composables/useDark').toggleDark
   const topicCreate: typeof import('../api/topic')['topicCreate']
   const topicFindAll: typeof import('../api/topic')['topicFindAll']
   const topicFindById: typeof import('../api/topic')['topicFindById']
-  const triggerRef: typeof import('vue')['triggerRef']
-  const unref: typeof import('vue')['unref']
+  const triggerRef: typeof import('vue').triggerRef
+  const unref: typeof import('vue').unref
   const updateUserInfoById: typeof import('../api/auth')['updateUserInfoById']
   const uploadBase: typeof import('../api/ossUpload')['uploadBase']
   const uploadPart: typeof import('../api/ossUpload')['uploadPart']
-  const useAttrs: typeof import('vue')['useAttrs']
-  const useCssModule: typeof import('vue')['useCssModule']
-  const useCssVars: typeof import('vue')['useCssVars']
+  const useAttrs: typeof import('vue').useAttrs
+  const useCssModule: typeof import('vue').useCssModule
+  const useCssVars: typeof import('vue').useCssVars
   const useFontSize: typeof import('../hooks/usefontSize')['useFontSize']
-  const useI18n: typeof import('vue-i18n')['useI18n']
-  const useId: typeof import('vue')['useId']
+  const useI18n: typeof import('vue-i18n').useI18n
+  const useId: typeof import('vue').useId
   const useInit: typeof import('../hooks/usePage')['useInit']
-  const useLanguage: typeof import('../composables/useLanguage')['default']
-  const useModel: typeof import('vue')['useModel']
-  const usePage: typeof import('../hooks/usePage')['usePage']
-  const useRequest: typeof import('vue-hooks-pure')['useRequest']
-  const useSlots: typeof import('vue')['useSlots']
-  const useTemplateRef: typeof import('vue')['useTemplateRef']
-  const useTheme: typeof import('../composables/useTheme')['useTheme']
-  const useTitle: typeof import('../hooks/useTitle')['useTitle']
-  const useUserStore: typeof import('../store/user')['useUserStore']
+  const useLanguage: typeof import('../composables/useLanguage').default
+  const useModel: typeof import('vue').useModel
+  const usePage: typeof import('../hooks/usePage').usePage
+  const useRequest: typeof import('vue-hooks-pure').useRequest
+  const useSlots: typeof import('vue').useSlots
+  const useTemplateRef: typeof import('vue').useTemplateRef
+  const useTheme: typeof import('../composables/useTheme').useTheme
+  const useTitle: typeof import('../hooks/useTitle').useTitle
+  const useUserStore: typeof import('../store/user').useUserStore
   const useWxStore: typeof import('../store/wx')['useWxStore']
-  const user: typeof import('../store/user')['default']
-  const userKeyBase: typeof import('../utils/http/auth')['userKeyBase']
-  const watch: typeof import('vue')['watch']
-  const watchEffect: typeof import('vue')['watchEffect']
-  const watchPostEffect: typeof import('vue')['watchPostEffect']
-  const watchSyncEffect: typeof import('vue')['watchSyncEffect']
+  const user: typeof import('../store/user').default
+  const userKeyBase: typeof import('../utils/http/auth').userKeyBase
+  const watch: typeof import('vue').watch
+  const watchEffect: typeof import('vue').watchEffect
+  const watchPostEffect: typeof import('vue').watchPostEffect
+  const watchSyncEffect: typeof import('vue').watchSyncEffect
   const wx: typeof import('../store/wx')['default']
 }
 // for type re-export

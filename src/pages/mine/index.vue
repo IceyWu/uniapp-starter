@@ -1,5 +1,11 @@
 <script lang="ts" setup>
-import SubCom from '~/sub-packages/components/SubCom.vue?async'
+import SubCom from '~/sub-packages/components/SubCom.vue'
+
+defineOptions({
+  componentPlaceholder: {
+    SubCom: 'view',
+  },
+})
 
 definePage(() => ({
     layout: 'default',
@@ -16,8 +22,8 @@ async function initSubCom() {
   try {
     initLoading.value = true
     console.log('🦄首页-开始加载子包------------------------------>')
-    await AsyncImport('@/sub-packages/components/SubCom.vue')
-    await AsyncImport('@/sub-packages/utils/subUtils').then((res) => {
+    // await AsyncImport('@/sub-packages/components/SubCom.vue')
+    await import('@/sub-packages/utils/subUtils').then((res) => {
       console.log('分包异步工具函数加载----->', res)
       subUtils.value = res
     })
