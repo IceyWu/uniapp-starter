@@ -16,19 +16,15 @@ interface NonceCache {
 const nonceMap = new Map<string, NonceCache>()
 
 function wxuuid() {
-  const s = []
   const hexDigits = '0123456789abcdef'
-  for (let i = 0; i < 36; i++) {
-    s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1)
-  }
+  const s = Array.from(
+    { length: 36 },
+    () => hexDigits[Math.floor(Math.random() * 16)]
+  )
   s[14] = '4'
-  // s[19] 当前是 hex 字符，需要先解析为数字再做位运算，然后取回 hex 字符
-  const s19Num = Number.parseInt(s[19], 16)
-  const newS19Num = (s19Num & 0x3) | 0x8
-  s[19] = hexDigits.substr(newS19Num, 1)
+  s[19] = hexDigits[(Number.parseInt(s[19], 16) & 0x3) | 0x8]
   s[8] = s[13] = s[18] = s[23] = '-'
-  const uuid = s.join('')
-  return uuid
+  return s.join('')
 }
 
 /**

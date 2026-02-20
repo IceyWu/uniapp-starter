@@ -88,7 +88,6 @@ export function generateBlurhashFromFile(
 ) {
   return new Promise((resolve, reject) => {
     const { instance } = options
-    console.log('🌈-----instance-----', instance)
     // 获取临时文件路径
     const tempFilePath = typeof file === 'string' ? file : file.tempFilePath
     if (!tempFilePath) {
@@ -100,7 +99,6 @@ export function generateBlurhashFromFile(
     uni.getImageInfo({
       src: tempFilePath,
       success: (res) => {
-        console.log('🐠-----res-----', res)
         let width = res.width
         let height = res.height
 
@@ -112,12 +110,10 @@ export function generateBlurhashFromFile(
         }
 
         const query = uni.createSelectorQuery().in(instance)
-        console.log('🎉-----query-----', query)
         query
           .select('#blurhashCanvas')
           .fields({ node: true, size: true })
           .exec((res) => {
-            console.log('🍪-----res-----', res)
             const canvas = res[0]?.node
             if (!canvas) {
               reject(new Error('未找到 canvas 节点'))
@@ -148,11 +144,7 @@ export function generateBlurhashFromFile(
             // 绘制图片到 canvas
             const img = canvas.createImage()
             img.src = tempFilePath
-            console.log('🐬-----tempFilePath-----', tempFilePath)
-            console.log('🍪------------------------------>')
-            console.log('🎉-----img-----', img)
             img.onload = () => {
-              console.log('🦄onload------------------------------>')
               ctx.drawImage(img, 0, 0, width, height)
               // 获取 canvas 图片数据
               uni.canvasGetImageData(
@@ -164,7 +156,6 @@ export function generateBlurhashFromFile(
                   width,
                   height,
                   success: (imageDataRes) => {
-                    console.log('🌈-----imageDataRes-----', imageDataRes)
                     try {
                       // 生成模糊哈希值
                       const blurhash = encode(
@@ -180,7 +171,6 @@ export function generateBlurhashFromFile(
                     }
                   },
                   fail: (err) => {
-                    console.log('🍭-----err-----', err)
                     reject(err)
                   },
                 },

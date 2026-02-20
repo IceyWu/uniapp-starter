@@ -9,9 +9,10 @@ export const pagesMap = [
   { name: 'qr-auth', path: '/pages/qr/qrAuth' },
 ] as const
 
-export const h5HsqMap = {
-  // H5 环境下的特殊路由映射
-} as const
+export const h5HsqMap: readonly string[] = [
+  // H5 环境下需要特殊处理的路由名称列表，例如：
+  // 'topic', 'activity',
+] as const
 
 export const needAuthPath = ['/pages/mine/index', '/pages/post/index'] as const
 

@@ -72,11 +72,8 @@ export function setToken(data: DataInfo<number>, roleName?: string) {
     const { username, roles } = data
     setUserKey(username, roles)
   } else {
-    const username =
-      storageSession().getItem<DataInfo<number>>(userKey)?.username ?? ''
-    const roles =
-      storageSession().getItem<DataInfo<number>>(userKey)?.roles ?? []
-    setUserKey(username, roles)
+    const stored = storageSession().getItem<DataInfo<number>>(userKey)
+    setUserKey(stored?.username ?? '', stored?.roles ?? [])
   }
 }
 

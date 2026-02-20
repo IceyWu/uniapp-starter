@@ -3,20 +3,22 @@ let lastClickTime = 0
 
 export function isFastClick(num = 1000) {
   const time = new Date().getTime()
-  if (time - lastClickTime > num) return false
+  const isFast = time - lastClickTime <= num
   lastClickTime = time
-  return true
+  return isFast
 }
 
 // 解析 path
 export function parseUrl(fullPath: string) {
   const [path, queryStr] = fullPath.split('?')
   const name = path.slice(path.lastIndexOf('/') + 1)
-  const query = {}
+  const query: Record<string, string> = {}
   queryStr
     ?.split('&')
     .map((i) => i.split('='))
-    .forEach((i) => (query[i[0]] = i[1]))
+    .forEach(([k, v]) => {
+      if (k) query[k] = v ?? ''
+    })
   return {
     name,
     path,
@@ -25,11 +27,9 @@ export function parseUrl(fullPath: string) {
 }
 
 // 还原url
-export function restoreUrl(path: string, query: object) {
-  let count = 0
-  for (const key in query) {
-    path += `${count === 0 ? '?' : '&'}${key}=${query[key]}`
-    count += 1
-  }
-  return path
+export function restoreUrl(path: string, query: Record<string, any>) {
+  const qs = Object.entries(query)
+    .map(([k, v]) => `${k}=${v}`)
+    .join('&')
+  return qs ? `${path}?${qs}` : path
 }

@@ -1,6 +1,6 @@
 export function useTitle() {
   let oldValue = 'Hello'
-  let newValue = 'Word'
+  let newValue = 'World'
   const title = ref(oldValue)
   function changeTitle() {
     oldValue = title.value

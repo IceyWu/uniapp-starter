@@ -21,59 +21,40 @@ export const useUserStore = defineStore(
     const setUserInfo = (data: User.UserInfo) => {
       userInfo.value = data
     }
+    const handleLoginResponse = (res: any) => {
+      const { code, result } = res
+      if (code === 200 && result?.status !== 400) {
+        const { admin, token } = result
+        setUserInfo(admin)
+        const TokenInfo: DataInfo<number> = {
+          username: admin.name,
+          roles: [admin.name],
+          accessToken: token[AccessTokenKey],
+          refreshToken: token[RefreshTokenKey],
+          expires: token[ExpiresKey] * 1000,
+        }
+        setToken(TokenInfo)
+        return true
+      }
+      return false
+    }
     const loginFunc = (dataT: any) =>
       new Promise<any>((resolve, reject) => {
         login(dataT)
           .then((res: any) => {
-            const { code, result } = res
-            if (code === 200 && result?.status !== 400) {
-              const { admin, token } = result
-
-              setUserInfo(admin)
-              const TokenInfo: DataInfo<number> = {
-                username: admin.name,
-                roles: [admin.name],
-                accessToken: token[AccessTokenKey],
-                refreshToken: token[RefreshTokenKey],
-                expires: token[ExpiresKey] * 1000,
-              }
-
-              setToken(TokenInfo)
-              resolve(res)
-            } else {
-              reject(res)
-            }
+            if (handleLoginResponse(res)) resolve(res)
+            else reject(res)
           })
-          .catch((error) => {
-            reject(error)
-          })
+          .catch(reject)
       })
     const loginFuncByEmail = (dataT: any) =>
       new Promise<any>((resolve, reject) => {
         loginByEmail(dataT)
           .then((res: any) => {
-            const { code, result } = res
-            if (code === 200 && result?.status !== 400) {
-              const { admin, token } = result
-
-              setUserInfo(admin)
-              const TokenInfo: DataInfo<number> = {
-                username: admin.name,
-                roles: [admin.name],
-                accessToken: token[AccessTokenKey],
-                refreshToken: token[RefreshTokenKey],
-                expires: token[ExpiresKey] * 1000,
-              }
-
-              setToken(TokenInfo)
-              resolve(res)
-            } else {
-              reject(res)
-            }
+            if (handleLoginResponse(res)) resolve(res)
+            else reject(res)
           })
-          .catch((error) => {
-            reject(error)
-          })
+          .catch(reject)
       })
     const logOut = () => {
       userInfo.value = {} as User.UserInfo
