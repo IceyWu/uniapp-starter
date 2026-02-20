@@ -17,6 +17,7 @@ const { themeVars } = useTheme()
         <slot name="navbar">
           <NavBar
             is-need-left
+            isGoBack
             :base-props="{
               title: objVal?.titleText,
             }"
