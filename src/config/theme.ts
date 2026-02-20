@@ -3,11 +3,11 @@
  */
 
 export interface ThemeColors {
+  danger: string
+  info: string
   primary: string
   success: string
   warning: string
-  danger: string
-  info: string
 }
 
 /**

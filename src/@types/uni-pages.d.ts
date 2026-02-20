@@ -24,8 +24,8 @@ type ReLaunchOptions = NavigateToOptions | SwitchTabOptions
 declare interface Uni {
   navigateTo(options: UniNamespace.NavigateToOptions & NavigateToOptions): void
   redirectTo(options: UniNamespace.RedirectToOptions & RedirectToOptions): void
-  switchTab(options: UniNamespace.SwitchTabOptions & SwitchTabOptions): void
   reLaunch(options: UniNamespace.ReLaunchOptions & ReLaunchOptions): void
+  switchTab(options: UniNamespace.SwitchTabOptions & SwitchTabOptions): void
 }
 
 declare module 'virtual:uni-pages' {

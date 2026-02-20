@@ -9,8 +9,8 @@ const md5: (msg: string) => string =
 
 // nonce缓存管理
 interface NonceCache {
-  nonce: string
   count: number // 引用计数
+  nonce: string
 }
 
 const nonceMap = new Map<string, NonceCache>()

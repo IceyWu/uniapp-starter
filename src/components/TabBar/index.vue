@@ -9,12 +9,12 @@ defineProps({
 })
 
 interface TabBarItem {
-  pagePath: string
   iconPath: string
+  isNeedLogin?: boolean
+  isRedirect: boolean
+  pagePath: string
   selectedIconPath: string
   text: string
-  isRedirect: boolean
-  isNeedLogin?: boolean
 }
 
 const selected = ref(0)
@@ -142,7 +142,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <view class="tab-bar" :class="[isDark ? 'dark-tab-bar' : '', !isExpanded ? 'collapsed' : '']">
+  <view class="tab-bar" :class="[isDark ? 'dark-tab-bar' : '', isExpanded ? '' : 'collapsed']">
     <view class="float-part card-base" :class="{ collapsed: !isExpanded }">
       <!-- TabBar items -->
       <template v-for="(item, index) in list" :key="index">

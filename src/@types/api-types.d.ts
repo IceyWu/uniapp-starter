@@ -3,100 +3,100 @@
 declare namespace GetTest {
   interface params {
     id?: string | number
-    page?: number
     limit?: number
+    page?: number
   }
 
   interface data {
     code: number
-    message: string
     data: any[]
+    message: string
   }
 }
 
 declare namespace PostTest {
   interface params {
-    name: string
     description?: string
+    name: string
   }
 
   interface data {
     code: number
-    message: string
     data: {
       id: number
       name: string
       description?: string
     }
+    message: string
   }
 }
 
 // 通用 API 响应类型
 export interface ApiResponse<T = any> {
   code: number
-  message: string
   data: T
+  message: string
 }
 
 // 分页相关类型
 export interface PaginationParams {
-  page?: number
-  limit?: number
   keyword?: string
+  limit?: number
+  page?: number
 }
 
 export interface PaginationResponse<T> {
-  list: T[]
-  total: number
   current: number
+  list: T[]
   pageSize: number
+  total: number
 }
 
 // 用户相关类型
 export interface UserInfo {
+  avatar?: string
+  createTime?: string
+  email?: string
   id: number
   name: string
-  avatar?: string
   phone?: string
-  email?: string
-  createTime?: string
 }
 
 export interface LoginParams {
-  username: string
-  password: string
   code?: string
+  password: string
+  username: string
 }
 
 export interface LoginResponse {
-  token: string
   refreshToken: string
+  token: string
   userInfo: UserInfo
 }
 
 // 上传相关类型
 export interface UploadResponse {
-  url: string
   filename: string
   size: number
+  url: string
 }
 
 // Topic 相关类型
 export interface TopicItem {
-  id: number
-  title: string
   content: string
   createTime: string
-  updateTime: string
-  userId: number
-  User?: UserInfo
+  fileList?: Array<{
+    url: string
+    type: string
+  }>
+  id: number
   TopicTag?: Array<{
     id: number
     name: string
     color?: string
   }>
-  fileList?: Array<{
-    url: string
-    type: string
-  }>
+  title: string
+  User?: UserInfo
+  updateTime: string
+  userId: number
 }

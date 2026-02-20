@@ -18,20 +18,20 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits(['click-left'])
 
 interface BaseProps {
-  title?: string
   backgroundColor?: string
-  fixed?: boolean
   border?: boolean
+  fixed?: boolean
+  title?: string
 }
 
 interface Props {
-  class?: string
-  isNeedLeft?: boolean
   baseProps?: BaseProps
+  class?: string
+  isCustomLeftClick?: boolean
   isGoBack?: boolean
+  isNeedLeft?: boolean
   placeholder?: boolean
   safeAreaInsetTop?: boolean
-  isCustomLeftClick?: boolean
 }
 
 function goBack() {

@@ -10,6 +10,7 @@ import UniPages from '@uni-helper/vite-plugin-uni-pages'
 import Optimization from '@uni-ku/bundle-optimizer'
 import AutoImportTypes from 'auto-import-types'
 import PiniaAutoRefs from 'pinia-auto-refs'
+import { visualizer } from 'rollup-plugin-visualizer'
 import { UpResolver } from 'uni-ui-plus'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -20,7 +21,7 @@ import UniPolyfill from 'vite-plugin-uni-polyfill'
 export default defineConfig({
   resolve: {
     alias: {
-      '~/': `${resolve(__dirname, 'src')}/`,
+      '~/': `${resolve(import.meta.dirname, 'src')}/`,
     },
   },
   plugins: [
@@ -75,6 +76,38 @@ export default defineConfig({
         {
           'vue-hooks-pure': ['useRequest'],
         },
+        {
+          /**
+           * @uni-helper/uni-use — UniApp 跨端 composables 集合
+           * @see https://github.com/uni-helper/uni-use
+           */
+          '@uni-helper/uni-use': [
+            'useClipboardData',
+            'useDownloadFile',
+            'useGlobalData',
+            'useLoading',
+            'useModal',
+            'useNetwork',
+            'useOnline',
+            'usePageScroll',
+            'usePages',
+            'usePreferredDark',
+            'usePreferredLanguage',
+            'usePrevPage',
+            'usePrevRoute',
+            'useQuery',
+            'useScanCode',
+            'useScreenBrightness',
+            'useSelectorQuery',
+            'useSocket',
+            'useStorage',
+            'useStorageAsync',
+            'useStorageSync',
+            'useToast',
+            'useUploadFile',
+            'useVisible',
+          ],
+        },
       ],
       dts: 'src/@types/auto-imports.d.ts',
       dirs: [
@@ -110,7 +143,22 @@ export default defineConfig({
     }),
     Uni(),
     UnoCSS(),
-  ],
+
+    /**
+     * rollup-plugin-visualizer 打包体积分析
+     * 执行 build 命令时设置 ANALYZE=true 可生成 stats.html 分析报告
+     * 例: ANALYZE=true pnpm build:mp-weixin
+     * @see https://github.com/btd/rollup-plugin-visualizer
+     */
+    process.env.ANALYZE
+      ? visualizer({
+          open: true,
+          filename: 'stats.html',
+          gzipSize: true,
+          brotliSize: true,
+        })
+      : null,
+  ].filter(Boolean),
 
   /**
    * Vitest

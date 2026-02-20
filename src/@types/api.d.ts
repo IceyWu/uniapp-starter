@@ -7,8 +7,8 @@ declare namespace Http {
   interface config {
     isNeedToken?: boolean
     isShowLoading?: boolean
-    tokenRoleName?: string
     serverName?: ServerName
+    tokenRoleName?: string
   }
 }
 
@@ -17,8 +17,8 @@ declare namespace GetTest {
     a: number
   }
   interface data {
-    name: string
     age: number
+    name: string
   }
 }
 

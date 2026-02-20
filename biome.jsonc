@@ -1,9 +1,6 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": [
-    "./node_modules/ultracite/config/core/biome.jsonc",
-    "./node_modules/ultracite/config/vue/biome.jsonc"
-  ],
+  "extends": ["ultracite/biome/core", "ultracite/biome/vue"],
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -51,7 +48,9 @@
         "noEvolvingTypes": "off",
         "useAwait": "off",
         "noBitwiseOperators": "off",
-        "useIterableCallbackReturn": "off"
+        "useIterableCallbackReturn": "off",
+        "noEmptySource": "off",
+        "noUnusedExpressions": "off"
       },
       "complexity": {
         "noForEach": "off",
@@ -73,9 +72,7 @@
       },
       "nursery": {
         "noShadow": "off",
-        "noEmptySource": "off",
         "noIncrementDecrement": "off",
-        "noUnusedExpressions": "off",
         "useVueHyphenatedAttributes": "off",
         "useVueMultiWordComponentNames": "off"
       }
