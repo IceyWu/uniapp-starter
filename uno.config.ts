@@ -11,7 +11,7 @@ export default defineConfig({
     // 由 Iconify 提供支持的纯 CSS 图标解决方案
     presetIcons({
       scale: 1.2,
-      warn: true,
+      warn: false,
       extraProperties: {
         display: 'inline-block',
         'vertical-align': 'middle',

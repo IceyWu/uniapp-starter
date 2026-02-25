@@ -1,5 +1,5 @@
 <template>
-  <div flex="~ gap-4" mt-5 justify-center text-xl>
+  <div class="mt-5 justify-center text-xl flex flex-gap-4">
     <div title="Home" @click="router.replace('/pages/index')">
       <div class="i-carbon-campsite icon-btn"/>
     </div>

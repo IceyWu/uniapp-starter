@@ -20,6 +20,12 @@ dist
 *.njsproj
 *.sln
 *.sw?
+.kiro
+.agent
+.agents
+.kilocode
+.trae
+.windsurf
 
 # pages config
 # pages.json
