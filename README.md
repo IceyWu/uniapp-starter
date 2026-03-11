@@ -293,6 +293,8 @@ bun install
 pnpm install
 ```
 
+安装依赖时会自动执行 prepare，完成 Git Hooks 安装，并通过仓库内脚本同步 IceyWu/skills。脚本会保留 VS Code/Copilot、Claude、Kiro、Trae 的项目本地 agent 目录，同时自动清理其余 skills CLI 生成目录；相关生成文件也已加入 git 忽略。
+
 ### 🔄 同步主仓库代码
 
 如需同步主仓库最新模板代码，可执行：

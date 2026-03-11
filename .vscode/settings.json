@@ -3,6 +3,10 @@
   "prettier.enable": true,
   "editor.formatOnSave": true,
 
+  "[vue]": {
+    "editor.formatOnSave": false
+  },
+
   // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
@@ -50,8 +54,39 @@
 
   // Enable file nesting
   "explorer.fileNesting.enabled": true,
+  "explorer.compactFolders": true,
   "explorer.fileNesting.patterns": {
     "vite.config.*": "pages.config.*, manifest.config.*, uno.config.*, volar.config.*, *.env, .env.*"
+  },
+  "files.exclude": {
+    ".adal": true,
+    ".agent": true,
+    ".augment": true,
+    ".codebuddy": true,
+    ".commandcode": true,
+    ".continue": true,
+    ".cortex": true,
+    ".crush": true,
+    ".factory": true,
+    ".goose": true,
+    ".iflow": true,
+    ".junie": true,
+    ".kilocode": true,
+    ".kode": true,
+    ".mcpjam": true,
+    ".mux": true,
+    ".neovate": true,
+    ".openhands": true,
+    ".pi": true,
+    ".pochi": true,
+    ".qoder": true,
+    ".qwen": true,
+    ".roo": true,
+    ".vibe": true,
+    ".windsurf": true,
+    ".zencoder": true,
+    "skills": true,
+    "skills-lock.json": true
   },
   "i18n-ally.localesPaths": ["src/locale"]
 }

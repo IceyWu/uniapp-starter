@@ -10,6 +10,12 @@ declare module 'vue' {
     NavBar: typeof import('./../components/NavBar/index.vue')['default']
     TabBar: typeof import('./../components/TabBar/index.vue')['default']
     TheFooter: typeof import('./../components/TheFooter.vue')['default']
+    UpImage: typeof import('uni-ui-plus/components/image/image.vue')['default']
+    UpList: typeof import('uni-ui-plus/components/list/list.vue')['default']
+    UpWaterfall: typeof import('uni-ui-plus/components/waterfall/waterfall.vue')['default']
     WaterfallsList: typeof import('./../components/WaterfallsList.vue')['default']
+    WdConfigProvider: typeof import('wot-design-uni/components/wd-config-provider/wd-config-provider.vue')['default']
+    WdIcon: typeof import('wot-design-uni/components/wd-icon/wd-icon.vue')['default']
+    WdNavbar: typeof import('wot-design-uni/components/wd-navbar/wd-navbar.vue')['default']
   }
 }
