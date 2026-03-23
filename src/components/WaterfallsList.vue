@@ -79,7 +79,7 @@ function init() {
   onRefresh()
 }
 function getImgInfo(width: number, height: number) {
-  const screenWidth = uni.getSystemInfoSync().screenWidth
+  const screenWidth = uni.getWindowInfo().screenWidth
   const rpxWidth = screenWidth / 750 * 690 // 690rpx为图片显示宽度
   const imgHeight = (height / width) * rpxWidth
 

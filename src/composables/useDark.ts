@@ -11,10 +11,10 @@ export function toggleDark() {
 function useDark() {
   const darkMode = ref(false)
   const savedDarkMode = uni.getStorageSync('darkMode')
-  const systemInfo = uni.getSystemInfoSync()
+  const appBaseInfo = uni.getAppBaseInfo()
 
-  if (savedDarkMode !== null) darkMode.value = savedDarkMode
-  else darkMode.value = systemInfo?.theme === 'dark'
+  if (savedDarkMode === null) darkMode.value = appBaseInfo?.theme === 'dark'
+  else darkMode.value = savedDarkMode
 
   // #ifdef H5 || MP-WEIXIN
   uni.onThemeChange((res) => {

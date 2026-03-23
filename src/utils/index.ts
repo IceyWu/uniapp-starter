@@ -36,7 +36,7 @@ export function getDataUrlFromArr(arr, w, h, options = {}) {
         // 重置 canvas 状态
         ctx.setTransform(1, 0, 0, 1, 0, 0)
         // #ifdef H5
-        const dpr = uni.getSystemInfoSync().pixelRatio
+        const dpr = uni.getWindowInfo().pixelRatio
         canvas.style.width = `${w / 4}px`
         canvas.style.height = `${h / 4}px`
         canvas.width = w * dpr
@@ -129,7 +129,7 @@ export function generateBlurhashFromFile(
             // 重置 canvas 状态
             ctx.setTransform(1, 0, 0, 1, 0, 0)
             // #ifdef H5
-            const dpr = uni.getSystemInfoSync().pixelRatio
+            const dpr = uni.getWindowInfo().pixelRatio
             canvas.style.width = `${width}px`
             canvas.style.height = `${height}px`
             canvas.width = width * dpr

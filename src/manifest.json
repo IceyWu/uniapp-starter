@@ -1,6 +1,6 @@
 {
   "name": "uniapp-starter",
-  "appid": "demo-app-id",
+  "appid": "",
   "description": "🎉UniApp Starter Template",
   "versionName": "0.1.0",
   "versionCode": "100",
@@ -49,7 +49,7 @@
   },
   "quickapp": {},
   "mp-weixin": {
-    "appid": "wx4f5738a651fadf0f",
+    "appid": "",
     "setting": {
       "urlCheck": false,
       "minified": true
