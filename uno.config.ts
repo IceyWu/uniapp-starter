@@ -1,7 +1,8 @@
 import { presetUni } from '@uni-helper/unocss-preset-uni'
+import presetIcons from '@unocss/preset-icons'
+import presetLegacyCompat from '@unocss/preset-legacy-compat'
 import {
   defineConfig,
-  presetIcons,
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
@@ -26,6 +27,10 @@ export default defineConfig({
       // attributify: {
       //   prefixedOnly: true,
       // },
+    }),
+    presetLegacyCompat({
+      commaStyleColorFunction: true,
+      legacyColorSpace: true,
     }),
   ],
   safelist: [

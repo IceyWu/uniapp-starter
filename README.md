@@ -395,6 +395,75 @@ bun build:custom [platform]
 
 构建产物在 `dist/` 目录下
 
+### 🤖 微信小程序 CI 预览与上传
+
+项目已集成 `miniprogram-ci` 脚本，入口文件为 `scripts/mini-ci.js`，用于自动化生成微信小程序预览二维码和上传体验版。
+
+#### 1. 先构建微信小程序产物
+
+```bash
+# 开发环境构建
+bun build:mp-weixin:dev
+
+# 测试环境构建
+bun build:mp-weixin:test
+
+# 生产环境构建
+bun build:mp-weixin:prod
+```
+
+脚本会直接读取 `dist/build/mp-weixin` 下的构建产物和 `project.config.json`。
+
+#### 2. 配置 AppID 和私钥
+
+脚本会优先从 `src/config/app.ts` 读取：
+
+- `APP_ID_WECHAT`：微信小程序 AppID
+- `APP_ID`：兜底 AppID，当 `APP_ID_WECHAT` 为空时使用
+- `APP_WECHAT_CI_ROBOT`：可选，上传/预览使用的机器人编号，范围 `1-30`
+- `APP_WECHAT_CI_PRIVATE_KEY_PATH`：可选，私钥文件路径，相对项目根目录
+
+也支持环境变量覆盖：
+
+- `MINI_APPID`：微信小程序 AppID
+- `MINI_PRIVATE_KEY`：私钥内容，换行需要写成 `\n`
+- `MINI_CI_ROBOT`：可选，指定上传/预览使用的机器人编号，范围 `1-30`
+
+未设置 `MINI_PRIVATE_KEY` 时，脚本会优先使用 `APP_WECHAT_CI_PRIVATE_KEY_PATH`，未配置时再按 appid 回退查找 `scripts/private.<appid>.key`。
+
+#### 3. 生成预览二维码
+
+```bash
+# 默认 dev
+bun preview
+
+# test 环境
+bun preview test
+
+# prod 环境
+bun preview prod
+```
+
+执行成功后会在 `dist/build/mp-weixin` 下生成：
+
+- `preview-<env>.png`
+- `preview-<env>.html`
+
+#### 4. 上传体验版
+
+```bash
+# 默认 dev
+bun upload
+
+# test 环境
+bun upload test
+
+# prod 环境
+bun upload prod
+```
+
+上传版本号取自 `package.json` 的 `version`，描述信息会附带环境、日期和当前 Git 短提交号。
+
 ### 🧪 测试
 
 ```bash

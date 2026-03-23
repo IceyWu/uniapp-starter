@@ -229,6 +229,15 @@ bun build:h5
 # WeChat Mini Program build
 bun build:mp-weixin
 
+# WeChat Mini Program build for development mode
+bun build:mp-weixin:dev
+
+# WeChat Mini Program build for test mode
+bun build:mp-weixin:test
+
+# WeChat Mini Program build for production mode
+bun build:mp-weixin:prod
+
 # App build
 bun build:app
 
@@ -236,6 +245,47 @@ bun build:app
 bun build:mp-alipay  # Alipay Mini Program
 bun build:mp-baidu   # Baidu Mini Program
 ```
+
+### WeChat Mini Program CI
+
+The starter now includes a `miniprogram-ci` script at `scripts/mini-ci.js` for automated preview QR generation and experience-version uploads.
+
+1. Build the WeChat Mini Program output first. The script reads files from `dist/build/mp-weixin`.
+
+2. The script reads the appid from `src/config/app.ts` first:
+
+- `APP_ID_WECHAT`: WeChat Mini Program appid
+- `APP_ID`: fallback appid when `APP_ID_WECHAT` is empty
+- `APP_WECHAT_CI_ROBOT`: optional CI robot id in the range `1` to `30`
+- `APP_WECHAT_CI_PRIVATE_KEY_PATH`: optional private key file path relative to the project root
+
+You can still override it and provide auth info with environment variables:
+
+- `MINI_APPID`: WeChat Mini Program appid
+- `MINI_PRIVATE_KEY`: private key content with line breaks escaped as `\n`
+- `MINI_CI_ROBOT`: optional CI robot id from `1` to `30`
+
+If `MINI_PRIVATE_KEY` is missing, the script uses `APP_WECHAT_CI_PRIVATE_KEY_PATH` first, then falls back to `scripts/private.<appid>.key`.
+
+1. Generate preview QR code:
+
+```bash
+bun preview
+bun preview test
+bun preview prod
+```
+
+This writes `preview-<env>.png` and `preview-<env>.html` into `dist/build/mp-weixin`.
+
+1. Upload an experience version:
+
+```bash
+bun upload
+bun upload test
+bun upload prod
+```
+
+The upload version comes from `package.json`, and the description includes env, build date, and the current short Git commit hash.
 
 ### Testing
 

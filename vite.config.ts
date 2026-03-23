@@ -142,7 +142,9 @@ export default defineConfig({
       logger: false,
     }),
     Uni(),
-    UnoCSS(),
+    UnoCSS({
+      mode: 'per-module',
+    }),
 
     /**
      * rollup-plugin-visualizer 打包体积分析
