@@ -235,8 +235,6 @@ uniapp-starter/
 │   └── uni.scss                   # UniApp 样式变量
 ├── auto/                          # 自动化工具
 │   └── addPage.ts                 # 自动添加页面脚本
-├── docs/                          # 文档目录
-│   └── RELEASE.md                 # 发布说明
 ├── scripts/                       # 脚本文件
 │   └── release.js                 # 发布脚本
 ├── test/                          # 测试配置
