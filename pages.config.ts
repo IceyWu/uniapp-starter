@@ -4,7 +4,10 @@ import { APP_NAME } from './src/config/app'
 export default defineUniPages({
   easycom: {
     autoscan: true,
-    custom: {},
+    custom: {
+      '^(?!z-paging-refresh|z-paging-load-more)z-paging(.*)':
+        'z-paging/components/z-paging$1/z-paging$1.vue',
+    },
   },
   pages: [],
   globalStyle: {

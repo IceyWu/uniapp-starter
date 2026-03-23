@@ -17,7 +17,8 @@
       "uni-ui-plus/global.d.ts",
       "wot-design-uni/global",
       "@uni-helper/vite-plugin-uni-pages",
-      "@uni-ku/bundle-optimizer/client"
+      "@uni-ku/bundle-optimizer/client",
+      "z-paging/types"
     ],
     "allowJs": true,
     "strict": true,

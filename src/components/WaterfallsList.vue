@@ -3,6 +3,7 @@ interface WaterfallsListProps {
   autoLoad?: boolean
 }
 const props = defineProps<WaterfallsListProps>()
+
 // 模拟api
 async function getTestApi(params: any) {
   await sleep(500)
@@ -13,7 +14,6 @@ async function getTestApi(params: any) {
     const coverSize = 200 + Math.floor(Math.random() * 100)
     const coverHeight = 300 + Math.floor(Math.random() * 100)
     const coverUrl = `https://picsum.photos/id/${element}/${coverSize}/${coverHeight}`
-
     return {
       id: element,
       cover: coverUrl,
@@ -34,9 +34,11 @@ async function getTestApi(params: any) {
   }
 }
 
-const scrollListRef = ref()
+const pagingRef = ref()
+// 标记当前是刷新还是加载更多
+const isRefreshing = ref(false)
+
 const {
-  search,
   onRefresh,
   onLoad: onLoadMore,
   result,
@@ -44,9 +46,7 @@ const {
   target: 'list',
   loadingDelay: 300,
   getVal: (res) => {
-    const list = getObjVal(res, 'result.content', [])
-
-    return list
+    return getObjVal(res, 'result.content', [])
   },
   listOptions: {
     defaultPageKey: 'page',
@@ -54,16 +54,36 @@ const {
     defaultDataKey: 'list',
     defaultPage: 0,
     getTotal: (data) => {
-      const total = getObjVal(data, 'result.total', 0)
-      return total
+      return getObjVal(data, 'result.total', 0)
     },
   },
-  onRequestEnd: (res) => {
-    if (scrollListRef.value) {
-      scrollListRef.value?.stopRefresh()
+  onRequestEnd: () => {
+    const list = getObjVal(result.value, 'list', [])
+    const finished = getObjVal(result.value, 'finished', false)
+    if (isRefreshing.value) {
+      // 刷新：传完整列表
+      pagingRef.value?.complete(list)
+    }
+    else {
+      // 加载更多：只传本次新增的数据，z-paging 会自动追加
+      pagingRef.value?.complete(list)
+    }
+    if (finished) {
+      pagingRef.value?.complete([])
     }
   },
 })
+
+// z-paging 的 @query 回调，pageNo 从 1 开始
+function queryList(pageNo: number) {
+  isRefreshing.value = pageNo === 1
+  if (pageNo === 1) {
+    onRefresh()
+  }
+  else {
+    onLoadMore()
+  }
+}
 
 function handleItemClick(data: any) {
   uni.navigateTo({
@@ -71,122 +91,87 @@ function handleItemClick(data: any) {
   })
 }
 
-function init() {
-  if (!props.autoLoad) {
-    return
-  }
-
-  onRefresh()
-}
 function getImgInfo(width: number, height: number) {
   const screenWidth = uni.getWindowInfo().screenWidth
-  const rpxWidth = screenWidth / 750 * 690 // 690rpx为图片显示宽度
+  const rpxWidth = (screenWidth / 750) * 690
   const imgHeight = (height / width) * rpxWidth
-
   return {
-    // width: rpxWidth,
     width: '100%',
     height: imgHeight / 2,
   }
 }
-onMounted(() => {
-  init()
-})
 
-defineExpose({
-  onLoadMore,
-})
-
-// 处理滚动事件，传递给 TabBar
 let scrollTimer: any = null
 function handleScroll(e: any) {
   if (scrollTimer)
     return
-
   scrollTimer = setTimeout(() => {
     uni.$emit('pageScroll', e.detail.scrollTop)
     scrollTimer = null
-  }, 16) // 约 60fps
+  }, 16)
 }
+
+onMounted(() => {
+  if (props.autoLoad) {
+    pagingRef.value?.reload()
+  }
+})
+
+defineExpose({
+  reload: () => pagingRef.value?.reload(),
+  refresh: () => pagingRef.value?.refresh(),
+})
 </script>
 
 <template>
-  <up-list
-    ref="scrollListRef"
-    v-model:list-obj="result"
-    :scroll-view-props="{
-      refresherEnabled: true,
-      scrollY: true,
-    }"
-    @on-load="onLoadMore"
-    @on-refresh="onRefresh"
-    @on-scroll="handleScroll"
+  <z-paging
+    ref="pagingRef"
+    :fixed="false"
+    @query="queryList"
+    @scroll="handleScroll"
   >
-    <template #default="{ data: { list } }">
-      <view class="px-3 pt-2">
-        <up-waterfall
-          :list="list"
-          :column="2"
-          @item-click="handleItemClick"
-        >
-          <template #default="{ item, onLoad, onError }">
-            <div class="card-base">
-              <UpImage
-                :src="item.cover"
-                mode="widthFix"
-
-                :height="getImgInfo(item.width, item.height).height"
-                :width="getImgInfo(item.width, item.height)?.width"
-                @load="onLoad"
-                @error="onError"
-              >
-                <template #error>
-                  <view class="h-full w-full fcc flex items-center justify-center card-base">
-                    <text class="text-gray-400">
-                      图片加载失败
-                    </text>
-                  </view>
-                </template>
-                <template #loading>
-                  <view class="h-full w-full fcc card-base" />
-                </template>
-              </UpImage>
-              <text class="line-clamp-2 px-2 text-left text-base">
-                {{ item?.title }}
-              </text>
-              <text class="line-clamp-3 px-2 pb-2 text-sm text-gray-500">
-                {{ item?.desc }}
-              </text>
-            </div>
-          </template>
-        </up-waterfall>
-      </view>
-    </template>
-  </up-list>
+    <view class="px-3 pt-2">
+      <up-waterfall
+        :list="getObjVal(result, 'list', [])"
+        :column="2"
+        @item-click="handleItemClick"
+      >
+        <template #default="{ item, onLoad, onError }">
+          <div class="card-base">
+            <UpImage
+              :src="item.cover"
+              mode="widthFix"
+              :height="getImgInfo(item.width, item.height).height"
+              :width="getImgInfo(item.width, item.height)?.width"
+              @load="onLoad"
+              @error="onError"
+            >
+              <template #error>
+                <view class="h-full w-full fcc flex items-center justify-center card-base">
+                  <text class="text-gray-400">
+                    图片加载失败
+                  </text>
+                </view>
+              </template>
+              <template #loading>
+                <view class="h-full w-full fcc card-base" />
+              </template>
+            </UpImage>
+            <text class="line-clamp-2 px-2 text-left text-base">
+              {{ item?.title }}
+            </text>
+            <text class="line-clamp-3 px-2 pb-2 text-sm text-gray-500">
+              {{ item?.desc }}
+            </text>
+          </div>
+        </template>
+      </up-waterfall>
+    </view>
+  </z-paging>
 </template>
 
 <style scoped lang="scss">
 .item-img {
   min-height: 50rpx;
-}
-
-.item-info {
-  display: flex;
-  align-items: center;
-  padding: 30rpx 20rpx;
-  padding-top: 10rpx;
-  box-sizing: border-box;
-
-  .info-avatar {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    margin-right: 5px;
-  }
-
-  .info-nickname {
-    font-size: 12px;
-    color: #333;
-  }
 }
 </style>

@@ -101,7 +101,8 @@
     "vue": "^3.4.21",
     "vue-hooks-pure": "^0.0.35",
     "vue-i18n": "^9.1.9",
-    "wot-design-uni": "^1.14.0"
+    "wot-design-uni": "^1.14.0",
+    "z-paging": "^2.8.8"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.8",
@@ -125,8 +126,8 @@
     "@uni-helper/vite-plugin-uni-manifest": "^0.2.12",
     "@uni-helper/vite-plugin-uni-pages": "^0.3.23",
     "@uni-ku/bundle-optimizer": "2.1.1",
-    "@unocss/preset-icons": "^66.5.12",
-    "@unocss/preset-legacy-compat": "^66.6.3",
+    "@unocss/preset-icons": "^66.6.7",
+    "@unocss/preset-legacy-compat": "^66.6.7",
     "@vue/runtime-core": "^3.4.21",
     "@vue/test-utils": "^2.4.6",
     "auto-import-types": "0.0.6",
