@@ -1,17 +1,19 @@
 <script lang="ts" setup>
-const { themeVars } = useTheme()
+  const { themeVars } = useTheme()
 </script>
 
 <template>
-  <wd-config-provider :theme="isDark ? 'dark' : 'light'" :theme-vars="themeVars">
+  <wd-config-provider
+    :theme="isDark ? 'dark' : 'light'"
+    :theme-vars="themeVars"
+  >
     <view
-      class="app-box" :class="{
+      class="app-box"
+      :class="{
         dark: isDark,
       }"
     >
-      <view class="page-content">
-        <slot />
-      </view>
+      <view class="page-content"><slot /></view>
     </view>
   </wd-config-provider>
 </template>

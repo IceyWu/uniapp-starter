@@ -1,7 +1,5 @@
 <template>
-  <view class="center">
-    Subpackage
-  </view>
+  <view class="center">Subpackage</view>
 </template>
 
 <style lang="scss" scoped>

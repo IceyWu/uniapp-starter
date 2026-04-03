@@ -1,15 +1,19 @@
 <script lang="ts" setup>
-const { themeVars } = useTheme()
+  const { themeVars } = useTheme()
 
-function onScrollViewScroll(e: any) {
-  uni.$emit('pageScroll', e.detail?.scrollTop ?? 0)
-}
+  function onScrollViewScroll(e: any) {
+    uni.$emit('pageScroll', e.detail?.scrollTop ?? 0)
+  }
 </script>
 
 <template>
-  <wd-config-provider :theme="isDark ? 'dark' : 'light'" :theme-vars="themeVars">
+  <wd-config-provider
+    :theme="isDark ? 'dark' : 'light'"
+    :theme-vars="themeVars"
+  >
     <view
-      class="app-box" :class="{
+      class="app-box"
+      :class="{
         dark: isDark,
       }"
     >
@@ -34,7 +38,7 @@ function onScrollViewScroll(e: any) {
 .app-box {
   height: 100vh;
   box-sizing: border-box;
-  padding-bottom: calc(env(safe-area-inset-bottom));
+  // padding-bottom: calc(env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
   .page-content {

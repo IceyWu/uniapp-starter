@@ -1,42 +1,42 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+  import { ref } from 'vue'
 
-definePage({
-  layout: "custom",
-});
+  definePage({
+    layout: 'custom',
+  })
 
-const detailData = ref({
-  id: 0,
-  cover: "",
-  title: "",
-  desc: "",
-  author: "摄影爱好者",
-  avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix",
-  content:
-    "这里是详细内容的展示区域。可以包含更多的文字描述、图片等信息。为了让页面看起来更丰满，这里添加了一些占位文本。",
-  likes: 128,
-  comments: 32,
-});
+  const detailData = ref({
+    id: 0,
+    cover: '',
+    title: '',
+    desc: '',
+    author: '摄影爱好者',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix',
+    content:
+      '这里是详细内容的展示区域。可以包含更多的文字描述、图片等信息。为了让页面看起来更丰满，这里添加了一些占位文本。',
+    likes: 128,
+    comments: 32,
+  })
 
-const navOpacity = ref(0);
+  const navOpacity = ref(0)
 
-onLoad((e: any) => {
-  const id = Number(e.id) || 0;
-  detailData.value = {
-    ...detailData.value,
-    id,
-    cover: `https://picsum.photos/id/${id}/600/800`,
-    title: `title ${id}`,
-    desc: `desc ${id} - 这是一个非常精彩的详情描述，展示了更多的细节和内容。`,
-  };
-});
+  onLoad((e: any) => {
+    const id = Number(e.id) || 0
+    detailData.value = {
+      ...detailData.value,
+      id,
+      cover: `https://picsum.photos/id/${id}/600/800`,
+      title: `title ${id}`,
+      desc: `desc ${id} - 这是一个非常精彩的详情描述，展示了更多的细节和内容。`,
+    }
+  })
 
-const handleScroll = (e: any) => {
-  const scrollTop = e.detail.scrollTop;
-  // 滚动距离在 0-150 之间时，透明度从 0 渐变到 1
-  const opacity = Math.min(scrollTop / 150, 1);
-  navOpacity.value = opacity;
-};
+  const handleScroll = (e: any) => {
+    const scrollTop = e.detail.scrollTop
+    // 滚动距离在 0-150 之间时，透明度从 0 渐变到 1
+    const opacity = Math.min(scrollTop / 150, 1)
+    navOpacity.value = opacity
+  }
 </script>
 
 <template>
@@ -75,20 +75,25 @@ const handleScroll = (e: any) => {
                 :src="detailData.avatar"
                 class="w-10 h-10 rounded-full bg-gray-100"
               />
-              <text class="text-base font-medium text-gray-800">{{
-                detailData.author
-              }}</text>
+              <text class="text-base font-medium text-gray-800">
+                {{ detailData.author }}
+              </text>
             </view>
-            <button type="button" class="m-0 px-4 py-1.5 text-sm text-white bg-blue-500 rounded-full border-none leading-normal">关注</button>
+            <button
+              type="button"
+              class="m-0 px-4 py-1.5 text-sm text-white bg-blue-500 rounded-full border-none leading-normal"
+            >
+              关注
+            </button>
           </view>
 
           <!-- 标题和描述 -->
-          <text class="block text-2xl font-bold text-gray-900 mb-2">{{
-            detailData.title
-          }}</text>
-          <text class="block text-base text-gray-500 mb-6 leading-relaxed">{{
-            detailData.desc
-          }}</text>
+          <text class="block text-2xl font-bold text-gray-900 mb-2">
+            {{ detailData.title }}
+          </text>
+          <text class="block text-base text-gray-500 mb-6 leading-relaxed">
+            {{ detailData.desc }}
+          </text>
 
           <!-- 正文内容 -->
           <view class="text-gray-700 text-base leading-loose">
@@ -100,16 +105,19 @@ const handleScroll = (e: any) => {
           <view class="flex flex-wrap gap-2 mt-6">
             <text
               class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
-              ># 摄影</text
             >
+              # 摄影
+            </text>
             <text
               class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
-              ># 生活</text
             >
+              # 生活
+            </text>
             <text
               class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
-              ># 随手拍</text
             >
+              # 随手拍
+            </text>
           </view>
         </view>
       </view>
@@ -138,8 +146,8 @@ const handleScroll = (e: any) => {
 </template>
 
 <style>
-/* 适配底部安全区 */
-.pb-safe {
-  padding-bottom: env(safe-area-inset-bottom);
-}
+  /* 适配底部安全区 */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 </style>

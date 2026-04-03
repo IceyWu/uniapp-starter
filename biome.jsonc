@@ -88,9 +88,6 @@
   "overrides": [
     {
       "includes": ["**/*.vue"],
-      "formatter": {
-        "enabled": false
-      },
       "linter": {
         "rules": {
           "nursery": {

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-definePage(() => ({
-  layout: 'home',
-  style: {
-    navigationBarTitleText: '发布',
-  },
-}))
+  definePage(() => ({
+    layout: 'home',
+    style: {
+      navigationBarTitleText: '发布',
+    },
+  }))
 </script>
 
 <template>

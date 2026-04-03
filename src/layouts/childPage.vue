@@ -1,15 +1,19 @@
 <script lang="ts" setup>
-import { arrayLast, getObjVal } from '@iceywu/utils'
+  import { arrayLast, getObjVal } from '@iceywu/utils'
 
-const pageInfo = arrayLast(getCurrentPages())
-const objVal = getObjVal(pageInfo, ['$page', 'meta', 'navigationBar'])
-const { themeVars } = useTheme()
+  const pageInfo = arrayLast(getCurrentPages())
+  const objVal = getObjVal(pageInfo, ['$page', 'meta', 'navigationBar'])
+  const { themeVars } = useTheme()
 </script>
 
 <template>
-  <wd-config-provider :theme="isDark ? 'dark' : 'light'" :theme-vars="themeVars">
+  <wd-config-provider
+    :theme="isDark ? 'dark' : 'light'"
+    :theme-vars="themeVars"
+  >
     <view
-      class="app-box" :class="{
+      class="app-box"
+      :class="{
         dark: isDark,
       }"
     >
@@ -43,7 +47,7 @@ const { themeVars } = useTheme()
 .app-box {
   height: 100vh;
   box-sizing: border-box;
-    padding-bottom:calc( env(safe-area-inset-bottom) );
+    // padding-bottom:calc( env(safe-area-inset-bottom) );
     display: flex;
     flex-direction: column;
     .title {

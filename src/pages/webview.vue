@@ -3,5 +3,5 @@
 </script>
 
 <template>
-  <web-view :src="url"/>
+  <web-view :src="url" />
 </template>

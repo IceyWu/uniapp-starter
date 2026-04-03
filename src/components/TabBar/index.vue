@@ -1,176 +1,181 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+  import { onMounted, onUnmounted, ref } from 'vue'
 
-defineProps({
-  userIdentity: {
-    type: Number,
-    default: 0,
-  },
-})
-
-interface TabBarItem {
-  iconPath: string
-  isNeedLogin?: boolean
-  isRedirect: boolean
-  pagePath: string
-  selectedIconPath: string
-  text: string
-}
-
-const LEADING_SLASH_RE = /^\//
-const HASH_PREFIX_RE = /^#/
-
-const selected = ref(0)
-const color = ref('#86909c') // Arco 次要文字色
-
-// 获取主题色
-const { themeVarsExtended } = useTheme()
-
-// 滚动相关状态
-const isExpanded = ref(true) // 是否展开状态
-const lastScrollTop = ref(0) // 上次滚动位置
-const scrollThreshold = 50 // 滚动阈值（px）
-const expandThreshold = 100 // 距离顶部多少距离内才展开（px）
-const manualExpanded = ref(false) // 用户手动展开
-
-// 处理页面滚动
-function handleScroll(scrollTop: number) {
-  // 如果用户手动展开了，需要滚动一定距离才能重新自动控制
-  if (manualExpanded.value) {
-    if (Math.abs(scrollTop - lastScrollTop.value) > scrollThreshold * 3) {
-      manualExpanded.value = false
-    }
-    lastScrollTop.value = scrollTop
-    return
-  }
-
-  // 向下滚动且超过阈值，收起
-  if (scrollTop > lastScrollTop.value && scrollTop > scrollThreshold) {
-    isExpanded.value = false
-  }
-  // 只有滚动到距离顶部一定距离内才展开
-  else if (scrollTop < expandThreshold) {
-    isExpanded.value = true
-  }
-
-  lastScrollTop.value = scrollTop
-}
-
-// TabBar 列表配置
-const list = ref<TabBarItem[]>([
-  {
-    pagePath: '/pages/home/index',
-    iconPath: 'i-carbon-home',
-    selectedIconPath: 'i-carbon-home',
-    text: '首页',
-    isRedirect: false,
-    isNeedLogin: false,
-  },
-  {
-    pagePath: '/pages/mine/index',
-    iconPath: 'i-carbon-user',
-    selectedIconPath: 'i-carbon-user',
-    text: '我的',
-    isRedirect: false,
-    isNeedLogin: true,
-  },
-])
-
-// 监听页面滚动事件 - 使用 uni.$on
-const scrollEventName = 'pageScroll'
-
-// 监听页面滚动
-function setupPageScroll() {
-  // 监听全局滚动事件
-  uni.$on(scrollEventName, handleScroll)
-}
-
-// 手动切换展开/收起
-function toggleExpand() {
-  isExpanded.value = !isExpanded.value
-  manualExpanded.value = true
-
-  // 3秒后允许自动控制
-  setTimeout(() => {
-    manualExpanded.value = false
-  }, 3000)
-}
-
-function switchTab(item: TabBarItem, index: number) {
-  // 如果是折叠状态，点击只展开，不跳转
-  if (!isExpanded.value) {
-    toggleExpand()
-    return
-  }
-
-  // 展开状态下才执行跳转
-  selected.value = index
-
-  if (item.isRedirect) {
-    uni.redirectTo({
-      url: item.pagePath,
-    })
-  }
-  else {
-    uni.switchTab({
-      url: item.pagePath,
-    })
-  }
-}
-
-// 检测当前路由并更新选中状态
-function updateSelectedTab() {
-  const pages = getCurrentPages()
-  const pageInfo = arrayLast(pages)
-
-  // 兼容多端：MP 用 .route，H5/App 用 $page.fullPath 或 $page.path
-  let currentPath = ''
-  if (pageInfo) {
-    currentPath = (pageInfo as any).route
-      || getObjVal(pageInfo, ['$page', 'fullPath'])
-      || getObjVal(pageInfo, ['$page', 'path'])
-      || ''
-  }
-
-  // H5 端 fallback：从 location.hash 解析
-  // #ifdef H5
-  if (!currentPath && typeof window !== 'undefined') {
-    currentPath = window.location.hash.replace(HASH_PREFIX_RE, '').split('?')[0]
-  }
-  // #endif
-
-  const idx = list.value.findIndex((item) => {
-    const itemPath = item.pagePath.replace(LEADING_SLASH_RE, '')
-    const pagePath = currentPath.replace(LEADING_SLASH_RE, '').split('?')[0]
-    return pagePath === itemPath
+  defineProps({
+    userIdentity: {
+      type: Number,
+      default: 0,
+    },
   })
 
-  selected.value = idx >= 0 ? idx : 0
-}
+  interface TabBarItem {
+    iconPath: string
+    isNeedLogin?: boolean
+    isRedirect: boolean
+    pagePath: string
+    selectedIconPath: string
+    text: string
+  }
 
-onMounted(() => {
-  // 隐藏原生 tabBar，防止小程序端出现底部空白条或闪烁
-  uni.hideTabBar({ fail() {} })
+  const LEADING_SLASH_RE = /^\//
+  const HASH_PREFIX_RE = /^#/
 
-  updateSelectedTab()
+  const selected = ref(0)
+  const color = ref('#86909c') // Arco 次要文字色
 
-  // 设置页面滚动监听
-  setupPageScroll()
-})
+  // 获取主题色
+  const { themeVarsExtended } = useTheme()
 
-// tab 页面切换时 onShow 会重新触发，更新选中状态
-onShow(() => {
-  updateSelectedTab()
-})
+  // 滚动相关状态
+  const isExpanded = ref(true) // 是否展开状态
+  const lastScrollTop = ref(0) // 上次滚动位置
+  const scrollThreshold = 50 // 滚动阈值（px）
+  const expandThreshold = 100 // 距离顶部多少距离内才展开（px）
+  const manualExpanded = ref(false) // 用户手动展开
 
-onUnmounted(() => {
-  // 清理滚动监听
-  uni.$off(scrollEventName, handleScroll)
-})
+  // 处理页面滚动
+  function handleScroll(scrollTop: number) {
+    // 如果用户手动展开了，需要滚动一定距离才能重新自动控制
+    if (manualExpanded.value) {
+      if (Math.abs(scrollTop - lastScrollTop.value) > scrollThreshold * 3) {
+        manualExpanded.value = false
+      }
+      lastScrollTop.value = scrollTop
+      return
+    }
+
+    // 向下滚动且超过阈值，收起
+    if (scrollTop > lastScrollTop.value && scrollTop > scrollThreshold) {
+      isExpanded.value = false
+    }
+    // 只有滚动到距离顶部一定距离内才展开
+    else if (scrollTop < expandThreshold) {
+      isExpanded.value = true
+    }
+
+    lastScrollTop.value = scrollTop
+  }
+
+  // TabBar 列表配置
+  const list = ref<TabBarItem[]>([
+    {
+      pagePath: '/pages/home/index',
+      iconPath: 'i-carbon-home',
+      selectedIconPath: 'i-carbon-home',
+      text: '首页',
+      isRedirect: false,
+      isNeedLogin: false,
+    },
+    {
+      pagePath: '/pages/mine/index',
+      iconPath: 'i-carbon-user',
+      selectedIconPath: 'i-carbon-user',
+      text: '我的',
+      isRedirect: false,
+      isNeedLogin: true,
+    },
+  ])
+
+  // 监听页面滚动事件 - 使用 uni.$on
+  const scrollEventName = 'pageScroll'
+
+  // 监听页面滚动
+  function setupPageScroll() {
+    // 监听全局滚动事件
+    uni.$on(scrollEventName, handleScroll)
+  }
+
+  // 手动切换展开/收起
+  function toggleExpand() {
+    isExpanded.value = !isExpanded.value
+    manualExpanded.value = true
+
+    // 3秒后允许自动控制
+    setTimeout(() => {
+      manualExpanded.value = false
+    }, 3000)
+  }
+
+  function switchTab(item: TabBarItem, index: number) {
+    // 如果是折叠状态，点击只展开，不跳转
+    if (!isExpanded.value) {
+      toggleExpand()
+      return
+    }
+
+    // 展开状态下才执行跳转
+    selected.value = index
+
+    if (item.isRedirect) {
+      uni.redirectTo({
+        url: item.pagePath,
+      })
+    } else {
+      uni.switchTab({
+        url: item.pagePath,
+      })
+    }
+  }
+
+  // 检测当前路由并更新选中状态
+  function updateSelectedTab() {
+    const pages = getCurrentPages()
+    const pageInfo = arrayLast(pages)
+
+    // 兼容多端：MP 用 .route，H5/App 用 $page.fullPath 或 $page.path
+    let currentPath = ''
+    if (pageInfo) {
+      currentPath =
+        (pageInfo as any).route ||
+        getObjVal(pageInfo, ['$page', 'fullPath']) ||
+        getObjVal(pageInfo, ['$page', 'path']) ||
+        ''
+    }
+
+    // H5 端 fallback：从 location.hash 解析
+    // #ifdef H5
+    if (!currentPath && typeof window !== 'undefined') {
+      currentPath = window.location.hash
+        .replace(HASH_PREFIX_RE, '')
+        .split('?')[0]
+    }
+    // #endif
+
+    const idx = list.value.findIndex((item) => {
+      const itemPath = item.pagePath.replace(LEADING_SLASH_RE, '')
+      const pagePath = currentPath.replace(LEADING_SLASH_RE, '').split('?')[0]
+      return pagePath === itemPath
+    })
+
+    selected.value = idx >= 0 ? idx : 0
+  }
+
+  onMounted(() => {
+    // 隐藏原生 tabBar，防止小程序端出现底部空白条或闪烁
+    uni.hideTabBar({ fail() {} })
+
+    updateSelectedTab()
+
+    // 设置页面滚动监听
+    setupPageScroll()
+  })
+
+  // tab 页面切换时 onShow 会重新触发，更新选中状态
+  onShow(() => {
+    updateSelectedTab()
+  })
+
+  onUnmounted(() => {
+    // 清理滚动监听
+    uni.$off(scrollEventName, handleScroll)
+  })
 </script>
 
 <template>
-  <view class="tab-bar" :class="[isDark ? 'dark-tab-bar' : '', isExpanded ? '' : 'collapsed']">
+  <view
+    class="tab-bar"
+    :class="[isDark ? 'dark-tab-bar' : '', isExpanded ? '' : 'collapsed']"
+  >
     <view class="float-part card-base" :class="{ collapsed: !isExpanded }">
       <!-- TabBar items -->
       <template v-for="(item, index) in list" :key="index">

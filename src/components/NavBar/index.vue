@@ -1,54 +1,54 @@
 <script setup lang="ts">
-defineOptions({
-  options: {
-    styleIsolation: 'shared',
-  },
-})
-const props = withDefaults(defineProps<Props>(), {
-  class: '',
-  isNeedLeft: false,
-  baseProps: () => ({
-    border: false,
-  }),
-  isGoBack: false,
-  placeholder: true,
-  safeAreaInsetTop: true,
-})
+  defineOptions({
+    options: {
+      styleIsolation: 'shared',
+    },
+  })
+  const props = withDefaults(defineProps<Props>(), {
+    class: '',
+    isNeedLeft: false,
+    baseProps: () => ({
+      border: false,
+    }),
+    isGoBack: false,
+    placeholder: true,
+    safeAreaInsetTop: true,
+  })
 
-const emit = defineEmits(['click-left'])
+  const emit = defineEmits(['click-left'])
 
-interface BaseProps {
-  backgroundColor?: string
-  border?: boolean
-  fixed?: boolean
-  title?: string
-}
-
-interface Props {
-  baseProps?: BaseProps
-  class?: string
-  isCustomLeftClick?: boolean
-  isGoBack?: boolean
-  isNeedLeft?: boolean
-  placeholder?: boolean
-  safeAreaInsetTop?: boolean
-}
-
-function goBack() {
-  if (props?.isCustomLeftClick) {
-    emit('click-left')
-    return
+  interface BaseProps {
+    backgroundColor?: string
+    border?: boolean
+    fixed?: boolean
+    title?: string
   }
-  if (!props?.isNeedLeft) {
-    return
+
+  interface Props {
+    baseProps?: BaseProps
+    class?: string
+    isCustomLeftClick?: boolean
+    isGoBack?: boolean
+    isNeedLeft?: boolean
+    placeholder?: boolean
+    safeAreaInsetTop?: boolean
   }
-  if (props?.isGoBack) {
-    uni.navigateBack()
+
+  function goBack() {
+    if (props?.isCustomLeftClick) {
+      emit('click-left')
+      return
+    }
+    if (!props?.isNeedLeft) {
+      return
+    }
+    if (props?.isGoBack) {
+      uni.navigateBack()
+    }
   }
-}
-const customStyle = computed(() => `background-color: ${
-    props.baseProps?.backgroundColor
-  } `)
+  const customStyle = computed(
+    () => `background-color: ${props.baseProps?.backgroundColor} `
+  )
 </script>
 
 <template>
@@ -71,18 +71,10 @@ const customStyle = computed(() => `background-color: ${
     </template>
 
     <template #title>
-      <view
-        class="truncate"
-      >
-        <slot>
-          {{ baseProps?.title }}
-        </slot>
-      </view>
+      <view class="truncate"><slot> {{ baseProps?.title }} </slot></view>
     </template>
 
-    <template #right>
-      <slot name="right" />
-    </template>
+    <template #right> <slot name="right" /> </template>
   </wd-navbar>
 </template>
 
