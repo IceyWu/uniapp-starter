@@ -29,6 +29,7 @@ declare module 'vue' {
     WdRadio: typeof import('wot-design-uni/components/wd-radio/wd-radio.vue')['default']
     WdRadioGroup: typeof import('wot-design-uni/components/wd-radio-group/wd-radio-group.vue')['default']
     WdRate: typeof import('wot-design-uni/components/wd-rate/wd-rate.vue')['default']
+    WdSkeleton: typeof import('wot-design-uni/components/wd-skeleton/wd-skeleton.vue')['default']
     WdSlider: typeof import('wot-design-uni/components/wd-slider/wd-slider.vue')['default']
     WdSwitch: typeof import('wot-design-uni/components/wd-switch/wd-switch.vue')['default']
     WdTag: typeof import('wot-design-uni/components/wd-tag/wd-tag.vue')['default']

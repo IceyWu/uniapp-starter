@@ -1,38 +1,17 @@
 <script setup lang="ts">
+  import { getPicsumList } from '@/api/apiPicsum'
+
   interface WaterfallsListProps {
     autoLoad?: boolean
   }
   const props = defineProps<WaterfallsListProps>()
 
-  // 模拟api
-  async function getTestApi(params: any) {
-    await sleep(500)
-    const { page = 0, size = 10, maxPage = 3 } = params
-    const baseSize = page * size
-    const data = list(0, size - 1, (index) => {
-      const element = baseSize + index
-      const coverSize = 200 + Math.floor(Math.random() * 100)
-      const coverHeight = 300 + Math.floor(Math.random() * 100)
-      const coverUrl = `https://picsum.photos/id/${element}/${coverSize}/${coverHeight}`
-      return {
-        id: element,
-        cover: coverUrl,
-        title: `title ${element}`,
-        desc: `desc ${element}`,
-        height: coverHeight,
-        width: coverSize,
-      }
-    })
-    return {
-      code: 200,
-      msg: '查询成功',
-      result: {
-        content: data,
-        last: page + 1 === maxPage,
-        total: 100,
-      },
-    }
-  }
+  // 骨架屏：模拟瀑布流卡片形状（图片 + 标题 + 描述）
+  const skeletonRowCol = [
+    { height: '180px', borderRadius: '12px' },
+    { width: '70%', height: '16px', margin: '10px 10px 0' },
+    { width: '50%', height: '12px', margin: '8px 10px 0' },
+  ]
 
   const pagingRef = ref()
   // 标记当前是刷新还是加载更多
@@ -42,20 +21,24 @@
     onRefresh,
     onLoad: onLoadMore,
     result,
-  } = useRequest(getTestApi, {
+  } = useRequest(getPicsumList, {
     target: 'list',
     loadingDelay: 300,
-    getVal: (res) => {
-      return getObjVal(res, 'result.content', [])
+    getVal: (res: any) => {
+      return (res || []).map((item: any) => ({
+        id: item.id,
+        cover: item.download_url,
+        title: item.author,
+        desc: `Photo #${item.id} · ${item.width}×${item.height}`,
+        height: item.height,
+        width: item.width,
+      }))
     },
     listOptions: {
       defaultPageKey: 'page',
-      defaultSizeKey: 'size',
+      defaultSizeKey: 'limit',
       defaultDataKey: 'list',
-      defaultPage: 0,
-      getTotal: (data) => {
-        return getObjVal(data, 'result.total', 0)
-      },
+      defaultPage: 1,
     },
     onRequestEnd: () => {
       const list = getObjVal(result.value, 'list', [])
@@ -164,11 +147,26 @@
         </template>
       </up-waterfall>
     </view>
+
+    <!-- 底部加载骨架屏 -->
+    <template #loadingMoreLoading>
+      <view class="skeleton-wrap">
+        <wd-skeleton
+          v-for="i in 2"
+          :key="i"
+          animation="gradient"
+          :row-col="skeletonRowCol"
+          :custom-style="{ flex: 1 }"
+        />
+      </view>
+    </template>
   </z-paging>
 </template>
 
 <style scoped lang="scss">
-.item-img {
-  min-height: 50rpx;
+.skeleton-wrap {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
 }
 </style>

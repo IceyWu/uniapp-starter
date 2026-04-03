@@ -41,6 +41,8 @@ declare global {
   const getCurrentWatcher: typeof import('vue').getCurrentWatcher
   const getDataList: typeof import('../api/apiTest').getDataList
   const getObjVal: typeof import('@iceywu/utils').getObjVal
+  const getPicsumDetail: typeof import('../api/apiPicsum').getPicsumDetail
+  const getPicsumList: typeof import('../api/apiPicsum').getPicsumList
   const getSign: typeof import('../api/ossUpload')['getSign']
   const getToken: typeof import('../utils/http/auth').getToken
   const getUploadId: typeof import('../api/ossUpload')['getUploadId']
@@ -226,6 +228,9 @@ declare global {
   } from 'vue'
   import('vue')
   // @ts-ignore
+  export type { PicsumItem } from '../api/apiPicsum'
+  import('../api/apiPicsum')
+  // @ts-ignore
   export type { DataInfo } from '../utils/http/auth'
   import('../utils/http/auth')
 }
@@ -284,6 +289,12 @@ declare module 'vue' {
       typeof import('../api/apiTest')['getDataList']
     >
     readonly getObjVal: UnwrapRef<typeof import('@iceywu/utils')['getObjVal']>
+    readonly getPicsumDetail: UnwrapRef<
+      typeof import('../api/apiPicsum')['getPicsumDetail']
+    >
+    readonly getPicsumList: UnwrapRef<
+      typeof import('../api/apiPicsum')['getPicsumList']
+    >
     readonly getToken: UnwrapRef<
       typeof import('../utils/http/auth')['getToken']
     >

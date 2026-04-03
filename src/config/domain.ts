@@ -1,6 +1,7 @@
 interface ServerConfig {
   baseServer: string
   otherServer: string
+  picsumServer: string
   uploadServer: string
 }
 
@@ -12,11 +13,13 @@ const envMap: EnvMap = {
   dev: {
     baseServer: 'https://xxx',
     otherServer: 'http://x.x.x.x/section',
+    picsumServer: 'https://picsum.photos',
     uploadServer: 'https://xxx/alioss/uploadBase',
   },
   prod: {
     baseServer: 'https://xxx',
     otherServer: 'http://x.x.x.x/section',
+    picsumServer: 'https://picsum.photos',
     uploadServer: 'https://xxx/alioss/uploadBase',
   },
 }

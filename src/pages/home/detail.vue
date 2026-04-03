@@ -1,39 +1,50 @@
 <script lang="ts" setup>
   import { ref } from 'vue'
+  import { getPicsumDetail } from '@/api/apiPicsum'
 
   definePage({
     layout: 'custom',
   })
 
   const detailData = ref({
-    id: 0,
+    id: '',
     cover: '',
     title: '',
     desc: '',
-    author: '摄影爱好者',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix',
-    content:
-      '这里是详细内容的展示区域。可以包含更多的文字描述、图片等信息。为了让页面看起来更丰满，这里添加了一些占位文本。',
-    likes: 128,
-    comments: 32,
+    author: '',
+    avatar: '',
+    content: '',
+    likes: 0,
+    comments: 0,
   })
 
   const navOpacity = ref(0)
+  const loading = ref(true)
 
-  onLoad((e: any) => {
-    const id = Number(e.id) || 0
-    detailData.value = {
-      ...detailData.value,
-      id,
-      cover: `https://picsum.photos/id/${id}/600/800`,
-      title: `title ${id}`,
-      desc: `desc ${id} - 这是一个非常精彩的详情描述，展示了更多的细节和内容。`,
+  onLoad(async (e: any) => {
+    const id = e.id || '0'
+    try {
+      const res: any = await getPicsumDetail(id)
+      detailData.value = {
+        id: res.id,
+        cover: res.download_url,
+        title: res.author,
+        desc: `Photo #${res.id} · ${res.width}×${res.height}`,
+        author: res.author,
+        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${res.author}`,
+        content: `由 ${res.author} 拍摄，原始尺寸 ${res.width}×${res.height}。`,
+        likes: Math.floor(Math.random() * 500),
+        comments: Math.floor(Math.random() * 100),
+      }
+    } catch {
+      uni.showToast({ title: '加载失败', icon: 'none' })
+    } finally {
+      loading.value = false
     }
   })
 
   const handleScroll = (e: any) => {
     const scrollTop = e.detail.scrollTop
-    // 滚动距离在 0-150 之间时，透明度从 0 渐变到 1
     const opacity = Math.min(scrollTop / 150, 1)
     navOpacity.value = opacity
   }
