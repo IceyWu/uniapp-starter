@@ -14,11 +14,11 @@
 <br/>
 
 <p align='center'>
-<a href="https://github.com/vuejs/vue"><img src="https://img.shields.io/badge/Vue-3.5.22-4FC08D?style=flat-square&logo=vue.js&logoColor=white" alt="Vue"></a>
-<a href="https://github.com/microsoft/TypeScript"><img src="https://img.shields.io/badge/TypeScript-5.9.2-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
-<a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-7.1.7-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite"></a>
-<a href="https://unocss.dev/"><img src="https://img.shields.io/badge/UnoCSS-0.66.4-1896FF?style=flat-square&logo=unocss&logoColor=white" alt="UnoCSS"></a>
-<a href="https://pinia.vuejs.org/"><img src="https://img.shields.io/badge/Pinia-3.0.3-yellow?style=flat-square&logo=vue.js&logoColor=white" alt="Pinia"></a>
+<a href="https://github.com/vuejs/vue"><img src="https://img.shields.io/badge/Vue-3.4.21-4FC08D?style=flat-square&logo=vue.js&logoColor=white" alt="Vue"></a>
+<a href="https://github.com/microsoft/TypeScript"><img src="https://img.shields.io/badge/TypeScript-6.0.2-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
+<a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-5.2.8-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite"></a>
+<a href="https://unocss.dev/"><img src="https://img.shields.io/badge/UnoCSS-66.6.7-1896FF?style=flat-square&logo=unocss&logoColor=white" alt="UnoCSS"></a>
+<a href="https://pinia.vuejs.org/"><img src="https://img.shields.io/badge/Pinia-3.0.4-yellow?style=flat-square&logo=vue.js&logoColor=white" alt="Pinia"></a>
 </p>
 
 <br/>
@@ -58,25 +58,25 @@
 
 - 🍍 [Pinia](https://pinia.vuejs.org) - Vue 3 官方推荐的状态管理解决方案
 - 🌐 [Vue I18n](https://vue-i18n.intlify.dev/) - 完整的国际化解决方案
-- 🔐 **HTTP 客户端** - 基于 Axios 的请求封装，支持拦截器和自动重试
+- 🔐 **HTTP 客户端** - 基于 `@uni-helper/uni-network` 的请求封装，支持拦截器和统一错误处理
 - 📊 **数据持久化** - Pinia 状态持久化，支持多种存储方式
 - ✅ [Vitest](https://vitest.dev/) - 现代化单元测试框架，与 Vite 深度集成
-- 🔍 [ESLint](https://eslint.org/) - 代码规范检查，配置 UniApp 专用规则
-- 🔒 **Git Hooks** - 提交前代码检查，确保代码质量
-- 📦 **依赖管理** - 支持 Bun/pnpm，更快的包管理体验
+- 🔍 [Ultracite](https://www.npmjs.com/package/ultracite) + [Biome](https://biomejs.dev/) - 代码检查与格式化
+- 🔒 [Lefthook](https://github.com/evilmartians/lefthook) - 提交前代码检查，确保代码质量
+- 📦 **依赖管理** - 使用 pnpm 管理依赖
 
 ### 📱 全平台支持
 
 - 📱 **App** (Android/iOS) - 使用 uni-app 编译为原生应用
 - 🌐 **H5** - 现代浏览器支持，PWA 就绪
-- � **微信小程序** - 完整支持微信小程序特性
-- � **支付宝小程序** - 支付宝生态应用开发
-- � **百度小程序** - 百度智能小程序支持
+- 🔧 **微信小程序** - 完整支持微信小程序特性
+- 🔧 **支付宝小程序** - 支付宝生态应用开发
+- 🔧 **百度小程序** - 百度智能小程序支持
 - 🎵 **字节跳动小程序** - 抖音、今日头条小程序
-- � **QQ 小程序** - QQ 生态应用
+- 🔧 **QQ 小程序** - QQ 生态应用
 - ⚡ **快手小程序** - 快手平台小程序
-- � **京东小程序** - 京东购物平台
-- � **飞书小程序** - 企业级办公应用
+- 🔧 **京东小程序** - 京东购物平台
+- 🔧 **飞书小程序** - 企业级办公应用
 - 🌈 **鸿蒙应用** - 华为鸿蒙系统支持
 - 🔥 **小红书小程序** - 新增小红书平台支持
 
@@ -92,7 +92,7 @@
 
 - **Vite** - 下一代前端工具链
 - **ESBuild** - 极速 JavaScript 打包器
-- **Bun** - 现代化 JavaScript 运行时和包管理器
+- **pnpm** - 高性能包管理器
 
 ### 状态管理
 
@@ -107,7 +107,7 @@
 
 ### 网络请求
 
-- **Axios** - 基于 Promise 的 HTTP 客户端库
+- **@uni-helper/uni-network** - UniApp 跨端网络请求库
 - 自定义封装的请求拦截器和响应处理
 - 支持请求/响应拦截和自动错误处理
 - 自动 Token 管理和刷新机制
@@ -115,29 +115,29 @@
 ### 工具库
 
 - **dayjs** - 轻量级日期处理库
+- **@iceywu/utils** - 常用工具函数集合
+- **js-cookie** - Cookie 管理工具
 - **js-md5** - MD5 加密库
-- **spark-md5** - 文件 MD5 计算
 - **qs** - 查询字符串解析和序列化
 - **blurhash** - 图片模糊哈希
-- **gm-crypto** - 加密工具库
 
 ### 开发工具
 
-- **ESLint** - 代码检查工具
-- **@uni-helper/eslint-config** - UniApp ESLint 配置
+- **Ultracite** - 代码检查与修复工具
+- **Biome** - 格式化与静态检查工具
 - **Vitest** - 单元测试框架
 - **Vue DevTools** - Vue 开发者工具
-- **simple-git-hooks** - Git 钩子工具
-- **lint-staged** - 提交前代码检查
+- **Lefthook** - Git 钩子工具
 
 ### 插件系统
 
 - **unplugin-auto-import** - API 自动导入，支持 Vue、Pinia 等
 - **unplugin-vue-components** - 组件自动导入和注册
+- **@uni-helper/vite-plugin-uni-components** - UniApp 组件自动注册
 - **@uni-helper/vite-plugin-uni-pages** - 基于文件的路由系统
 - **@uni-helper/vite-plugin-uni-layouts** - 页面布局系统
 - **@uni-helper/vite-plugin-uni-manifest** - manifest.json 自动生成
-- **vite-plugin-vue-devtools** - Vue DevTools Vite 插件
+- **@uni-ku/bundle-optimizer** - UniApp 包体积优化
 
 ### 类型支持
 
@@ -148,132 +148,68 @@
 
 ## 📁 项目结构
 
-```
+```text
 uniapp-starter/
-├── public/                          # 静态资源目录
-│   └── favicon.svg                 # 应用图标
 ├── src/
-│   ├── @types/                     # TypeScript 类型定义
-│   │   ├── api-types.d.ts         # API 类型定义
-│   │   ├── api.d.ts               # API 接口类型
-│   │   ├── auto-imports.d.ts      # 自动导入类型
-│   │   ├── components.d.ts        # 组件类型定义
-│   │   ├── global.d.ts            # 全局类型定义
-│   │   ├── store.d.ts             # Store 类型定义
-│   │   └── uni-pages.d.ts         # 页面路由类型
-│   ├── api/                        # API 接口封装
-│   │   └── apiTest.ts             # 示例 API
-│   ├── components/                 # 公共组件
-│   │   ├── NavBar/                # 导航栏组件
-│   │   │   └── index.vue
-│   │   ├── TabBar/                # 标签栏组件
-│   │   │   └── index.vue
-│   │   ├── TheFooter.vue          # 页脚组件
-│   │   └── WaterfallsList.vue     # 瀑布流列表组件
-│   ├── composables/               # 组合式函数
-│   │   ├── useDark.ts             # 暗色模式
-│   │   ├── useLanguage.ts         # 语言切换
-│   │   └── useRouter.ts           # 路由工具
-│   ├── config/                    # 应用配置
-│   │   ├── app.ts                 # 应用基础配置
-│   │   └── domain.ts              # API 域名配置
-│   ├── helper/                    # 辅助工具
-│   │   └── pinia-auto-refs.ts     # Pinia 自动引用
-│   ├── hooks/                     # 自定义 Hooks
-│   │   ├── usePage.ts             # 页面相关 Hook
-│   │   └── useTitle.ts            # 标题管理 Hook
-│   ├── layouts/                   # 布局组件
-│   │   ├── childPage.vue          # 子页面布局
-│   │   ├── default.vue            # 默认布局
-│   │   ├── home.vue               # 首页布局
-│   │   └── README.md              # 布局使用说明
-│   ├── locale/                    # 国际化文件
-│   │   ├── en.json                # 英文语言包
-│   │   └── zh.json                # 中文语言包
-│   ├── pages/                     # 页面组件
-│   │   ├── index.vue              # 首页
-│   │   ├── webview.vue            # WebView 页面
-│   │   ├── home/                  # 首页相关页面
-│   │   │   └── detail.vue         # 详情页
-│   │   ├── mine/                  # 个人中心
-│   │   │   └── index.vue          # 个人中心首页
-│   │   └── post/                  # 帖子相关
-│   │       └── index.vue          # 帖子列表
-│   ├── pages-sub/                 # 子包页面
-│   │   └── index.vue              # 子包示例页面
-│   ├── static/                    # 静态资源
-│   │   └── logo.png               # Logo 图片
-│   ├── store/                     # 状态管理
-│   │   ├── index.ts               # Store 入口
-│   │   └── user.ts                # 用户状态管理
-│   ├── styles/                    # 样式文件
-│   │   └── main.css               # 主样式文件
-│   ├── test/                      # 测试文件
-│   │   └── basic.test.ts          # 基础测试
-│   ├── utils/                     # 工具函数
-│   │   ├── enum.ts                # 枚举定义
-│   │   ├── i18n.ts                # 国际化工具
-│   │   ├── index.ts               # 工具函数入口
-│   │   ├── platform.ts            # 平台判断
-│   │   ├── router.ts              # 路由工具
-│   │   ├── sessionStorage.ts      # 会话存储
-│   │   ├── shared.ts              # 共享工具
-│   │   ├── urlMap.ts              # URL 映射
-│   │   ├── http/                  # HTTP 请求相关
-│   │   │   ├── auth.ts            # 认证相关
-│   │   │   ├── index.ts           # HTTP 封装
-│   │   │   └── tool.ts            # HTTP 工具
-│   │   └── tools/                 # 工具方法
-│   │       └── serviceLoading.ts  # 服务加载工具
-│   ├── App.vue                    # 根组件
-│   ├── env.d.ts                   # 环境类型定义
-│   ├── main.ts                    # 应用入口
-│   ├── manifest.json              # UniApp 配置文件
-│   ├── pages.json                 # 页面配置（自动生成）
-│   ├── shime-uni.d.ts             # UniApp 类型补充
-│   ├── theme.json                 # 主题配置
-│   └── uni.scss                   # UniApp 样式变量
-├── auto/                          # 自动化工具
-│   └── addPage.ts                 # 自动添加页面脚本
-├── scripts/                       # 脚本文件
-│   └── release.js                 # 发布脚本
-├── test/                          # 测试配置
-│   └── setup.ts                   # 测试设置
-├── commitlint.config.js           # 提交信息规范配置
-├── eslint.config.mjs              # ESLint 配置
-├── manifest.config.ts             # UniApp 清单配置
-├── pages.config.ts                # 页面路由配置
-├── tsconfig.json                  # TypeScript 配置
-├── uno.config.ts                  # UnoCSS 配置
-├── vite.config.ts                 # Vite 构建配置
-├── vitest.config.ts               # Vitest 测试配置
-├── bun.lockb                      # Bun 锁定文件
-└── package.json                   # 项目依赖配置
+│   ├── pages/ pages-sub/ sub-packages/   # 页面、分包和业务页面入口
+│   ├── layouts/                          # 布局系统
+│   ├── components/                       # 通用组件
+│   ├── api/                              # 接口封装示例
+│   ├── composables/ hooks/               # 组合式函数与页面 Hooks
+│   ├── store/                            # Pinia 状态管理
+│   ├── config/                           # 运行时配置与签名配置
+│   ├── locale/                           # i18n 语言包
+│   ├── styles/ static/                   # 全局样式与静态资源
+│   ├── utils/ helper/                    # 通用工具与辅助逻辑
+│   ├── @types/                           # 自动生成与手写类型声明
+│   ├── App.vue / main.ts                 # 应用入口
+│   └── manifest.json / pages.json        # 生成后的 uni-app 配置
+├── auto/                                 # 页面脚手架脚本，如 addPage.ts
+├── scripts/                              # 发布、微信 CI、skills 同步脚本
+├── test/                                 # Vitest 全局测试配置
+├── public/                               # H5 直接公开的静态资源
+├── biome.jsonc                           # Biome / Ultracite 规则配置
+├── manifest.config.ts                    # 生成 src/manifest.json 的源配置
+├── pages.config.ts                       # 生成 src/pages.json 的页面与分包配置
+├── uno.config.ts                         # UnoCSS 配置
+├── vite.config.ts                        # Vite 与 uni 插件配置
+├── vitest.config.ts                      # Vitest 配置
+├── tsconfig.json                         # TypeScript 配置
+└── package.json                          # 脚本、依赖与工程入口
 ```
+
+### 目录说明
+
+- `src/pages`、`src/pages-sub`、`src/sub-packages` 用于页面和分包组织，页面路由最终由 `pages.config.ts` 统一生成。
+- `src/layouts` 管理布局壳层；具体使用方式可参考 `src/layouts/README.md`。
+- `src/@types/auto-imports.d.ts`、`src/@types/components.d.ts`、`src/@types/uni-pages.d.ts` 是自动生成文件，通常不需要手动编辑。
+- `src/pages.json` 和 `src/manifest.json` 属于生成产物，优先修改根目录的 `pages.config.ts`、`manifest.config.ts`。
+- `scripts/mini-ci.js` 负责微信小程序预览和上传，`scripts/release.js` 负责版本发布，`scripts/skills-add.js` 负责同步本地 agent skills。
+- 当前代码质量链路基于 `biome.jsonc` + `ultracite`，项目中已经没有独立的 ESLint 配置文件。
 
 ## 🚀 快速开始
 
 ### 📋 环境要求
 
 - **Node.js** >= 18.0.0
-- **Bun** >= 1.0.0 (推荐) 或 **pnpm** >= 8.0.0
+- **pnpm** >= 8.0.0
 - **Git** >= 2.0.0
 
-> 💡 推荐使用 [Bun](https://bun.sh/) 作为包管理器，它比 npm/yarn 更快更现代化
+> 💡 推荐使用 [pnpm](https://pnpm.io/) 作为包管理器，当前仓库也已提供 `pnpm-lock.yaml`
 
 ### ⚡ 安装
 
 #### 方式一：使用模板创建（推荐）
 
 ```bash
-# 使用 Bun 创建项目
-bunx degit your-org/uniapp-starter my-uniapp-project
+# 使用 pnpm 创建项目
+pnpm dlx degit your-org/uniapp-starter my-uniapp-project
 
 # 进入项目目录
 cd my-uniapp-project
 
 # 安装依赖
-bun install
+pnpm install
 ```
 
 #### 方式二：克隆仓库
@@ -286,8 +222,6 @@ git clone https://github.com/your-org/uniapp-starter.git my-uniapp-project
 cd my-uniapp-project
 
 # 安装依赖
-bun install
-# 或使用 pnpm
 pnpm install
 ```
 
@@ -311,12 +245,12 @@ npm run syn_rpo
 
 ```bash
 # 启动 H5 开发服务器
-bun dev
+pnpm dev
 # 或
-bun dev:h5
+pnpm dev:h5
 
 # 带 SSR 的 H5 开发
-bun dev:h5:ssr
+pnpm dev:h5:ssr
 ```
 
 浏览器自动打开 `http://localhost:5173`
@@ -325,51 +259,51 @@ bun dev:h5:ssr
 
 ```bash
 # 微信小程序
-bun dev:mp-weixin
+pnpm dev:mp-weixin
 
 # 支付宝小程序
-bun dev:mp-alipay
+pnpm dev:mp-alipay
 
 # 百度小程序
-bun dev:mp-baidu
+pnpm dev:mp-baidu
 
 # 字节跳动小程序
-bun dev:mp-toutiao
+pnpm dev:mp-toutiao
 
 # QQ 小程序
-bun dev:mp-qq
+pnpm dev:mp-qq
 
 # 快手小程序
-bun dev:mp-kuaishou
+pnpm dev:mp-kuaishou
 
 # 京东小程序
-bun dev:mp-jd
+pnpm dev:mp-jd
 
 # 飞书小程序
-bun dev:mp-lark
+pnpm dev:mp-lark
 ```
 
 #### App 开发
 
 ```bash
 # App 开发
-bun dev:app
+pnpm dev:app
 
 # Android 专用
-bun dev:app-android
+pnpm dev:app-android
 
 # iOS 专用
-bun dev:app-ios
+pnpm dev:app-ios
 ```
 
 #### 快应用开发
 
 ```bash
 # 快应用-联盟
-bun dev:quickapp-webview-union
+pnpm dev:quickapp-webview-union
 
 # 快应用-华为
-bun dev:quickapp-webview-huawei
+pnpm dev:quickapp-webview-huawei
 ```
 
 ### 📦 构建
@@ -378,19 +312,19 @@ bun dev:quickapp-webview-huawei
 
 ```bash
 # H5 构建
-bun build:h5
+pnpm build:h5
 
 # H5 SSR 构建
-bun build:h5:ssr
+pnpm build:h5:ssr
 
 # 微信小程序构建
-bun build:mp-weixin
+pnpm build:mp-weixin
 
 # App 构建
-bun build:app
+pnpm build:app
 
 # 自定义平台构建
-bun build:custom [platform]
+pnpm build:custom [platform]
 ```
 
 构建产物在 `dist/` 目录下
@@ -403,13 +337,13 @@ bun build:custom [platform]
 
 ```bash
 # 开发环境构建
-bun build:mp-weixin:dev
+pnpm build:mp-weixin:dev
 
 # 测试环境构建
-bun build:mp-weixin:test
+pnpm build:mp-weixin:test
 
 # 生产环境构建
-bun build:mp-weixin:prod
+pnpm build:mp-weixin:prod
 ```
 
 脚本会直接读取 `dist/build/mp-weixin` 下的构建产物和 `project.config.json`。
@@ -435,13 +369,13 @@ bun build:mp-weixin:prod
 
 ```bash
 # 默认 dev
-bun preview
+pnpm preview
 
 # test 环境
-bun preview test
+pnpm preview test
 
 # prod 环境
-bun preview prod
+pnpm preview prod
 ```
 
 执行成功后会在 `dist/build/mp-weixin` 下生成：
@@ -453,13 +387,13 @@ bun preview prod
 
 ```bash
 # 默认 dev
-bun upload
+pnpm upload
 
 # test 环境
-bun upload test
+pnpm upload test
 
 # prod 环境
-bun upload prod
+pnpm upload prod
 ```
 
 上传版本号取自 `package.json` 的 `version`，描述信息会附带环境、日期和当前 Git 短提交号。
@@ -468,29 +402,29 @@ bun upload prod
 
 ```bash
 # 运行单元测试
-bun test
+pnpm test
 
 # 监听模式运行测试
-bun test:watch
+pnpm test:watch
 
 # 测试 UI 界面
-bun test:ui
+pnpm test:ui
 
 # 类型检查
-bun type-check
+pnpm type-check
 ```
 
 ### 🔍 代码质量
 
 ```bash
-# 运行 ESLint 检查
-bun lint
+# 运行代码检查
+pnpm lint
 
-# 自动修复 ESLint 问题
-bun lint:fix
+# 自动修复问题
+pnpm lint:fix
 
 # 更新依赖到最新版本
-bun up
+pnpm up
 ```
 
 ### 🎯 首次运行清单
@@ -639,7 +573,7 @@ const { userInfo, token } = storeToRefs(userStore)
 
 ### HTTP 请求封装
 
-HTTP 请求基于 Axios 封装，支持拦截器和自动错误处理：
+HTTP 请求基于项目内的 `http` 封装，底层使用 `@uni-helper/uni-network`，支持拦截器和自动错误处理：
 
 ```typescript
 // src/api/user.ts
@@ -729,8 +663,8 @@ async function handleLogin() {
 
 #### 代码质量
 
-- **ESLint** - JavaScript/TypeScript 代码检查
-- **Prettier - Code formatter** - 代码格式化
+- **Biome** - 使用 `biome.jsonc` 提供格式化、Lint 和编辑器集成
+- **Ultracite CLI** - 通过 `pnpm lint` 和 `pnpm lint:fix` 统一执行检查与修复
 - **Error Lens** - 内联显示错误和警告
 
 #### 效率工具
@@ -770,11 +704,9 @@ async function handleLogin() {
 
 ```bash
 # 全局安装推荐工具
-bun add -g @dcloudio/uvm          # UniApp 版本管理
-bun add -g @vue/cli               # Vue CLI
-bun add -g typescript             # TypeScript 编译器
-bun add -g eslint                 # ESLint 代码检查
-bun add -g prettier               # Prettier 代码格式化
+pnpm add -g @dcloudio/uvm         # UniApp 版本管理
+pnpm add -g typescript            # TypeScript 编译器
+pnpm add -g @biomejs/biome        # Biome 代码检查与格式化
 ```
 
 ### 📊 性能分析
@@ -788,7 +720,7 @@ bun add -g prettier               # Prettier 代码格式化
 ### 代码规范
 
 - 使用 TypeScript 提供类型安全
-- 遵循 ESLint 代码规范
+- 遵循项目的 Ultracite / Biome 代码规范
 - 使用 `<script setup>` 语法
 - 组件名使用 PascalCase
 - 文件名使用 kebab-case
@@ -946,8 +878,8 @@ bun add -g prettier               # Prettier 代码格式化
   ```json
   // package.json scripts
   {
-    "build:prod": "NODE_ENV=production bun build:h5",
-    "deploy": "bun build:prod && your-deploy-command"
+    "build:prod": "pnpm build:h5",
+    "deploy": "pnpm build:prod && your-deploy-command"
   }
   ```
 
@@ -969,22 +901,22 @@ bun add -g prettier               # Prettier 代码格式化
 
   ```bash
   # 运行测试套件
-  bun test
+  pnpm test
 
   # 类型检查
-  bun type-check
+  pnpm type-check
 
   # 代码规范检查
-  bun lint
+  pnpm lint
   ```
 
 - [ ] **构建测试**
 
   ```bash
   # 测试各平台构建
-  bun build:h5
-  bun build:mp-weixin
-  bun build:app
+  pnpm build:h5
+  pnpm build:mp-weixin
+  pnpm build:app
   ```
 
 - [ ] **兼容性测试**
@@ -1023,7 +955,7 @@ bun add -g prettier               # Prettier 代码格式化
 
 ### 📝 代码规范
 
-- 遵循项目的 ESLint 配置
+- 遵循项目的代码检查配置
 - 使用 TypeScript 编写类型安全的代码
 - 提交信息遵循 [Conventional Commits](https://conventionalcommits.org/) 规范
 - 为新功能添加相应的测试用例

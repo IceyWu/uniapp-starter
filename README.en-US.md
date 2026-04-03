@@ -2,11 +2,11 @@
 
 <!-- markdownlint-disable MD024 MD033 MD040 -->
 <p align='center'>
-<a href="https://github.com/vuejs/vue"><img src="https://img.shields.io/badge/Vue-3.5.22-4FC08D?style=flat-square&logo=vue.js&logoColor=white" alt="Vue"></a>
-<a href="https://github.com/microsoft/TypeScript"><img src="https://img.shields.io/badge/TypeScript-5.9.2-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
-<a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-7.1.7-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite"></a>
-<a href="https://unocss.dev/"><img src="https://img.shields.io/badge/UnoCSS-0.66.4-1896FF?style=flat-square&logo=unocss&logoColor=white" alt="UnoCSS"></a>
-<a href="https://pinia.vuejs.org/"><img src="https://img.shields.io/badge/Pinia-3.0.3-yellow?style=flat-square&logo=vue.js&logoColor=white" alt="Pinia"></a>
+<a href="https://github.com/vuejs/vue"><img src="https://img.shields.io/badge/Vue-3.4.21-4FC08D?style=flat-square&logo=vue.js&logoColor=white" alt="Vue"></a>
+<a href="https://github.com/microsoft/TypeScript"><img src="https://img.shields.io/badge/TypeScript-6.0.2-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
+<a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-5.2.8-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite"></a>
+<a href="https://unocss.dev/"><img src="https://img.shields.io/badge/UnoCSS-66.6.7-1896FF?style=flat-square&logo=unocss&logoColor=white" alt="UnoCSS"></a>
+<a href="https://pinia.vuejs.org/"><img src="https://img.shields.io/badge/Pinia-3.0.4-yellow?style=flat-square&logo=vue.js&logoColor=white" alt="Pinia"></a>
 </p>
 
 <p align='center'>
@@ -46,11 +46,12 @@ A feature-rich, production-ready UniApp development template with modern toolcha
 
 - 🍍 [Pinia](https://pinia.vuejs.org) - Modern state management
 - 🌐 [Vue I18n](https://vue-i18n.intlify.dev/) - Internationalization support
-- 🔐 HTTP client - Request wrapper based on Axios
+- 🔐 HTTP client - Request wrapper based on `@uni-helper/uni-network`
 - 📊 Data persistence - Pinia state persistence
 - ✅ [Vitest](https://vitest.dev/) - Unit testing framework
-- 📝 [ESLint](https://eslint.org/) - Code linting
-- 🔒 Git Hooks - Pre-commit code checking
+- 📝 Ultracite + Biome - Code linting and formatting
+- 🔒 Lefthook - Pre-commit code checking
+- 📦 Dependency management - Uses pnpm
 
 ### � Cross-platform Support
 
@@ -77,7 +78,7 @@ A feature-rich, production-ready UniApp development template with modern toolcha
 
 - **Vite** - Next generation frontend tooling
 - **ESBuild** - Extremely fast JavaScript bundler
-- **Bun** - Modern JavaScript runtime and package manager
+- **pnpm** - Fast package manager
 
 ### State Management
 
@@ -92,7 +93,7 @@ A feature-rich, production-ready UniApp development template with modern toolcha
 
 ### HTTP Client
 
-- **Axios** - HTTP client library
+- **@uni-helper/uni-network** - Cross-platform request library for UniApp
 - Custom request interceptors
 - Request/Response interception support
 - Automatic token management
@@ -100,88 +101,86 @@ A feature-rich, production-ready UniApp development template with modern toolcha
 ### Utility Libraries
 
 - **dayjs** - Lightweight date manipulation library
+- **@iceywu/utils** - Shared utility helpers
+- **js-cookie** - Cookie management utility
 - **js-md5** - MD5 hashing library
-- **spark-md5** - File MD5 calculation
 - **qs** - Query string parsing and stringifying
 - **blurhash** - Image blur hash
-- **gm-crypto** - Cryptographic utility library
 
 ### Development Tools
 
-- **ESLint** - Code linting tool
-- **@uni-helper/eslint-config** - UniApp ESLint configuration
+- **Ultracite** - Code linting and fixes
+- **Biome** - Formatting and static analysis
 - **Vitest** - Unit testing framework
 - **Vue DevTools** - Vue developer tools
-- **simple-git-hooks** - Git hooks tool
-- **lint-staged** - Pre-commit code checking
+- **Lefthook** - Git hooks tool
 
 ### Plugin System
 
 - **unplugin-auto-import** - API auto-import
 - **unplugin-vue-components** - Component auto-import
+- **@uni-helper/vite-plugin-uni-components** - UniApp component auto registration
 - **@uni-helper/vite-plugin-uni-pages** - File-based routing system
 - **@uni-helper/vite-plugin-uni-layouts** - Layout system
 - **@uni-helper/vite-plugin-uni-manifest** - manifest.json generation
+- **@uni-ku/bundle-optimizer** - Bundle optimization for UniApp
 
 ## 📁 Project Structure
 
-```
+```text
 uniapp-starter/
-├── public/                    # Static assets
 ├── src/
-│   ├── @types/               # TypeScript type definitions
-│   ├── api/                  # API interface wrappers
-│   ├── components/           # Shared components
-│   │   ├── Base/            # Base components
-│   │   ├── LivePhoto/       # Live photo component
-│   │   ├── LPImage/         # Image component
-│   │   ├── NavBar/          # Navigation bar
-│   │   └── TabBar/          # Tab bar
-│   ├── composables/         # Composable functions
-│   ├── config/              # Configuration files
-│   ├── hooks/               # Custom hooks
-│   ├── layouts/             # Layout components
-│   ├── locale/              # Internationalization files
-│   ├── pages/               # Page components
-│   ├── pages-sub/           # Sub-package pages
-│   ├── static/              # Static resources
-│   ├── store/               # State management
-│   ├── styles/              # Style files
-│   ├── test/                # Test files
-│   └── utils/               # Utility functions
-│       ├── http/            # HTTP request wrapper
-│       ├── tools/           # Tool methods
-│       └── upload/          # Upload related
-├── auto/                     # Auto-generation tools
-├── commitlint.config.js     # Commit message standards
-├── eslint.config.mjs        # ESLint configuration
-├── manifest.config.ts       # UniApp configuration
-├── pages.config.ts          # Page configuration
-├── tsconfig.json            # TypeScript configuration
-├── uno.config.ts            # UnoCSS configuration
-└── vite.config.ts           # Vite configuration
+│   ├── pages/ pages-sub/ sub-packages/   # Pages, sub-packages, business modules
+│   ├── layouts/                          # Layout system
+│   ├── components/                       # Shared UI components
+│   ├── api/                              # API wrapper examples
+│   ├── composables/ hooks/               # Composables and page hooks
+│   ├── store/                            # Pinia stores
+│   ├── config/                           # Runtime and signing configuration
+│   ├── locale/                           # i18n resources
+│   ├── styles/ static/                   # Global styles and static assets
+│   ├── utils/ helper/                    # Utilities and helper logic
+│   ├── @types/                           # Generated and handwritten type declarations
+│   ├── App.vue / main.ts                 # Application entry
+│   └── manifest.json / pages.json        # Generated uni-app config output
+├── auto/                                 # Scaffolding scripts such as addPage.ts
+├── scripts/                              # Release, WeChat CI, and skills sync scripts
+├── test/                                 # Global Vitest setup
+├── public/                               # Public assets for H5
+├── biome.jsonc                           # Biome / Ultracite rule configuration
+├── manifest.config.ts                    # Source config for src/manifest.json
+├── pages.config.ts                       # Page and sub-package source config
+├── uno.config.ts                         # UnoCSS configuration
+├── vite.config.ts                        # Vite and uni plugin configuration
+├── vitest.config.ts                      # Vitest configuration
+├── tsconfig.json                         # TypeScript configuration
+└── package.json                          # Scripts, dependencies, and project entry
 ```
+
+### Notes On The Layout
+
+- `src/pages`, `src/pages-sub`, and `src/sub-packages` organize page entry points, while routes are generated from `pages.config.ts`.
+- `src/layouts` contains the shell layout system; see `src/layouts/README.md` for usage details.
+- `src/@types/auto-imports.d.ts`, `src/@types/components.d.ts`, and `src/@types/uni-pages.d.ts` are generated files and usually should not be edited manually.
+- `src/pages.json` and `src/manifest.json` are generated outputs. Prefer editing `pages.config.ts` and `manifest.config.ts`.
+- `scripts/mini-ci.js` handles WeChat Mini Program preview/upload, `scripts/release.js` handles release flow, and `scripts/skills-add.js` syncs local agent skills.
+- The code quality toolchain is now based on `biome.jsonc` and `ultracite`; there is no standalone ESLint config in this repo.
 
 ## 🚀 Quick Start
 
 ### Requirements
 
 - Node.js >= 18
-- Bun >= 1.0 (recommended) or pnpm >= 8
+- pnpm >= 8
 
 ### Installation
 
 ```bash
-# CLI create project
-# Coming soon...
-
 # Or clone repository
 git clone <your-repo-url> my-uniapp-project
 cd my-uniapp-project
 
 # Install dependencies
-bun install
-# or
 pnpm install
 ```
 
@@ -203,47 +202,47 @@ This command will automatically pull the latest content from <https://github.com
 
 ```bash
 # H5 development
-bun dev
+pnpm dev
 # or
-bun dev:h5
+pnpm dev:h5
 
 # WeChat Mini Program development
-bun dev:mp-weixin
+pnpm dev:mp-weixin
 
 # App development
-bun dev:app
+pnpm dev:app
 
 # Other platforms
-bun dev:mp-alipay    # Alipay Mini Program
-bun dev:mp-baidu     # Baidu Mini Program
-bun dev:mp-toutiao   # ByteDance Mini Program
-bun dev:mp-qq        # QQ Mini Program
+pnpm dev:mp-alipay    # Alipay Mini Program
+pnpm dev:mp-baidu     # Baidu Mini Program
+pnpm dev:mp-toutiao   # ByteDance Mini Program
+pnpm dev:mp-qq        # QQ Mini Program
 ```
 
 ### Build
 
 ```bash
 # H5 build
-bun build:h5
+pnpm build:h5
 
 # WeChat Mini Program build
-bun build:mp-weixin
+pnpm build:mp-weixin
 
 # WeChat Mini Program build for development mode
-bun build:mp-weixin:dev
+pnpm build:mp-weixin:dev
 
 # WeChat Mini Program build for test mode
-bun build:mp-weixin:test
+pnpm build:mp-weixin:test
 
 # WeChat Mini Program build for production mode
-bun build:mp-weixin:prod
+pnpm build:mp-weixin:prod
 
 # App build
-bun build:app
+pnpm build:app
 
 # Other platform builds
-bun build:mp-alipay  # Alipay Mini Program
-bun build:mp-baidu   # Baidu Mini Program
+pnpm build:mp-alipay  # Alipay Mini Program
+pnpm build:mp-baidu   # Baidu Mini Program
 ```
 
 ### WeChat Mini Program CI
@@ -270,9 +269,9 @@ If `MINI_PRIVATE_KEY` is missing, the script uses `APP_WECHAT_CI_PRIVATE_KEY_PAT
 1. Generate preview QR code:
 
 ```bash
-bun preview
-bun preview test
-bun preview prod
+pnpm preview
+pnpm preview test
+pnpm preview prod
 ```
 
 This writes `preview-<env>.png` and `preview-<env>.html` into `dist/build/mp-weixin`.
@@ -280,9 +279,9 @@ This writes `preview-<env>.png` and `preview-<env>.html` into `dist/build/mp-wei
 1. Upload an experience version:
 
 ```bash
-bun upload
-bun upload test
-bun upload prod
+pnpm upload
+pnpm upload test
+pnpm upload prod
 ```
 
 The upload version comes from `package.json`, and the description includes env, build date, and the current short Git commit hash.
@@ -291,16 +290,16 @@ The upload version comes from `package.json`, and the description includes env, 
 
 ```bash
 # Run unit tests
-bun test
+pnpm test
 
 # Type checking
-bun type-check
+pnpm type-check
 
 # Code linting
-bun lint
+pnpm lint
 
 # Code formatting
-bun lint:fix
+pnpm lint:fix
 ```
 
 ## ⚙️ Configuration
@@ -409,6 +408,7 @@ const { data } = await getUserInfo()
 
 - Vue Language Features (Volar)
 - TypeScript Vue Plugin (Volar)
+- Biome
 - UnoCSS IntelliSense
 
 ## 🙏 Acknowledgements
@@ -420,8 +420,8 @@ Thanks to the following awesome open source projects:
 - [Vite](https://vitejs.dev/) - Next generation frontend tooling
 - [UnoCSS](https://unocss.dev/) - On-demand atomic CSS engine
 - [Pinia](https://pinia.vuejs.org/) - State management for Vue
-- ESLint
-- Prettier
+- [Biome](https://biomejs.dev/) - Formatting and static analysis
+- [Ultracite](https://www.npmjs.com/package/ultracite) - Unified linting workflow
 - uni-app-schemas
 - uni-app-snippets
 
@@ -436,7 +436,7 @@ Thanks to the following awesome open source projects:
 ### Code Standards
 
 - Use TypeScript for type safety
-- Follow ESLint code standards
+- Follow the project's linting rules
 - Use `<script setup>` syntax
 - Component names use PascalCase
 - File names use kebab-case
