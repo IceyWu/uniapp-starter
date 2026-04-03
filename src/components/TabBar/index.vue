@@ -17,6 +17,9 @@ interface TabBarItem {
   text: string
 }
 
+const LEADING_SLASH_RE = /^\//
+const HASH_PREFIX_RE = /^#/
+
 const selected = ref(0)
 const color = ref('#86909c') // Arco 次要文字色
 
@@ -56,7 +59,7 @@ function handleScroll(scrollTop: number) {
 // TabBar 列表配置
 const list = ref<TabBarItem[]>([
   {
-    pagePath: '/pages/index',
+    pagePath: '/pages/home/index',
     iconPath: 'i-carbon-home',
     selectedIconPath: 'i-carbon-home',
     text: '首页',
@@ -109,30 +112,55 @@ function switchTab(item: TabBarItem, index: number) {
     })
   }
   else {
-    uni.navigateTo({
+    uni.switchTab({
       url: item.pagePath,
     })
   }
 }
 
-onMounted(() => {
-  const pageInfo = arrayLast(getCurrentPages())
-  const objVal = getObjVal(pageInfo, ['$page', 'fullPath'])
+// 检测当前路由并更新选中状态
+function updateSelectedTab() {
+  const pages = getCurrentPages()
+  const pageInfo = arrayLast(pages)
 
-  // 更精确的路由匹配
-  const currentPath = objVal || ''
-  selected.value = list.value.findIndex((item) => {
-    // 精确匹配或包含匹配
-    return currentPath.includes(item.pagePath) || item.pagePath.includes(currentPath.split('?')[0])
+  // 兼容多端：MP 用 .route，H5/App 用 $page.fullPath 或 $page.path
+  let currentPath = ''
+  if (pageInfo) {
+    currentPath = (pageInfo as any).route
+      || getObjVal(pageInfo, ['$page', 'fullPath'])
+      || getObjVal(pageInfo, ['$page', 'path'])
+      || ''
+  }
+
+  // H5 端 fallback：从 location.hash 解析
+  // #ifdef H5
+  if (!currentPath && typeof window !== 'undefined') {
+    currentPath = window.location.hash.replace(HASH_PREFIX_RE, '').split('?')[0]
+  }
+  // #endif
+
+  const idx = list.value.findIndex((item) => {
+    const itemPath = item.pagePath.replace(LEADING_SLASH_RE, '')
+    const pagePath = currentPath.replace(LEADING_SLASH_RE, '').split('?')[0]
+    return pagePath === itemPath
   })
 
-  // 如果没有匹配到，默认选中第一个
-  if (selected.value === -1) {
-    selected.value = 0
-  }
+  selected.value = idx >= 0 ? idx : 0
+}
+
+onMounted(() => {
+  // 隐藏原生 tabBar，防止小程序端出现底部空白条或闪烁
+  uni.hideTabBar({ fail() {} })
+
+  updateSelectedTab()
 
   // 设置页面滚动监听
   setupPageScroll()
+})
+
+// tab 页面切换时 onShow 会重新触发，更新选中状态
+onShow(() => {
+  updateSelectedTab()
 })
 
 onUnmounted(() => {

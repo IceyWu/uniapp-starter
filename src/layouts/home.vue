@@ -1,5 +1,9 @@
 <script lang="ts" setup>
 const { themeVars } = useTheme()
+
+function onScrollViewScroll(e: any) {
+  uni.$emit('pageScroll', e.detail?.scrollTop ?? 0)
+}
 </script>
 
 <template>
@@ -16,6 +20,7 @@ const { themeVars } = useTheme()
           :scroll-y="true"
           :show-scrollbar="false"
           class="app-container"
+          @scroll="onScrollViewScroll"
         >
           <slot />
         </scroll-view>

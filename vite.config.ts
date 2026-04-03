@@ -33,6 +33,7 @@ export default defineConfig({
      * @see https://github.com/uni-helper/vite-plugin-uni-pages
      */
     UniPages({
+      homePage: 'pages/home/index',
       exclude: ['**/components/**/*.*'],
       subPackages: ['src/pages-sub', 'src/sub-packages'],
       dts: 'src/@types/uni-pages.d.ts',

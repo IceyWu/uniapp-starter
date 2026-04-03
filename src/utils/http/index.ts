@@ -188,7 +188,7 @@ class PureHttp {
       .request<T, T>({
         method: method as any,
         url,
-        data: method.toUpperCase() !== 'GET' ? requestData : undefined,
+        data: method.toUpperCase() === 'GET' ? undefined : requestData,
         params: method.toUpperCase() === 'GET' ? requestData : undefined,
         ...config,
       })

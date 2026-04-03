@@ -26,4 +26,23 @@ export default defineUniPages({
     enablePullDownRefresh: false,
     disableScroll: true,
   },
+  tabBar: {
+    custom: true,
+    color: '#86909c',
+    selectedColor: '#165DFF',
+    list: [
+      {
+        pagePath: 'pages/home/index',
+        iconPath: 'static/tabbar/placeholder.png',
+        selectedIconPath: 'static/tabbar/placeholder.png',
+        text: '首页',
+      },
+      {
+        pagePath: 'pages/mine/index',
+        iconPath: 'static/tabbar/placeholder.png',
+        selectedIconPath: 'static/tabbar/placeholder.png',
+        text: '我的',
+      },
+    ],
+  },
 })

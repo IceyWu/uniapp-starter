@@ -63,9 +63,9 @@ const themeVarsExtended = computed(() => {
       g = Number.parseInt(cleanHex[1] + cleanHex[1], 16)
       b = Number.parseInt(cleanHex[2] + cleanHex[2], 16)
     } else {
-      r = Number.parseInt(cleanHex.substring(0, 2), 16)
-      g = Number.parseInt(cleanHex.substring(2, 4), 16)
-      b = Number.parseInt(cleanHex.substring(4, 6), 16)
+      r = Number.parseInt(cleanHex.slice(0, 2), 16)
+      g = Number.parseInt(cleanHex.slice(2, 4), 16)
+      b = Number.parseInt(cleanHex.slice(4, 6), 16)
     }
 
     return `rgba(${r}, ${g}, ${b}, ${alpha})`
