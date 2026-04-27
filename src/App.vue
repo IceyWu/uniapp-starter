@@ -8,5 +8,6 @@
 </script>
 
 <style lang="scss">
+@use '@wot-ui/ui/styles/theme/index.scss';
 @import './styles/main.css';
 </style>

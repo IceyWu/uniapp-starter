@@ -220,7 +220,7 @@ $collapsed-size: 80rpx;                // 折叠按钮尺寸
 $icon-size: 36rpx;                     // 图标大小
 
 // 主题色 - 通过内联样式传递的 CSS 变量
-$primary-color: var(--tab-primary-color, var(--wot-color-theme, #165DFF));
+$primary-color: var(--tab-primary-color, var(--wot-primary-6, #165DFF));
 $primary-light: var(--tab-primary-light, rgba(22, 93, 255, 0.1));
 $primary-shadow: var(--tab-primary-shadow, rgba(22, 93, 255, 0.4));
 

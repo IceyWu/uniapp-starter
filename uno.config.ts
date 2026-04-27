@@ -64,13 +64,13 @@ export default defineConfig({
   theme: {
     colors: {
       // 使用 CSS 变量，支持动态主题色切换
-      // 由 wot-design-uni 的 wd-config-provider 提供
-      primary: 'var(--wot-color-theme, #4D80F0)',
-      success: 'var(--wot-color-success, #34d19d)',
-      warning: 'var(--wot-color-warning, #f0883a)',
-      danger: 'var(--wot-color-danger, #fa4350)',
-      error: 'var(--wot-color-danger, #fa4350)', // 别名
-      info: 'var(--wot-color-info, #909399)',
+      // 由 wot-ui 的 wd-config-provider 提供
+      primary: 'var(--wot-primary-6, #1C64FD)',
+      success: 'var(--wot-success-main, #12B886)',
+      warning: 'var(--wot-warning-main, #F57F00)',
+      danger: 'var(--wot-danger-main, #F14646)',
+      error: 'var(--wot-danger-main, #F14646)', // 别名
+      info: 'var(--wot-text-auxiliary, #868A9C)',
       secondary: '#03a9f4',
       btn: {
         primary: '#5EDFD6',

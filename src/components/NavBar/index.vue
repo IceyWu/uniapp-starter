@@ -46,8 +46,10 @@
       uni.navigateBack()
     }
   }
-  const customStyle = computed(
-    () => `background-color: ${props.baseProps?.backgroundColor} `
+  const customStyle = computed(() =>
+    props.baseProps?.backgroundColor
+      ? `background-color: ${props.baseProps.backgroundColor}`
+      : ''
   )
 </script>
 
@@ -65,9 +67,7 @@
     @click-left="goBack"
   >
     <template v-if="isNeedLeft" #left>
-      <slot name="left">
-        <wd-icon name="thin-arrow-left" size="18px" color="#000000" />
-      </slot>
+      <slot name="left"> <wd-icon name="thin-arrow-left" size="18px" /> </slot>
     </template>
 
     <template #title>

@@ -11,14 +11,14 @@ export interface ThemeColors {
 }
 
 /**
- * 默认主题色配置
+ * 默认主题色配置 (对齐 wot-ui v2 默认色)
  */
 export const defaultThemeColors: ThemeColors = {
-  primary: '#4D80F0',
-  success: '#34d19d',
-  warning: '#f0883a',
-  danger: '#fa4350',
-  info: '#909399',
+  primary: '#1C64FD',
+  success: '#12B886',
+  warning: '#F57F00',
+  danger: '#F14646',
+  info: '#868A9C',
 }
 
 /**

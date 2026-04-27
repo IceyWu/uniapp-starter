@@ -2,11 +2,12 @@
 
 <!-- markdownlint-disable MD024 MD033 MD040 -->
 <p align='center'>
-<a href="https://github.com/vuejs/vue"><img src="https://img.shields.io/badge/Vue-3.4.21-4FC08D?style=flat-square&logo=vue.js&logoColor=white" alt="Vue"></a>
-<a href="https://github.com/microsoft/TypeScript"><img src="https://img.shields.io/badge/TypeScript-6.0.2-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
+<a href="https://github.com/vuejs/vue"><img src="https://img.shields.io/badge/Vue-3.5.33-4FC08D?style=flat-square&logo=vue.js&logoColor=white" alt="Vue"></a>
+<a href="https://github.com/microsoft/TypeScript"><img src="https://img.shields.io/badge/TypeScript-6.0.3-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
 <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-5.2.8-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite"></a>
-<a href="https://unocss.dev/"><img src="https://img.shields.io/badge/UnoCSS-66.6.7-1896FF?style=flat-square&logo=unocss&logoColor=white" alt="UnoCSS"></a>
+<a href="https://unocss.dev/"><img src="https://img.shields.io/badge/UnoCSS-66.6.8-1896FF?style=flat-square&logo=unocss&logoColor=white" alt="UnoCSS"></a>
 <a href="https://pinia.vuejs.org/"><img src="https://img.shields.io/badge/Pinia-3.0.4-yellow?style=flat-square&logo=vue.js&logoColor=white" alt="Pinia"></a>
+<a href="https://v2.wot-ui.cn/"><img src="https://img.shields.io/badge/Wot_UI-2.0.4-4D80F0?style=flat-square" alt="Wot UI"></a>
 </p>
 
 <p align='center'>
@@ -40,7 +41,7 @@ A feature-rich, production-ready UniApp development template with modern toolcha
 - 😃 [Iconify](https://iconify.design) - Massive icon library support
 - 🌙 Dark mode support - Built-in theme switching
 - 📱 Responsive design - Perfect adaptation to various screen sizes
-- 💎 Modern UI components - Built-in common components, support for custom extension
+- 💎 **[Wot UI v2](https://v2.wot-ui.cn/)** - 80+ high-quality uni-app components with dark mode, i18n, and theme customization
 
 ### 🛠 Engineering
 
@@ -420,6 +421,7 @@ Thanks to the following awesome open source projects:
 - [Vite](https://vitejs.dev/) - Next generation frontend tooling
 - [UnoCSS](https://unocss.dev/) - On-demand atomic CSS engine
 - [Pinia](https://pinia.vuejs.org/) - State management for Vue
+- [Wot UI](https://v2.wot-ui.cn/) - AI-friendly uni-app component library
 - [Biome](https://biomejs.dev/) - Formatting and static analysis
 - [Ultracite](https://www.npmjs.com/package/ultracite) - Unified linting workflow
 - uni-app-schemas

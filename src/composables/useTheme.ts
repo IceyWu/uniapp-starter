@@ -1,8 +1,8 @@
 /**
- * 主题配置 - 基于 wot-design-uni
- * 文档: https://wot-design-uni.netlify.app/component/config-provider.html
+ * 主题配置 - 基于 wot-ui
+ * 文档: https://v2.wot-ui.cn/component/config-provider.html
  */
-import type { ConfigProviderThemeVars } from 'wot-design-uni'
+import type { ConfigProviderThemeVars } from '@wot-ui/ui'
 
 import type { ThemeColors } from '@/config/theme'
 import { defaultThemeColors, fetchThemeColors } from '@/config/theme'
@@ -37,11 +37,12 @@ const themeColors = ref<ThemeColors>(
 
 // 主题变量
 const themeVars = computed<ConfigProviderThemeVars>(() => ({
-  colorTheme: themeColors.value.primary,
-  colorSuccess: themeColors.value.success,
-  colorWarning: themeColors.value.warning,
-  colorDanger: themeColors.value.danger,
-  colorInfo: themeColors.value.info,
+  // 主色 (v2 色阶体系，primary6 为主色)
+  primary6: themeColors.value.primary,
+  // 语义色
+  dangerMain: themeColors.value.danger,
+  successMain: themeColors.value.success,
+  warningMain: themeColors.value.warning,
 }))
 
 /**

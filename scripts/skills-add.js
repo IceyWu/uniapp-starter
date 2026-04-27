@@ -66,13 +66,26 @@ function run() {
     }
   )
 
+  const result2 = spawnSync(
+    getNpxCommand(),
+    ['-y', 'skills', 'add', 'wot-ui/open-wot', '--all', '--copy', '-y'],
+    {
+      stdio: 'inherit',
+      cwd: process.cwd(),
+      shell: isWindows,
+    }
+  )
+
   cleanupGeneratedArtifacts()
 
   if (result.error) {
     throw result.error
   }
+  if (result2.error) {
+    throw result2.error
+  }
 
-  process.exit(result.status ?? 0)
+  process.exit(result.status || result2.status || 0)
 }
 
 run()

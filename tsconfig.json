@@ -15,7 +15,7 @@
       "@dcloudio/types",
       "@uni-helper/uni-types",
       "uni-ui-plus/global.d.ts",
-      "wot-design-uni/global",
+      "@wot-ui/ui/global",
       "@uni-helper/vite-plugin-uni-pages",
       "@uni-ku/bundle-optimizer/client",
       "z-paging/types"

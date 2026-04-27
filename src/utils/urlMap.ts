@@ -1,12 +1,10 @@
 // URL 映射配置
 export const pagesMap = [
-  { name: 'index', path: '/pages/index' },
-  { name: 'hi', path: '/pages/hi' },
-  { name: 'webview', path: '/pages/webview' },
+  { name: 'home', path: '/pages/home/index' },
   { name: 'home-detail', path: '/pages/home/detail' },
   { name: 'mine-index', path: '/pages/mine/index' },
   { name: 'post-index', path: '/pages/post/index' },
-  { name: 'qr-auth', path: '/pages/qr/qrAuth' },
+  { name: 'webview', path: '/pages/webview' },
 ] as const
 
 export const h5HsqMap: readonly string[] = [

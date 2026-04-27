@@ -3,7 +3,7 @@
 
   const pageInfo = arrayLast(getCurrentPages())
   const objVal = getObjVal(pageInfo, ['$page', 'meta', 'navigationBar'])
-  const { themeVars } = useTheme()
+  const { themeVars, themeVarsExtended } = useTheme()
 
   function onScrollViewScroll(e: any) {
     uni.$emit('pageScroll', e.detail?.scrollTop ?? 0)
@@ -33,6 +33,7 @@
               <div
                 class="icon-btn"
                 title="Toggle dark mode"
+                :style="{ color: themeVarsExtended.primary }"
                 @click="toggleDark()"
               >
                 <div :class="isDark ? 'i-carbon-moon' : 'i-carbon-sun'" />

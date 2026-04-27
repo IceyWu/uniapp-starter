@@ -2,8 +2,7 @@
 
 import { resolve } from 'node:path'
 import Uni from '@uni-helper/plugin-uni'
-import Components from '@uni-helper/vite-plugin-uni-components'
-import { WotResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
+import Components, { kebabCase } from '@uni-helper/vite-plugin-uni-components'
 import UniLayouts from '@uni-helper/vite-plugin-uni-layouts'
 import UniManifest from '@uni-helper/vite-plugin-uni-manifest'
 import UniPages from '@uni-helper/vite-plugin-uni-pages'
@@ -16,6 +15,23 @@ import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { defineConfig } from 'vite'
 import UniPolyfill from 'vite-plugin-uni-polyfill'
+
+// Wot UI v2 自定义 Resolver
+const WD_RE = /^Wd[A-Z]/
+function WotResolver() {
+  return {
+    type: 'component' as const,
+    resolve: (name: string) => {
+      if (name.match(WD_RE)) {
+        const compName = kebabCase(name)
+        return {
+          name,
+          from: `@wot-ui/ui/components/${compName}/${compName}.vue`,
+        }
+      }
+    },
+  }
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
