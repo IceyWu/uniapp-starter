@@ -114,7 +114,7 @@ function readExportedNumber(source, key) {
   const match = source.match(
     new RegExp(String.raw`export\s+const\s+${key}\s*=\s*(\d+)`)
   )
-  if (!match) return undefined
+  if (!match) return
 
   return Number(match[1])
 }
@@ -204,12 +204,12 @@ function resolveRobot() {
       return robot
     }
 
-    return undefined
+    return
   }
 
   const source = readAppConfigSource()
   const configRobot = readExportedNumber(source, 'APP_WECHAT_CI_ROBOT')
-  if (configRobot === undefined) return undefined
+  if (configRobot === undefined) return
 
   const robot = validateRobotValue(configRobot)
   if (robot !== undefined) {
@@ -217,17 +217,17 @@ function resolveRobot() {
     return robot
   }
 
-  return undefined
+  return
 }
 
 function validateRobotValue(value) {
-  if (value === undefined || value === null || value === '') return undefined
+  if (value === undefined || value === null || value === '') return
 
   const robot = Number(value)
   if (Number.isInteger(robot) && robot >= 1 && robot <= 30) return robot
 
   console.warn(`⚠️ 已忽略无效的机器人编号 ${value}，有效范围为 1-30`)
-  return undefined
+  return
 }
 
 function resolvePrivateKeyPath(appid) {

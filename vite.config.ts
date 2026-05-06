@@ -10,7 +10,6 @@ import Optimization from '@uni-ku/bundle-optimizer'
 import AutoImportTypes from 'auto-import-types'
 import PiniaAutoRefs from 'pinia-auto-refs'
 import { visualizer } from 'rollup-plugin-visualizer'
-import { UpResolver } from 'uni-ui-plus'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { defineConfig } from 'vite'
@@ -27,6 +26,22 @@ function WotResolver() {
         return {
           name,
           from: `@wot-ui/ui/components/${compName}/${compName}.vue`,
+        }
+      }
+    },
+  }
+}
+// UpResolver 自定义 Resolver
+const UP_RE = /^Up[A-Z]/
+function UpResolver() {
+  return {
+    type: 'component' as const,
+    resolve: (name: string) => {
+      if (name.match(UP_RE)) {
+        const compName = kebabCase(name)
+        return {
+          name,
+          from: `uni-ui-plus/components/${compName}/${compName}.vue`,
         }
       }
     },
@@ -77,14 +92,11 @@ export default defineConfig({
             'list',
             'sleep',
             'consolePlus',
-            'getObjVal',
             'isArray',
             'isEmpty',
             'isObject',
             'isNumber',
             'isString',
-            'arrayLast',
-            'arrayFirst',
             'deepClone',
             'customDestr',
             'toPro',
@@ -135,7 +147,6 @@ export default defineConfig({
         './src/hooks',
       ],
       vueTemplate: true,
-      // packagePresets: ['@iceywu/utils', 'vue-hooks-pure'],
     }),
 
     /**

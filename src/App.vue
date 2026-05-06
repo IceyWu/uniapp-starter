@@ -8,6 +8,7 @@
 </script>
 
 <style lang="scss">
-@use '@wot-ui/ui/styles/theme/index.scss';
+@use 'uni-ui-plus/styles/theme/index.scss' as uniUiPlusTheme;
+@use '@wot-ui/ui/styles/theme/index.scss' as wotTheme;
 @import './styles/main.css';
 </style>

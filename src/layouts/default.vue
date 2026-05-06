@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-  import { arrayLast, getObjVal } from '@iceywu/utils'
+  import { get } from '@iceywu/utils'
 
-  const pageInfo = arrayLast(getCurrentPages())
-  const objVal = getObjVal(pageInfo, ['$page', 'meta', 'navigationBar'])
+  const pageInfo = getCurrentPages()?.[getCurrentPages().length - 1]
+  const objVal = get(pageInfo, ['$page', 'meta', 'navigationBar'])
   const { themeVars, themeVarsExtended } = useTheme()
 
   function onScrollViewScroll(e: any) {

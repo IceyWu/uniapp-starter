@@ -254,8 +254,6 @@ declare module 'vue' {
       typeof import('pinia')['acceptHMRUpdate']
     >
     readonly apiTest: UnwrapRef<typeof import('../api/apiTest')['default']>
-    readonly arrayFirst: UnwrapRef<typeof import('@iceywu/utils')['arrayFirst']>
-    readonly arrayLast: UnwrapRef<typeof import('@iceywu/utils')['arrayLast']>
     readonly clearNonceCache: UnwrapRef<
       typeof import('../utils/http/sign')['clearNonceCache']
     >
@@ -295,7 +293,6 @@ declare module 'vue' {
     readonly getDataList: UnwrapRef<
       typeof import('../api/apiTest')['getDataList']
     >
-    readonly getObjVal: UnwrapRef<typeof import('@iceywu/utils')['getObjVal']>
     readonly getPicsumDetail: UnwrapRef<
       typeof import('../api/apiPicsum')['getPicsumDetail']
     >

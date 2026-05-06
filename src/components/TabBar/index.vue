@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import { get } from '@iceywu/utils'
   import { onMounted, onUnmounted, ref } from 'vue'
 
   defineProps({
@@ -120,15 +121,15 @@
   // 检测当前路由并更新选中状态
   function updateSelectedTab() {
     const pages = getCurrentPages()
-    const pageInfo = arrayLast(pages)
+    const pageInfo = pages?.[pages.length - 1]
 
     // 兼容多端：MP 用 .route，H5/App 用 $page.fullPath 或 $page.path
     let currentPath = ''
     if (pageInfo) {
       currentPath =
         (pageInfo as any).route ||
-        getObjVal(pageInfo, ['$page', 'fullPath']) ||
-        getObjVal(pageInfo, ['$page', 'path']) ||
+        get(pageInfo, ['$page', 'fullPath']) ||
+        get(pageInfo, ['$page', 'path']) ||
         ''
     }
 

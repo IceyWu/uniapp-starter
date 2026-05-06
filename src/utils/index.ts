@@ -1,11 +1,13 @@
 // ... existing code ...
+
+import { get } from '@iceywu/utils'
 import { encode } from 'blurhash'
 import dayjs from 'dayjs'
 
 // 获取用户头像
 export function getUserAvatar(data: any) {
-  const oldAvatar = getObjVal(data, 'avatar')
-  const baseAvatar = getObjVal(data, 'avatarInfo.url')
+  const oldAvatar = get(data, 'avatar')
+  const baseAvatar = get(data, 'avatarInfo.url')
   return baseAvatar || oldAvatar
 }
 

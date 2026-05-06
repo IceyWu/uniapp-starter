@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import { get } from '@iceywu/utils'
   import { getPicsumList } from '@/api/apiPicsum'
 
   interface WaterfallsListProps {
@@ -24,16 +25,15 @@
   } = useRequest(getPicsumList, {
     target: 'list',
     loadingDelay: 300,
-    getVal: (res: any) => {
-      return (res || []).map((item: any) => ({
+    getVal: (res: any) =>
+      (res || []).map((item: any) => ({
         id: item.id,
         cover: item.download_url,
         title: item.author,
         desc: `Photo #${item.id} · ${item.width}×${item.height}`,
         height: item.height,
         width: item.width,
-      }))
-    },
+      })),
     listOptions: {
       defaultPageKey: 'page',
       defaultSizeKey: 'limit',
@@ -41,8 +41,8 @@
       defaultPage: 1,
     },
     onRequestEnd: () => {
-      const list = getObjVal(result.value, 'list', [])
-      const finished = getObjVal(result.value, 'finished', false)
+      const list = get(result.value, 'list', [])
+      const finished = get(result.value, 'finished', false)
       if (isRefreshing.value) {
         // 刷新：传完整列表
         pagingRef.value?.complete(list)
@@ -112,7 +112,7 @@
   >
     <view class="px-3 pt-2">
       <up-waterfall
-        :list="getObjVal(result, 'list', [])"
+        :list="get(result, 'list', [])"
         :column="2"
         @item-click="handleItemClick"
       >
