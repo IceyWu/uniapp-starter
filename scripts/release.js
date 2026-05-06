@@ -117,7 +117,7 @@ function generateChangelog(version) {
   try {
     // 只生成 changelog，不进行版本 bump 和 git 操作
     // 使用 --output 确保输出到 CHANGELOG.md，不使用 --release 避免自动版本管理
-    exec('npx changelogen --output CHANGELOG.md')
+    exec('pnpm exec changelogen --output CHANGELOG.md')
     log.success('Changelog 生成完成')
   } catch {
     log.warn('Changelog 生成失败，继续执行...')
