@@ -58,7 +58,7 @@ function run() {
   const isWindows = process.platform === 'win32'
   const result = spawnSync(
     getNpxCommand(),
-    ['-y', 'skills', 'add', 'IceyWu/skills', '--all', '--copy', '-y'],
+    ['-y', 'skills', 'add', 'IceyWu/iceywu-devkit', '--all', '--copy', '-y'],
     {
       stdio: 'inherit',
       cwd: process.cwd(),

@@ -55,6 +55,18 @@ export default defineConfig({
       '~/': `${resolve(import.meta.dirname, 'src')}/`,
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+        silenceDeprecations: ['legacy-js-api'],
+      },
+      sass: {
+        api: 'modern-compiler',
+        silenceDeprecations: ['legacy-js-api'],
+      },
+    },
+  },
   plugins: [
     AutoImportTypes(),
     PiniaAutoRefs(),
@@ -104,38 +116,6 @@ export default defineConfig({
         },
         {
           'vue-hooks-pure': ['useRequest'],
-        },
-        {
-          /**
-           * @uni-helper/uni-use — UniApp 跨端 composables 集合
-           * @see https://github.com/uni-helper/uni-use
-           */
-          '@uni-helper/uni-use': [
-            'useClipboardData',
-            'useDownloadFile',
-            'useGlobalData',
-            'useLoading',
-            'useModal',
-            'useNetwork',
-            'useOnline',
-            'usePageScroll',
-            'usePages',
-            'usePreferredDark',
-            'usePreferredLanguage',
-            'usePrevPage',
-            'usePrevRoute',
-            'useQuery',
-            'useScanCode',
-            'useScreenBrightness',
-            'useSelectorQuery',
-            'useSocket',
-            'useStorage',
-            'useStorageAsync',
-            'useStorageSync',
-            'useToast',
-            'useUploadFile',
-            'useVisible',
-          ],
         },
       ],
       dts: 'src/@types/auto-imports.d.ts',

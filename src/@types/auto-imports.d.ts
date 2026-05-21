@@ -463,57 +463,15 @@ declare module 'vue' {
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
-    readonly useClipboardData: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useClipboardData']
-    >
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
-    readonly useDownloadFile: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useDownloadFile']
-    >
-    readonly useGlobalData: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useGlobalData']
-    >
     readonly useI18n: UnwrapRef<typeof import('vue-i18n')['useI18n']>
     readonly useId: UnwrapRef<typeof import('vue')['useId']>
     readonly useLanguage: UnwrapRef<
       typeof import('../composables/useLanguage')['default']
     >
-    readonly useLoading: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useLoading']
-    >
-    readonly useModal: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useModal']
-    >
     readonly useModel: UnwrapRef<typeof import('vue')['useModel']>
-    readonly useNetwork: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useNetwork']
-    >
-    readonly useOnline: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useOnline']
-    >
     readonly usePage: UnwrapRef<typeof import('../hooks/usePage')['usePage']>
-    readonly usePageScroll: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['usePageScroll']
-    >
-    readonly usePages: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['usePages']
-    >
-    readonly usePreferredDark: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['usePreferredDark']
-    >
-    readonly usePreferredLanguage: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['usePreferredLanguage']
-    >
-    readonly usePrevPage: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['usePrevPage']
-    >
-    readonly usePrevRoute: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['usePrevRoute']
-    >
-    readonly useQuery: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useQuery']
-    >
     readonly useRequest: UnwrapRef<
       typeof import('vue-hooks-pure')['useRequest']
     >
@@ -521,43 +479,13 @@ declare module 'vue' {
     readonly userKeyBase: UnwrapRef<
       typeof import('../utils/http/auth')['userKeyBase']
     >
-    readonly useScanCode: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useScanCode']
-    >
-    readonly useScreenBrightness: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useScreenBrightness']
-    >
-    readonly useSelectorQuery: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useSelectorQuery']
-    >
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
-    readonly useSocket: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useSocket']
-    >
-    readonly useStorage: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useStorage']
-    >
-    readonly useStorageAsync: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useStorageAsync']
-    >
-    readonly useStorageSync: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useStorageSync']
-    >
     readonly useTemplateRef: UnwrapRef<typeof import('vue')['useTemplateRef']>
     readonly useTheme: UnwrapRef<
       typeof import('../composables/useTheme')['useTheme']
     >
-    readonly useToast: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useToast']
-    >
-    readonly useUploadFile: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useUploadFile']
-    >
     readonly useUserStore: UnwrapRef<
       typeof import('../store/user')['useUserStore']
-    >
-    readonly useVisible: UnwrapRef<
-      typeof import('@uni-helper/uni-use')['useVisible']
     >
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>

@@ -14,12 +14,12 @@
 <br/>
 
 <p align='center'>
-<a href="https://github.com/vuejs/vue"><img src="https://img.shields.io/badge/Vue-3.5.33-4FC08D?style=flat-square&logo=vue.js&logoColor=white" alt="Vue"></a>
+<a href="https://github.com/vuejs/vue"><img src="https://img.shields.io/badge/Vue-3.5.34-4FC08D?style=flat-square&logo=vue.js&logoColor=white" alt="Vue"></a>
 <a href="https://github.com/microsoft/TypeScript"><img src="https://img.shields.io/badge/TypeScript-6.0.3-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
 <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-5.2.8-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite"></a>
-<a href="https://unocss.dev/"><img src="https://img.shields.io/badge/UnoCSS-66.6.8-1896FF?style=flat-square&logo=unocss&logoColor=white" alt="UnoCSS"></a>
+<a href="https://unocss.dev/"><img src="https://img.shields.io/badge/UnoCSS-66.7.0-1896FF?style=flat-square&logo=unocss&logoColor=white" alt="UnoCSS"></a>
 <a href="https://pinia.vuejs.org/"><img src="https://img.shields.io/badge/Pinia-3.0.4-yellow?style=flat-square&logo=vue.js&logoColor=white" alt="Pinia"></a>
-<a href="https://v2.wot-ui.cn/"><img src="https://img.shields.io/badge/Wot_UI-2.0.4-4D80F0?style=flat-square" alt="Wot UI"></a>
+<a href="https://v2.wot-ui.cn/"><img src="https://img.shields.io/badge/Wot_UI-2.0.8-4D80F0?style=flat-square" alt="Wot UI"></a>
 </p>
 
 <br/>
@@ -64,7 +64,7 @@
 - ✅ [Vitest](https://vitest.dev/) - 现代化单元测试框架，与 Vite 深度集成
 - 🔍 [Ultracite](https://www.npmjs.com/package/ultracite) + [Biome](https://biomejs.dev/) - 代码检查与格式化
 - 🔒 [Lefthook](https://github.com/evilmartians/lefthook) - 提交前代码检查，确保代码质量
-- 📦 **依赖管理** - 使用 pnpm 管理依赖
+- 📦 **依赖管理** - 使用 pnpm 11 管理依赖，配置集中在 `pnpm-workspace.yaml`
 
 ### 📱 全平台支持
 
@@ -93,7 +93,7 @@
 
 - **Vite** - 下一代前端工具链
 - **ESBuild** - 极速 JavaScript 打包器
-- **pnpm** - 高性能包管理器
+- **pnpm 11** - 高性能包管理器
 
 ### 状态管理
 
@@ -104,7 +104,7 @@
 ### 样式方案
 
 - **UnoCSS** - 即时原子化 CSS 引擎
-- **Sass** - CSS 预处理器
+- **Sass** (modern-compiler API) - CSS 预处理器
 
 ### 网络请求
 
@@ -143,7 +143,8 @@
 ### 类型支持
 
 - **@dcloudio/types** - UniApp 官方类型定义
-- **@uni-helper/uni-app-types** - 增强的 UniApp 类型定义
+- **@uni-helper/uni-app-types** 1.0.0 - 增强的 UniApp 类型定义
+- **@uni-helper/uni-types** 1.0.0 - UniApp 通用类型
 - **auto-import-types** - 自动导入类型生成
 - 完整的 TypeScript 类型覆盖和智能提示
 
@@ -192,11 +193,11 @@ uniapp-starter/
 
 ### 📋 环境要求
 
-- **Node.js** >= 18.0.0
-- **pnpm** >= 8.0.0
+- **Node.js** >= 22.12.0
+- **pnpm** >= 11.0.0
 - **Git** >= 2.0.0
 
-> 💡 推荐使用 [pnpm](https://pnpm.io/) 作为包管理器，当前仓库也已提供 `pnpm-lock.yaml`
+> 💡 推荐使用 [pnpm](https://pnpm.io/) 作为包管理器，当前仓库也已提供 `pnpm-lock.yaml`。pnpm 11 的配置方式有变化，项目级设置（如 `shamefullyHoist`）已迁移至 `pnpm-workspace.yaml`。
 
 ### ⚡ 安装
 
