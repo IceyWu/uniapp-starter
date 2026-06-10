@@ -1,5 +1,3 @@
-/// <reference types="vitest" />
-
 import { resolve } from 'node:path'
 import Uni from '@uni-helper/plugin-uni'
 import Components, { kebabCase } from '@uni-helper/vite-plugin-uni-components'
@@ -169,12 +167,4 @@ export default defineConfig({
         })
       : null,
   ].filter(Boolean),
-
-  /**
-   * Vitest
-   * @see https://github.com/vitest-dev/vitest
-   */
-  test: {
-    environment: 'jsdom',
-  },
 })

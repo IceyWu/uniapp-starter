@@ -49,7 +49,6 @@ A feature-rich, production-ready UniApp development template with modern toolcha
 - 🌐 [Vue I18n](https://vue-i18n.intlify.dev/) - Internationalization support
 - 🔐 HTTP client - Request wrapper based on `@uni-helper/uni-network`
 - 📊 Data persistence - Pinia state persistence
-- ✅ [Vitest](https://vitest.dev/) - Unit testing framework
 - 📝 Ultracite + Biome - Code linting and formatting
 - 🔒 Lefthook - Pre-commit code checking
 - 📦 Dependency management - Uses pnpm
@@ -112,7 +111,6 @@ A feature-rich, production-ready UniApp development template with modern toolcha
 
 - **Ultracite** - Code linting and fixes
 - **Biome** - Formatting and static analysis
-- **Vitest** - Unit testing framework
 - **Vue DevTools** - Vue developer tools
 - **Lefthook** - Git hooks tool
 
@@ -146,14 +144,12 @@ uniapp-starter/
 │   └── manifest.json / pages.json        # Generated uni-app config output
 ├── auto/                                 # Scaffolding scripts such as addPage.ts
 ├── scripts/                              # Release, WeChat CI, and skills sync scripts
-├── test/                                 # Global Vitest setup
 ├── public/                               # Public assets for H5
 ├── biome.jsonc                           # Biome / Ultracite rule configuration
 ├── manifest.config.ts                    # Source config for src/manifest.json
 ├── pages.config.ts                       # Page and sub-package source config
 ├── uno.config.ts                         # UnoCSS configuration
 ├── vite.config.ts                        # Vite and uni plugin configuration
-├── vitest.config.ts                      # Vitest configuration
 ├── tsconfig.json                         # TypeScript configuration
 └── package.json                          # Scripts, dependencies, and project entry
 ```
@@ -287,13 +283,9 @@ pnpm upload prod
 
 The upload version comes from `package.json`, and the description includes env, build date, and the current short Git commit hash.
 
-### Testing
+### Type Checking
 
 ```bash
-# Run unit tests
-pnpm test
-
-# Type checking
 pnpm type-check
 
 # Code linting
@@ -454,7 +446,6 @@ Thanks to the following awesome open source projects:
 
 - Use semantic commit messages
 - Update dependencies in time
-- Write unit tests
 - Maintain project documentation
 
 ## 📋 Deployment Checklist

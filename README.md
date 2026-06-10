@@ -61,7 +61,6 @@
 - 🌐 [Vue I18n](https://vue-i18n.intlify.dev/) - 完整的国际化解决方案
 - 🔐 **HTTP 客户端** - 基于 `@uni-helper/uni-network` 的请求封装，支持拦截器和统一错误处理
 - 📊 **数据持久化** - Pinia 状态持久化，支持多种存储方式
-- ✅ [Vitest](https://vitest.dev/) - 现代化单元测试框架，与 Vite 深度集成
 - 🔍 [Ultracite](https://www.npmjs.com/package/ultracite) + [Biome](https://biomejs.dev/) - 代码检查与格式化
 - 🔒 [Lefthook](https://github.com/evilmartians/lefthook) - 提交前代码检查，确保代码质量
 - 📦 **依赖管理** - 使用 pnpm 11 管理依赖，配置集中在 `pnpm-workspace.yaml`
@@ -126,7 +125,6 @@
 
 - **Ultracite** - 代码检查与修复工具
 - **Biome** - 格式化与静态检查工具
-- **Vitest** - 单元测试框架
 - **Vue DevTools** - Vue 开发者工具
 - **Lefthook** - Git 钩子工具
 
@@ -168,14 +166,12 @@ uniapp-starter/
 │   └── manifest.json / pages.json        # 生成后的 uni-app 配置
 ├── auto/                                 # 页面脚手架脚本，如 addPage.ts
 ├── scripts/                              # 发布、微信 CI、skills 同步脚本
-├── test/                                 # Vitest 全局测试配置
 ├── public/                               # H5 直接公开的静态资源
 ├── biome.jsonc                           # Biome / Ultracite 规则配置
 ├── manifest.config.ts                    # 生成 src/manifest.json 的源配置
 ├── pages.config.ts                       # 生成 src/pages.json 的页面与分包配置
 ├── uno.config.ts                         # UnoCSS 配置
 ├── vite.config.ts                        # Vite 与 uni 插件配置
-├── vitest.config.ts                      # Vitest 配置
 ├── tsconfig.json                         # TypeScript 配置
 └── package.json                          # 脚本、依赖与工程入口
 ```
@@ -400,19 +396,9 @@ pnpm upload prod
 
 上传版本号取自 `package.json` 的 `version`，描述信息会附带环境、日期和当前 Git 短提交号。
 
-### 🧪 测试
+### 🧪 类型检查
 
 ```bash
-# 运行单元测试
-pnpm test
-
-# 监听模式运行测试
-pnpm test:watch
-
-# 测试 UI 界面
-pnpm test:ui
-
-# 类型检查
 pnpm type-check
 ```
 
@@ -738,7 +724,6 @@ pnpm add -g @biomejs/biome        # Biome 代码检查与格式化
 
 - 使用语义化的 commit 信息
 - 及时更新依赖版本
-- 编写单元测试
 - 完善项目文档
 
 ## 📋 部署清单
@@ -902,9 +887,6 @@ pnpm add -g @biomejs/biome        # Biome 代码检查与格式化
 - [ ] **功能测试**
 
   ```bash
-  # 运行测试套件
-  pnpm test
-
   # 类型检查
   pnpm type-check
 
